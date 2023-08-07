@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/formula_navigation_graph"
+    app:startDestination="@id/calendarFragment">
+
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.programmazionemobile.formula1app.CalendarFragment"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_calendarFragment_to_championshipFragment"
+            app:destination="@id/championshipFragment" />
+        <action
+            android:id="@+id/action_calendarFragment_to_driversStandingsFragment"
+            app:destination="@id/driversStandingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/championshipFragment"
+        android:name="com.programmazionemobile.formula1app.ChampionshipFragment"
+        android:label="fragment_championship"
+        tools:layout="@layout/fragment_championship" />
+    <fragment
+        android:id="@+id/driversStandingsFragment"
+        android:name="com.programmazionemobile.formula1app.DriversStandingsFragment"
+        android:label="fragment_drivers_standings"
+        tools:layout="@layout/fragment_drivers_standings" />
+</navigation>
