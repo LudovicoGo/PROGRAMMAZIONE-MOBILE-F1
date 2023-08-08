@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DriverProfileFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_background">
+
+        <TextView
+            android:id="@+id/DriverProfileName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="50dp"
+            android:fontFamily="@font/formula1_regular"
+            android:text="Max"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/driverProfileSurname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/formula1bold3"
+            android:text="VERSTAPPEN"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DriverProfileName" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="350dp"
+            android:layout_height="254dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/driver_profile_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/driverProfileSurname" />
+
+        <ImageView
+            android:id="@+id/DriverProfileImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:elevation="10dp"
+            android:src="@drawable/verstappen"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/driverProfileSurname" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="140dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="28dp"
+            android:src="@drawable/white_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DriverProfileImage" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="140dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/white_line"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DriverProfileImage" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/formula1italic"
+            android:text="INFO"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="185dp"
+            tools:layout_editor_absoluteY="376dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
