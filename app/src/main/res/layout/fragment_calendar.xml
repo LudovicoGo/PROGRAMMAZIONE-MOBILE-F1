@@ -11,22 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textViewCalendar"
-            android:layout_width="183dp"
-            android:layout_height="94dp"
-            android:layout_marginTop="212dp"
-            android:text="Calendario"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="#08FF00"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.539"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/calendar_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

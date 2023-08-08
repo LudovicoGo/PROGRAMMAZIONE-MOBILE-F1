@@ -2,4 +2,10 @@
     <string name="app_name">Formula1App</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="_5_marzo">5 Marzo</string>
+    <string name="bahrein_ngrand_prix">BAHREIN \nGRAND PRIX</string>
+    <string name="bahrein_ninternational_circuit">BAHREIN \nINTERNATIONAL \nCIRCUIT</string>
+    <string name="emilian_ngrand_prix">EMILIAN \nGRAND PRIX</string>
+    <string name="_21_maggio_2023">21 Maggio 2023</string>
+    <string name="_19_21_may">19 - 21 MAY</string>
 </resources>
