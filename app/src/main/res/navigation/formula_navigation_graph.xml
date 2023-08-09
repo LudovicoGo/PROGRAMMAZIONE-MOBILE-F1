@@ -26,5 +26,14 @@
         android:id="@+id/driversStandingsFragment"
         android:name="com.programmazionemobile.formula1app.DriversStandingsFragment"
         android:label="fragment_drivers_standings"
-        tools:layout="@layout/fragment_drivers_standings" />
+        tools:layout="@layout/fragment_drivers_standings" >
+        <action
+            android:id="@+id/action_driversStandingsFragment_to_driverProfileFragment"
+            app:destination="@id/driverProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/driverProfileFragment"
+        android:name="com.programmazionemobile.formula1app.DriverProfileFragment"
+        android:label="fragment_driver_profile"
+        tools:layout="@layout/fragment_driver_profile" />
 </navigation>
