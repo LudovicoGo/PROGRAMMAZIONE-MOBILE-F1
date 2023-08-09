@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_calendarFragment_to_driversStandingsFragment"
             app:destination="@id/driversStandingsFragment" />
+        <action
+            android:id="@+id/action_calendarFragment_to_raceFragment2"
+            app:destination="@id/raceFragment2" />
     </fragment>
     <fragment
         android:id="@+id/championshipFragment"
@@ -36,4 +39,9 @@
         android:name="com.programmazionemobile.formula1app.DriverProfileFragment"
         android:label="fragment_driver_profile"
         tools:layout="@layout/fragment_driver_profile" />
+    <fragment
+        android:id="@+id/raceFragment2"
+        android:name="com.programmazionemobile.formula1app.RaceFragment"
+        android:label="fragment_race_info"
+        tools:layout="@layout/fragment_race_info" />
 </navigation>
