@@ -1,5 +1,6 @@
 package com.programmazionemobile.formula1app
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,16 +9,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.programmazionemobile.formula1app.adapter.CalendarAdapter
-import com.programmazionemobile.formula1app.adapter.DriversStandingsAdapter
 
 class CalendarFragment : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        arguments?.let {
-//
-//        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -38,7 +35,6 @@ class CalendarFragment : Fragment() {
         rv.adapter = adapter
 
         return view
-
-//        return inflater.inflate(R.layout.fragment_drivers_standings, container, false)
     }
+
 }
