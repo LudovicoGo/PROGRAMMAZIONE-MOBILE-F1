@@ -43,5 +43,14 @@
         android:id="@+id/raceFragment2"
         android:name="com.programmazionemobile.formula1app.RaceFragment"
         android:label="fragment_race_info"
-        tools:layout="@layout/fragment_race_info" />
+        tools:layout="@layout/fragment_race_info" >
+        <action
+            android:id="@+id/action_raceFragment2_to_circuitInfoFragment"
+            app:destination="@id/circuitInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/circuitInfoFragment"
+        android:name="com.programmazionemobile.formula1app.CircuitInfoFragment"
+        android:label="fragment_circuit_info"
+        tools:layout="@layout/fragment_circuit_info" />
 </navigation>
