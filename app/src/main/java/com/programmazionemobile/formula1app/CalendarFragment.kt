@@ -29,8 +29,12 @@ class CalendarFragment : Fragment() {
         val layoutManager = LinearLayoutManager(requireContext())
         rv.layoutManager = layoutManager
 
-        // Crea l'adapter e assegna al RecyclerView
+        /*// Crea l'adapter e assegna al RecyclerView
         val data = IntRange(0, 10).toList()
+        val adapter = CalendarAdapter(data)
+        rv.adapter = adapter*/
+
+        val data = IntRange(0, 23).toList()
         val adapter = CalendarAdapter(data)
         rv.adapter = adapter
 
