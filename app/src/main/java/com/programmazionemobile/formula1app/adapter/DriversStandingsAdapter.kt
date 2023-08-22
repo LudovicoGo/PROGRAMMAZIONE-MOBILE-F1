@@ -28,6 +28,7 @@ class DriversStandingsAdapter(val data: MutableList<DriverStanding>, val context
         val DriverTeam = row.findViewById<TextView>(R.id.DriverTeam)
         val DriverPoints = row.findViewById<TextView>(R.id.DriverPoints)
         val DriverImage = row.findViewById<ImageView>(R.id.DriverImage)
+//        val DriverImage = row.findViewById<ImageView>(R.id.DriverImage)
     }
 
     override fun onCreateViewHolder(
