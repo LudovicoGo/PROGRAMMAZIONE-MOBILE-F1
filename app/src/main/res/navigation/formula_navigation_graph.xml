@@ -38,7 +38,43 @@
         android:id="@+id/driverProfileFragment"
         android:name="com.programmazionemobile.formula1app.DriverProfileFragment"
         android:label="fragment_driver_profile"
-        tools:layout="@layout/fragment_driver_profile" />
+        tools:layout="@layout/fragment_driver_profile" >
+        <argument android:name="DriverTeam"
+            app:argType="string"
+            android:defaultValue="noDriverTeam" />
+        <argument
+            android:name="DriverName"
+            app:argType="string"
+            android:defaultValue="noDriverName" />
+        <argument
+            android:name="DriverFamilyName"
+            app:argType="string"
+            android:defaultValue="noDriverFamilyName" />
+        <argument
+            android:name="DriverCountry"
+            app:argType="string"
+            android:defaultValue="noDriverFamilyName" />
+        <argument
+            android:name="DriverBirth"
+            app:argType="string"
+            android:defaultValue="noDriverBirth" />
+        <argument
+            android:name="DriverNumber"
+            app:argType="string"
+            android:defaultValue="noDriverNumber" />
+        <argument
+            android:name="DriverID"
+            app:argType="string"
+            android:defaultValue="noDriverID" />
+        <argument
+            android:name="DriverPoints"
+            app:argType="string"
+            android:defaultValue="noDriverPoints" />
+        <argument
+            android:name="DriverCurrentSeasonPosition"
+            app:argType="string"
+            android:defaultValue="noDriverCurrentSeasonPosition" />
+    </fragment>
     <fragment
         android:id="@+id/raceFragment2"
         android:name="com.programmazionemobile.formula1app.RaceFragment"

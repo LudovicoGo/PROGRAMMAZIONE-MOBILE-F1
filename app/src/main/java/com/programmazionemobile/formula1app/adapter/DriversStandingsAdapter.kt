@@ -1,13 +1,17 @@
 package com.programmazionemobile.formula1app.adapter
 
 import android.content.Context
+import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.programmazionemobile.formula1app.DriversStandingsFragmentDirections
 import com.programmazionemobile.formula1app.R
 import com.programmazionemobile.formula1app.data.driverStandingsData.DriverStanding
 
@@ -33,14 +37,26 @@ class DriversStandingsAdapter(val data: MutableList<DriverStanding>, val context
         val layout = LayoutInflater.from(parent.context)
             .inflate(R.layout.drivers_standings_recycler_view, parent, false)
         val holder = DriversStandingsViewHolder(layout)
-        holder.row.setOnClickListener { view ->
-            view.findNavController()
-                .navigate(R.id.action_driversStandingsFragment_to_driverProfileFragment)
-        }
+
+/*        holder.row.setOnClickListener { view ->
+            val bundle = Bundle()
+            bundle.putString("driverName", data[position].driverName)
+            bundle.putString("driverPosition", data[position].driverPosition)
+
+            val action =
+                DriversStandingsFragmentDirections.actionDriversStandingsFragmentToDriverProfileFragment()
+//            view.findNavController().navigate(R.id.action_driversStandingsFragment_to_driverProfileFragment)
+            view.findNavController().navigate(action)
+        }*/
+
+
         return holder
     }
 
-    override fun onBindViewHolder(holder: DriversStandingsAdapter.DriversStandingsViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: DriversStandingsAdapter.DriversStandingsViewHolder,
+        position: Int
+    ) {
         holder.DriverPosition.text = data.get(position).positionText
         holder.DriverID.text = data.get(position).driver.driverId
         holder.DriverName.text = data[position].driver.givenName
@@ -50,7 +66,8 @@ class DriversStandingsAdapter(val data: MutableList<DriverStanding>, val context
 
 
         val driverId = data[position].driver.driverId // ID del pilota
-        val drawableResId = context.resources.getIdentifier(driverId, "drawable", context.packageName)
+        val drawableResId =
+            context.resources.getIdentifier(driverId, "drawable", context.packageName)
         if (drawableResId != 0) {
             // Se l'ID è diverso da 0, il drawable è stato trovato
             holder.DriverImage.setImageResource(drawableResId) // Imposta il drawable dell'ImageView
@@ -64,6 +81,29 @@ class DriversStandingsAdapter(val data: MutableList<DriverStanding>, val context
             driverConstructor = driverConstructor + constructor.name + " "
         }
         holder.DriverTeam.text = driverConstructor
+
+
+
+
+        holder.row.setOnClickListener { view ->
+            val bundle = Bundle()
+            bundle.putString("DriverID", data[position].driver.driverId)
+            bundle.putString("DriverName", data[position].driver.givenName)
+            bundle.putString("DriverFamilyName", data[position].driver.familyName)
+            bundle.putString("DriverCountry", data[position].driver.nationality)
+            bundle.putString("DriverNumber", data[position].driver.permanentNumber)
+            bundle.putString("DriverBirth", data[position].driver.dateOfBirth)
+            bundle.putString("DriverCurrentSeasonPosition", data[position].position)
+            bundle.putString("DriverPoints", data[position].points)
+            bundle.putString("DriverTeam", driverConstructor)
+
+            view.findNavController().navigate(R.id.driverProfileFragment, bundle)
+        }
+
+
+
+
+
     }
 
     override fun getItemCount(): Int {
@@ -71,8 +111,8 @@ class DriversStandingsAdapter(val data: MutableList<DriverStanding>, val context
     }
 
     fun showDriverStandings(newDriverStandings: MutableList<DriverStanding>) {
-        data.clear() // Rimuovi tutti gli elementi dalla lista corrente
-        data.addAll(newDriverStandings) // Aggiungi i nuovi elementi alla lista
-        notifyDataSetChanged() // Notifica il RecyclerView che i dati sono stati aggiornati
+        data.clear()
+        data.addAll(newDriverStandings)
+        notifyDataSetChanged()
     }
 }
