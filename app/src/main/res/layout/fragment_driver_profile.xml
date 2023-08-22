@@ -12,7 +12,7 @@
         android:background="@drawable/gradient_background">
 
         <TextView
-            android:id="@+id/driverProfileCountry"
+            android:id="@+id/DriverProfileTeam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -41,8 +41,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/driverProfileSurname"
+         <TextView
+            android:id="@+id/DriverProfileSurname"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/formula1bold3"
@@ -64,7 +64,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.12"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/driverProfileSurname" />
+            app:layout_constraintTop_toBottomOf="@+id/DriverProfileSurname" />
 
         <ImageView
             android:id="@+id/imageView5"
@@ -74,7 +74,7 @@
             android:layout_marginTop="28dp"
             android:src="@drawable/white_line"
             app:layout_constraintStart_toEndOf="@+id/DriverProfileImage"
-            app:layout_constraintTop_toBottomOf="@+id/driverProfileSurname" />
+            app:layout_constraintTop_toBottomOf="@+id/DriverProfileSurname" />
 
         <ImageView
             android:id="@+id/imageView6"
@@ -84,7 +84,7 @@
             android:layout_marginTop="28dp"
             android:src="@drawable/white_line"
             app:layout_constraintStart_toEndOf="@+id/imageView5"
-            app:layout_constraintTop_toBottomOf="@+id/driverProfileSurname" />
+            app:layout_constraintTop_toBottomOf="@+id/DriverProfileSurname" />
 
         <TextView
             android:id="@+id/textView10"
@@ -101,7 +101,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/imageView6"
             app:layout_constraintStart_toEndOf="@+id/imageView5"
-            app:layout_constraintTop_toBottomOf="@+id/driverProfileSurname" />
+            app:layout_constraintTop_toBottomOf="@+id/DriverProfileSurname" />
 
         <TextView
             android:id="@+id/DriverProfileNumber"
@@ -117,7 +117,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.121"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/driverProfileSurname" />
+            app:layout_constraintTop_toBottomOf="@+id/DriverProfileSurname" />
 
         <ImageView
             android:id="@+id/DriverProfileImage"
@@ -129,7 +129,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.118"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/driverProfileSurname" />
+            app:layout_constraintTop_toBottomOf="@+id/DriverProfileSurname" />
 
         <TextView
             android:id="@+id/textView7"
