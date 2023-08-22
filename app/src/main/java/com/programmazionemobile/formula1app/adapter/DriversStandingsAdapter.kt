@@ -11,7 +11,6 @@ import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.programmazionemobile.formula1app.DriversStandingsFragmentDirections
 import com.programmazionemobile.formula1app.R
 import com.programmazionemobile.formula1app.data.driverStandingsData.DriverStanding
 

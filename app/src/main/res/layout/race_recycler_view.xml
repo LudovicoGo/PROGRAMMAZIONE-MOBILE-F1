@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/raceCard"
     android:layout_width="match_parent"
     android:layout_height="150dp"
@@ -12,7 +13,7 @@
 
     <TextView
         android:id="@+id/nomeGara"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:fontFamily="@font/formula1_bold"
@@ -40,7 +41,7 @@
 
     <TextView
         android:id="@+id/descrizioneGara"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="88dp"
         android:fontFamily="@font/formula1_regular"
@@ -52,30 +53,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--<ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="230dp"
-        tools:layout_editor_absoluteY="15dp"
-        android:background="@drawable/calendar_flag_shape"/>-->
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewBandiera"
-        android:layout_width="166dp"
-        android:layout_height="121dp"
-        android:layout_marginEnd="16dp"
-        app:cardCornerRadius="16dp"
+    <ImageView
+        android:id="@+id/flagGara"
+        android:layout_width="160dp"
+        android:layout_height="120dp"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/calendar_flag_shape"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/flagGara"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/flag_of_bahrain_svg" />
-
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
