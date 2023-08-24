@@ -36,28 +36,10 @@ class DriversStandingsFragment : Fragment() {
         // Inflate the layout for this fragment
 
         val view = inflater.inflate(R.layout.fragment_drivers_standings, container, false)
-/*
-        // Trova il RecyclerView nel layout del fragment
-        val rv: RecyclerView = view.findViewById(R.id.driversRecycler)
-
-        // Configura il LayoutManager per il RecyclerView (LinearLayoutManager in questo caso)
-        val layoutManager = LinearLayoutManager(requireContext())
-        rv.layoutManager = layoutManager
-
-        // Crea l'adapter e assegna al RecyclerView
-        val data = IntRange(0, 10).toList()
-        val adapter = DriversStandingsAdapter(data)
-        rv.adapter = adapter*/
-
-//        textView = view.findViewById(R.id.RetrofitTestTextView)////////////////////
 
         val rv: RecyclerView = view.findViewById(R.id.driversRecycler)
         val layoutManager = LinearLayoutManager(requireContext())
         rv.layoutManager = layoutManager
-//        val adapter = DriversStandingsAdapter()
-//        rv.adapter = adapter
-
-
 
         // Inizializza il ViewModel
         viewModel = ViewModelProvider(this).get(DriverStandingsViewModel::class.java)

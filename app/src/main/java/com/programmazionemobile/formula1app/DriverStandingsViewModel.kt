@@ -43,20 +43,20 @@ class DriverStandingsViewModel : ViewModel() {
 
                     if (driverStandingsData != null) {
                         val driverStandingsList = mutableListOf<DriverStanding>()
-                        Log.d("FAIL", "NON NULLONON NULLONON NULLONON NULLONON NULLONON NULLO")
+//                        Log.d("FAIL", "NON NULLONON NULLONON NULLONON NULLONON NULLONON NULLO")
                         for (standingsList in driverStandingsData.mRData.standingsTable.standingsLists) {
-                            Log.d("FAIL", "PRIMO FOR")
+//                            Log.d("FAIL", "PRIMO FOR")
 
                             for (driverStanding in standingsList.driverStandings) {
                                 driverStandingsList.add(driverStanding)
-                                Log.d("FAIL", "SECONDO FOR")
+//                                Log.d("FAIL", "SECONDO FOR")
 
-                                Log.d("FAIL", "${driverStanding}")
+//                                Log.d("FAIL", "${driverStanding}")
 
                             }
                         }
                         _driverStandings.value = driverStandingsList
-                        Log.d("driverStandingsListdriverStandingsListdriverStandingsListdriverStandingsList", "${driverStandingsList}")
+//                        Log.d("driverStandingsListdriverStandingsListdriverStandingsListdriverStandingsList", "${driverStandingsList}")
 
 
                     }
@@ -64,7 +64,7 @@ class DriverStandingsViewModel : ViewModel() {
                 } else {
                     // Handle unsuccessful response
 //                    _driverStandings.value = "API call failed with response code: ${response.code()}"
-                    Log.d("FAIL", "API call failed with response code: ${response.code()}")
+//                    Log.d("FAIL", "API call failed with response code: ${response.code()}")
                 }
             } catch (e: Exception) {
                 // Handle exception
