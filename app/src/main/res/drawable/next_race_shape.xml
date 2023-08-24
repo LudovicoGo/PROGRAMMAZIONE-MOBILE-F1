@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ECECEC" />
+    <solid android:color="#FFFFFF" />
     <corners android:radius="20dp" />
     <!-- Imposta il valore del raggio per gli angoli arrotondati -->
 </shape>

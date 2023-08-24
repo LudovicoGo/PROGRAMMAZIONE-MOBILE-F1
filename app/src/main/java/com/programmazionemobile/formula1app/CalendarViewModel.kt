@@ -36,15 +36,11 @@ class CalendarViewModel: ViewModel() {
 
                 if (calendarData != null) {
                     val calendarList = mutableListOf<Race>()
-                    Log.d("FAIL", "NON NULLONON NULLONON NULLONON NULLONON NULLONON NULLO")
 
                     for (list in calendarData.mRData.raceTable.races){
-                        Log.d("FAIL", "PRIMO FOR")
-
                         calendarList.add(list)
                     }
                     _calendar.value = calendarList
-                    Log.d("driverStandingsListdriverStandingsListdriverStandingsListdriverStandingsList", "$calendarList")
 
                 } else {
                     // Handle unsuccessful response
