@@ -42,6 +42,9 @@ class RaceFragment: Fragment() {
         val qualiDateRaceCard = view.findViewById<TextView>(R.id.qualiDay)
         val giorniMancanti = view.findViewById<TextView>(R.id.leftDays)
         val oreMancanti = view.findViewById<TextView>(R.id.leftHours)
+        val minutiMancanti = view.findViewById<TextView>(R.id.leftMins)
+        val raceHourRaceCard = view.findViewById<TextView>(R.id.orarioGara)
+        val qualiHourRaceCard = view.findViewById<TextView>(R.id.orarioQuali)
 
         raceName.text = args.raceName
         raceDate.text = DateConverter.convertDateInfo(args.raceDate).toUpperCase()
@@ -52,6 +55,9 @@ class RaceFragment: Fragment() {
         meseWeekEnd.text = DateConverter.convertDateMese(args.raceDate).toUpperCase()
         giorniMancanti.text = DateConverter.giorniRimanenti(args.raceDate)
         oreMancanti.text = DateConverter.oreRimanenti(args.raceDate, args.raceHour)
+        minutiMancanti.text = DateConverter.minutiRimanenti(args.raceDate, args.raceHour)
+        raceHourRaceCard.text = DateConverter.convertUTCtoLocalTime2(args.raceHour, args.raceDate)
+        qualiHourRaceCard.text = DateConverter.convertUTCtoLocalTime2(args.qualiHour, args.raceDate)
     }
 
 }

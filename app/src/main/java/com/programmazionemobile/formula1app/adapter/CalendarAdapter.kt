@@ -79,6 +79,7 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context)
                 bundle.putString("firstDate", nextRace(data)?.firstPractice?.date!!)
                 bundle.putString("qualiDate", nextRace(data)?.qualifying?.date!!)
                 bundle.putString("raceHour", nextRace(data)?.time)
+                bundle.putString("qualiHour", nextRace(data)?.qualifying?.time!!)
 
                 holder.flagProssimaGara.load("https://flagpedia.net/data/flags/w1160/$countryCode.webp")
                 {
@@ -107,6 +108,7 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context)
                 bundle.putString("firstDate", data.get(round - 1).firstPractice.date)
                 bundle.putString("qualiDate", data.get(round -1 ).qualifying.date)
                 bundle.putString("raceHour", data.get(round - 1).time)
+                bundle.putString("qualiHour", data.get(round - 1).qualifying.time)
 
                 holder.flagGara.load("https://flagpedia.net/data/flags/w1160/$countryCode.webp")
                 {

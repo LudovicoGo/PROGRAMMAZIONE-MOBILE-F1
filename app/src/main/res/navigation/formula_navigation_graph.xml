@@ -105,6 +105,10 @@
             app:argType="string"
             android:defaultValue="noFirstDate" />
         <argument
+            android:name="qualiHour"
+            app:argType="string"
+            android:defaultValue="noFirstDate" />
+        <argument
             android:name="raceHour"
             app:argType="string"
             android:defaultValue="noFirstDate" />
