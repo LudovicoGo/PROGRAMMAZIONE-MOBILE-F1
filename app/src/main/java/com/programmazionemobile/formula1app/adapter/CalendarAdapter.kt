@@ -3,6 +3,7 @@ package com.programmazionemobile.formula1app.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.icu.text.SimpleDateFormat
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
@@ -33,7 +34,7 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context)
         val flagGara = row.findViewById<ImageView>(R.id.flagGara)
     }
 
-    class HeaderViewHolder(val row: View): ViewHolder(row){
+    class HeaderViewHolder(val row: View): ViewHolder(row) {
         val dataProssimaGara = row.findViewById<TextView>(R.id.dataProssimaGara)
         val nomeProssimaGara = row.findViewById<TextView>(R.id.nomeProssimaGara)
         val descProssimaGara = row.findViewById<TextView>(R.id.descrizioneProssimaGara)
@@ -42,17 +43,12 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        val layout = LayoutInflater.from(parent.context).inflate(R.layout.race_recycler_view, parent, false)
-        RaceListViewHolder(layout).row.setOnClickListener{
-                view -> view.findNavController().navigate(R.id.action_calendarFragment_to_raceFragment2)
-        }
-
         return when(viewType){
             TYPE_ITEM_HEADER -> {
                 //HEADER
                 HeaderViewHolder(
                     LayoutInflater.from(parent.context)
-                    .inflate(R.layout.header_race_recycler_view, parent, false)
+                        .inflate(R.layout.header_race_recycler_view, parent, false)
                 )
             }
             else -> {
@@ -77,11 +73,23 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context)
 
                 val countryCode = getCountryCode(countryName!!)
 
+                val bundle = Bundle()
+                bundle.putString("raceName", nextRace(data)?.raceName)
+                bundle.putString("raceDate", nextRace(data)?.date!!)
+                bundle.putString("firstDate", nextRace(data)?.firstPractice?.date!!)
+                bundle.putString("qualiDate", nextRace(data)?.qualifying?.date!!)
+                bundle.putString("raceHour", nextRace(data)?.time)
+
                 holder.flagProssimaGara.load("https://flagpedia.net/data/flags/w1160/$countryCode.webp")
                 {
                     transformations(RoundedCornersTransformation
                         (75f, 30f, 0f, 30f))
                 }
+
+                holder.itemView.setOnClickListener {
+                    it.findNavController().navigate(R.id.action_calendarFragment_to_raceFragment2, bundle)
+                }
+
             }
 
             is RaceListViewHolder -> {
@@ -93,21 +101,32 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context)
 
                 val countryCode = getCountryCode(countryName)
 
+                val bundle = Bundle()
+                bundle.putString("raceName", data.get(round - 1).raceName)
+                bundle.putString("raceDate", data.get(round - 1).date)
+                bundle.putString("firstDate", data.get(round - 1).firstPractice.date)
+                bundle.putString("qualiDate", data.get(round -1 ).qualifying.date)
+                bundle.putString("raceHour", data.get(round - 1).time)
+
                 holder.flagGara.load("https://flagpedia.net/data/flags/w1160/$countryCode.webp")
                 {
                     transformations(RoundedCornersTransformation
                         (75f, 30f, 0f, 30f))
                 }
+
+                holder.itemView.setOnClickListener {
+                    it.findNavController().navigate(R.id.action_calendarFragment_to_raceFragment2, bundle)
+                }
+
             }
         }
-
     }
 
     override fun getItemViewType(round: Int): Int {
         if (round < HEADER_NUMBER) {
             return TYPE_ITEM_HEADER
         }
-            return TYPE_ITEM
+        return TYPE_ITEM
     }
 
     override fun getItemCount(): Int {

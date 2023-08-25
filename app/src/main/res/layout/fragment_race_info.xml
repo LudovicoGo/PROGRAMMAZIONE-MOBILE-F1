@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/nomeGara"
-        android:layout_width="wrap_content"
+        android:layout_width="275dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/formula1_bold"
@@ -37,12 +37,22 @@
 
     <ImageView
         android:id="@+id/leftLine"
-        android:layout_width="70dp"
+        android:layout_width="50dp"
         android:layout_height="1dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:src="@drawable/white_line"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dataGara" />
+
+    <ImageView
+        android:id="@+id/leftLine4"
+        android:layout_width="7dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/white_line"
+        app:layout_constraintStart_toEndOf="@+id/weekendGaraInizio"
         app:layout_constraintTop_toBottomOf="@+id/dataGara" />
 
     <ImageView
@@ -52,7 +62,7 @@
         android:layout_marginTop="28dp"
         android:src="@drawable/white_line"
         app:layout_constraintEnd_toStartOf="@+id/leftHours"
-        app:layout_constraintStart_toEndOf="@+id/leftMins"
+        app:layout_constraintStart_toEndOf="@+id/leftDays"
         app:layout_constraintTop_toBottomOf="@+id/rightLine" />
 
     <ImageView
@@ -61,35 +71,69 @@
         android:layout_height="75dp"
         android:layout_marginTop="28dp"
         android:src="@drawable/white_line"
-        app:layout_constraintEnd_toStartOf="@+id/leftDays"
+        app:layout_constraintEnd_toStartOf="@+id/leftMins"
         app:layout_constraintStart_toEndOf="@+id/leftHours"
         app:layout_constraintTop_toBottomOf="@+id/rightLine" />
 
     <ImageView
         android:id="@+id/rightLine"
-        android:layout_width="220dp"
+        android:layout_width="200dp"
         android:layout_height="1dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:src="@drawable/white_line"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/weekendGaraMese"
         app:layout_constraintTop_toBottomOf="@+id/dataGara" />
 
     <TextView
-        android:id="@+id/weekendGara"
+        android:id="@+id/weekendGaraInizio"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="13dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="18dp"
         android:fontFamily="@font/formula1_regular"
-        android:text="@string/_19_21_may"
+        android:text="21"
+        android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="10sp"
-        app:layout_constraintEnd_toStartOf="@+id/rightLine"
         app:layout_constraintStart_toEndOf="@+id/leftLine"
-        app:layout_constraintTop_toBottomOf="@+id/dataGara" />
+        app:layout_constraintTop_toBottomOf="@+id/dataGara"
+        tools:ignore="SmallSp" />
 
     <TextView
-        android:id="@+id/leftDays"
+        android:id="@+id/weekendGaraFine"
+        android:layout_width="wrap_content"
+        android:layout_height="13dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/formula1_regular"
+        android:text="21"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/leftLine4"
+        app:layout_constraintTop_toBottomOf="@+id/dataGara"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/weekendGaraMese"
+        android:layout_width="wrap_content"
+        android:layout_height="13dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/formula1_regular"
+        android:text="21"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/weekendGaraFine"
+        app:layout_constraintTop_toBottomOf="@+id/dataGara"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/leftMins"
         android:layout_width="65dp"
         android:layout_height="37dp"
         android:layout_marginEnd="84dp"
@@ -104,7 +148,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/leftMins"
+        android:id="@+id/leftDays"
         android:layout_width="59dp"
         android:layout_height="39dp"
         android:layout_marginTop="33dp"
@@ -121,15 +165,15 @@
         android:id="@+id/leftHours"
         android:layout_width="65dp"
         android:layout_height="39dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="28dp"
         android:fontFamily="@font/formula1_bold"
         android:text="20"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/leftMins"
-        app:layout_constraintEnd_toStartOf="@+id/leftDays"
-        app:layout_constraintTop_toTopOf="@+id/leftMins"
+        app:layout_constraintBottom_toBottomOf="@+id/leftDays"
+        app:layout_constraintEnd_toStartOf="@+id/leftMins"
+        app:layout_constraintTop_toTopOf="@+id/leftDays"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -143,7 +187,7 @@
         android:textColor="@color/white"
         android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/leftLine2"
-        app:layout_constraintTop_toBottomOf="@+id/leftMins" />
+        app:layout_constraintTop_toBottomOf="@+id/leftDays" />
 
     <TextView
         android:id="@+id/textView7"

@@ -88,5 +88,25 @@
         android:id="@+id/circuitInfoFragment"
         android:name="com.programmazionemobile.formula1app.CircuitInfoFragment"
         android:label="fragment_circuit_info"
-        tools:layout="@layout/fragment_circuit_info" />
+        tools:layout="@layout/fragment_circuit_info" >
+        <argument android:name="raceName"
+            app:argType="string"
+            android:defaultValue="noRaceName" />
+        <argument
+            android:name="raceDate"
+            app:argType="string"
+            android:defaultValue="noRaceDate" />
+        <argument
+            android:name="firstDate"
+            app:argType="string"
+            android:defaultValue="noFirstDate" />
+        <argument
+            android:name="qualiDate"
+            app:argType="string"
+            android:defaultValue="noFirstDate" />
+        <argument
+            android:name="raceHour"
+            app:argType="string"
+            android:defaultValue="noFirstDate" />
+    </fragment>
 </navigation>
