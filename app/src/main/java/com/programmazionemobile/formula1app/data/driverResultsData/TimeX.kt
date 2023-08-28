@@ -7,5 +7,5 @@ data class TimeX(
     @SerializedName("millis")
     val millis: String, // 6163555
     @SerializedName("time")
-    val time: String // +1:37.762
+    val time: String // +1:37.762 -> Durata Gara
 )

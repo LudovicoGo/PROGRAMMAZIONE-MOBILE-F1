@@ -8,9 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.programmazionemobile.formula1app.adapter.CalendarAdapter
 
 class RaceFragment: Fragment() {
 
@@ -59,5 +57,4 @@ class RaceFragment: Fragment() {
         raceHourRaceCard.text = DateConverter.convertUTCtoLocalTime2(args.raceHour, args.raceDate)
         qualiHourRaceCard.text = DateConverter.convertUTCtoLocalTime2(args.qualiHour, args.raceDate)
     }
-
 }

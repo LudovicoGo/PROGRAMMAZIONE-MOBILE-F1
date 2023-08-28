@@ -77,7 +77,7 @@ object DateConverter {
             val differenzaInMillisecondi = dataSpecificata.time - dataCorrente.time
 
             // Calcola il numero di giorni rimanenti (dividendo per 86,400,000 millisecondi al giorno)
-            val giorniRimanenti = (differenzaInMillisecondi / 86_400_000)+1
+            val giorniRimanenti = (differenzaInMillisecondi / 86_400_000)
 
             return if (giorniRimanenti >= 0)
                 giorniRimanenti.toString()
@@ -165,18 +165,6 @@ object DateConverter {
             println("Errore: Data non valida.")
             return "DN"
         }
-    }
-
-    @SuppressLint("SimpleDateFormat")
-    fun convertUTCtoLocalTime(utcTime: String, dataString: String): String {
-        val inputFormat = SimpleDateFormat("HH:mm:ssX")
-        val outputFormat = SimpleDateFormat("HH : mm")
-        val date = inputFormat.parse(utcTime)
-
-        val timeZone = TimeZone.getTimeZone("Europe/Rome")
-        outputFormat.timeZone = timeZone
-
-        return outputFormat.format(date)
     }
 
     fun convertUTCtoLocalTime2(utcTime: String, dataString: String): String {

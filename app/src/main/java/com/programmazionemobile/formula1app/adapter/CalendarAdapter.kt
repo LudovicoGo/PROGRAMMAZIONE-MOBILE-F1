@@ -81,6 +81,7 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context)
                 bundle.putString("raceHour", nextRace(data)?.time)
                 bundle.putString("qualiHour", nextRace(data)?.qualifying?.time!!)
 
+
                 holder.flagProssimaGara.load("https://flagpedia.net/data/flags/w1160/$countryCode.webp")
                 {
                     transformations(RoundedCornersTransformation
@@ -142,7 +143,7 @@ fun nextRace(gare: List<Race>): Race? {
     // Ottieni la data corrente
     val dataCorrente = Date()
 
-    // Inizializza la gara più prossima
+    // Inizializza la gara prossima
     var garaProssima: Race? = null
     var dataProssima: Date? = null
 
@@ -153,15 +154,21 @@ fun nextRace(gare: List<Race>): Race? {
     for (gara in gare) {
         val dataGara = dateFormat.parse(gara.date)
 
-        // Se la data della gara è nel futuro e più vicina alla data corrente,
-        // impostala come gara prossima
-        if (dataGara >= dataCorrente && (dataProssima == null || dataGara.before(dataProssima))) {
+        // Se la data della gara è uguale alla data corrente, restituiscila immediatamente
+        if (dataGara == dataCorrente) {
+            garaProssima = gara
+        }
+
+        // Se la data della gara è nel futuro e più vicina alla data corrente rispetto
+        // alla gara prossima attualmente impostata, aggiornala come gara prossima
+        if (dataGara > dataCorrente && (dataProssima == null || dataGara.before(dataProssima))) {
             garaProssima = gara
             dataProssima = dataGara
         }
     }
     return garaProssima
 }
+
 
 fun getCountryCode(countryName: String): String? {
     val countryNameToCodeMap = mapOf(

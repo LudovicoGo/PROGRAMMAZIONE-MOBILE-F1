@@ -103,14 +103,22 @@
         <argument
             android:name="qualiDate"
             app:argType="string"
-            android:defaultValue="noFirstDate" />
+            android:defaultValue="noQualiDate" />
         <argument
             android:name="qualiHour"
             app:argType="string"
-            android:defaultValue="noFirstDate" />
+            android:defaultValue="noQualiHour" />
         <argument
             android:name="raceHour"
             app:argType="string"
-            android:defaultValue="noFirstDate" />
+            android:defaultValue="noRaceHour" />
+        <argument
+            android:name="circuitID"
+            app:argType="string"
+            android:defaultValue="noCircuitID" />
+        <argument
+            android:name="circuitName"
+            app:argType="string"
+            android:defaultValue="noCircuitName" />
     </fragment>
 </navigation>

@@ -13,3 +13,11 @@
 .externalNativeBuild
 .cxx
 local.properties
+executionHistory.bin
+executionHistory.lock
+fileHashes.bin
+fileHashes.lock
+resourceHashesCache.bin
+buildOutputCleanup.lock
+outputFiles.bin
+file-system.probe

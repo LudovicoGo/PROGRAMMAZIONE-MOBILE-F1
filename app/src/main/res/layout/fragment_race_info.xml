@@ -6,434 +6,446 @@
     android:layout_height="match_parent"
     tools:context=".RaceFragment">
 
-    <TextView
-        android:id="@+id/nomeGara"
-        android:layout_width="275dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:fontFamily="@font/formula1_bold"
-        android:text="@string/emilian_ngrand_prix"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/dataGara"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/formula1_regular"
-        android:text="@string/_21_maggio_2023"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nomeGara" />
+            <TextView
+                android:id="@+id/nomeGara"
+                android:layout_width="275dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/formula1_bold"
+                android:text="@string/emilian_ngrand_prix"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="40sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/leftLine"
-        android:layout_width="50dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/white_line"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dataGara" />
+            <TextView
+                android:id="@+id/dataGara"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/formula1_regular"
+                android:text="@string/_21_maggio_2023"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nomeGara" />
 
-    <ImageView
-        android:id="@+id/leftLine4"
-        android:layout_width="7dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/white_line"
-        app:layout_constraintStart_toEndOf="@+id/weekendGaraInizio"
-        app:layout_constraintTop_toBottomOf="@+id/dataGara" />
+            <ImageView
+                android:id="@+id/leftLine"
+                android:layout_width="50dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/white_line"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dataGara" />
 
-    <ImageView
-        android:id="@+id/leftLine2"
-        android:layout_width="1dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="28dp"
-        android:src="@drawable/white_line"
-        app:layout_constraintEnd_toStartOf="@+id/leftHours"
-        app:layout_constraintStart_toEndOf="@+id/leftDays"
-        app:layout_constraintTop_toBottomOf="@+id/rightLine" />
+            <ImageView
+                android:id="@+id/leftLine4"
+                android:layout_width="7dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/white_line"
+                app:layout_constraintStart_toEndOf="@+id/weekendGaraInizio"
+                app:layout_constraintTop_toBottomOf="@+id/dataGara" />
 
-    <ImageView
-        android:id="@+id/leftLine3"
-        android:layout_width="1dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="28dp"
-        android:src="@drawable/white_line"
-        app:layout_constraintEnd_toStartOf="@+id/leftMins"
-        app:layout_constraintStart_toEndOf="@+id/leftHours"
-        app:layout_constraintTop_toBottomOf="@+id/rightLine" />
+            <ImageView
+                android:id="@+id/leftLine2"
+                android:layout_width="1dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="28dp"
+                android:src="@drawable/white_line"
+                app:layout_constraintEnd_toStartOf="@+id/leftHours"
+                app:layout_constraintStart_toEndOf="@+id/leftDays"
+                app:layout_constraintTop_toBottomOf="@+id/rightLine" />
 
-    <ImageView
-        android:id="@+id/rightLine"
-        android:layout_width="200dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/white_line"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/weekendGaraMese"
-        app:layout_constraintTop_toBottomOf="@+id/dataGara" />
+            <ImageView
+                android:id="@+id/leftLine3"
+                android:layout_width="1dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="28dp"
+                android:src="@drawable/white_line"
+                app:layout_constraintEnd_toStartOf="@+id/leftMins"
+                app:layout_constraintStart_toEndOf="@+id/leftHours"
+                app:layout_constraintTop_toBottomOf="@+id/rightLine" />
 
-    <TextView
-        android:id="@+id/weekendGaraInizio"
-        android:layout_width="wrap_content"
-        android:layout_height="13dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="18dp"
-        android:fontFamily="@font/formula1_regular"
-        android:text="21"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="10sp"
-        app:layout_constraintStart_toEndOf="@+id/leftLine"
-        app:layout_constraintTop_toBottomOf="@+id/dataGara"
-        tools:ignore="SmallSp" />
+            <ImageView
+                android:id="@+id/rightLine"
+                android:layout_width="180dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/white_line"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/weekendGaraMese"
+                app:layout_constraintTop_toBottomOf="@+id/dataGara" />
 
-    <TextView
-        android:id="@+id/weekendGaraFine"
-        android:layout_width="wrap_content"
-        android:layout_height="13dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="18dp"
-        android:fontFamily="@font/formula1_regular"
-        android:text="21"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="10sp"
-        app:layout_constraintStart_toEndOf="@+id/leftLine4"
-        app:layout_constraintTop_toBottomOf="@+id/dataGara"
-        tools:ignore="SmallSp" />
+            <TextView
+                android:id="@+id/weekendGaraInizio"
+                android:layout_width="wrap_content"
+                android:layout_height="13dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/formula1_regular"
+                android:text="21"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/leftLine"
+                app:layout_constraintTop_toBottomOf="@+id/dataGara"
+                tools:ignore="SmallSp" />
 
-    <TextView
-        android:id="@+id/weekendGaraMese"
-        android:layout_width="wrap_content"
-        android:layout_height="13dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="18dp"
-        android:fontFamily="@font/formula1_regular"
-        android:text="21"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="10sp"
-        app:layout_constraintStart_toEndOf="@+id/weekendGaraFine"
-        app:layout_constraintTop_toBottomOf="@+id/dataGara"
-        tools:ignore="SmallSp" />
+            <TextView
+                android:id="@+id/weekendGaraFine"
+                android:layout_width="wrap_content"
+                android:layout_height="13dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/formula1_regular"
+                android:text="21"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/leftLine4"
+                app:layout_constraintTop_toBottomOf="@+id/dataGara"
+                tools:ignore="SmallSp" />
 
-    <TextView
-        android:id="@+id/leftMins"
-        android:layout_width="65dp"
-        android:layout_height="37dp"
-        android:layout_marginEnd="92dp"
-        android:fontFamily="@font/formula1_bold"
-        android:text="21"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/leftHours"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/leftHours"
-        app:layout_constraintVertical_bias="0.0" />
+            <TextView
+                android:id="@+id/weekendGaraMese"
+                android:layout_width="wrap_content"
+                android:layout_height="13dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/formula1_regular"
+                android:text="21"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/weekendGaraFine"
+                app:layout_constraintTop_toBottomOf="@+id/dataGara"
+                tools:ignore="SmallSp" />
 
-    <TextView
-        android:id="@+id/leftDays"
-        android:layout_width="59dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginEnd="20dp"
-        android:fontFamily="@font/formula1_bold"
-        android:text="13"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toStartOf="@+id/leftHours"
-        app:layout_constraintTop_toBottomOf="@+id/rightLine" />
+            <TextView
+                android:id="@+id/leftMins"
+                android:layout_width="65dp"
+                android:layout_height="37dp"
+                android:layout_marginEnd="84dp"
+                android:fontFamily="@font/formula1_bold"
+                android:text="21"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="@+id/leftHours"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/leftHours"
+                app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/leftHours"
-        android:layout_width="65dp"
-        android:layout_height="39dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/formula1_bold"
-        android:text="20"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/leftDays"
-        app:layout_constraintEnd_toStartOf="@+id/leftMins"
-        app:layout_constraintTop_toTopOf="@+id/leftDays"
-        app:layout_constraintVertical_bias="0.0" />
+            <TextView
+                android:id="@+id/leftDays"
+                android:layout_width="59dp"
+                android:layout_height="39dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="18dp"
+                android:fontFamily="@font/formula1_bold"
+                android:text="13"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toStartOf="@+id/leftHours"
+                app:layout_constraintHorizontal_bias="0.971"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rightLine" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/formula1_regular"
-        android:text="DAYS"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toStartOf="@+id/leftLine2"
-        app:layout_constraintTop_toBottomOf="@+id/leftDays" />
+            <TextView
+                android:id="@+id/leftHours"
+                android:layout_width="65dp"
+                android:layout_height="39dp"
+                android:layout_marginEnd="22dp"
+                android:fontFamily="@font/formula1_bold"
+                android:text="20"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="@+id/leftDays"
+                app:layout_constraintEnd_toStartOf="@+id/leftMins"
+                app:layout_constraintTop_toTopOf="@+id/leftDays"
+                app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/formula1_regular"
-        android:text="HRS"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView6"
-        app:layout_constraintEnd_toStartOf="@+id/leftLine3"
-        app:layout_constraintStart_toEndOf="@+id/leftLine2"
-        app:layout_constraintTop_toTopOf="@+id/textView6" />
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/formula1_regular"
+                android:text="DAYS"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/leftLine2"
+                app:layout_constraintTop_toBottomOf="@+id/leftDays" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/formula1_regular"
-        android:text="MINS"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView7"
-        app:layout_constraintStart_toEndOf="@+id/leftLine3"
-        app:layout_constraintTop_toTopOf="@+id/textView7" />
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/formula1_regular"
+                android:text="HRS"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView6"
+                app:layout_constraintEnd_toStartOf="@+id/leftLine3"
+                app:layout_constraintStart_toEndOf="@+id/leftLine2"
+                app:layout_constraintTop_toTopOf="@+id/textView6" />
 
-    <ImageView
-        android:id="@+id/liveChatCard"
-        android:layout_width="180dp"
-        android:layout_height="60dp"
-        android:src="@drawable/calendar_shape"
-        app:layout_constraintBottom_toBottomOf="@+id/infoCircuitoCard"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/infoCircuitoCard"
-        app:layout_constraintTop_toTopOf="@+id/infoCircuitoCard"
-        app:layout_constraintVertical_bias="0.0" />
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/formula1_regular"
+                android:text="MINS"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView7"
+                app:layout_constraintStart_toEndOf="@+id/leftLine3"
+                app:layout_constraintTop_toTopOf="@+id/textView7" />
 
-    <ImageView
-        android:id="@+id/infoCircuitoCard"
-        android:layout_width="180dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="26dp"
-        android:src="@drawable/calendar_shape"
-        app:layout_constraintEnd_toStartOf="@+id/liveChatCard"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+            <ImageView
+                android:id="@+id/liveChatCard"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
+                android:src="@drawable/calendar_shape"
+                app:layout_constraintBottom_toBottomOf="@+id/infoCircuitoCard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/infoCircuitoCard"
+                app:layout_constraintTop_toTopOf="@+id/infoCircuitoCard"
+                app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:id="@+id/raceCard"
-        android:layout_width="377dp"
-        android:layout_height="105dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="19dp"
-        android:src="@drawable/calendar_shape"
-        app:layout_constraintBottom_toTopOf="@+id/qualiCard"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/liveChatCard" />
+            <ImageView
+                android:id="@+id/infoCircuitoCard"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="26dp"
+                android:src="@drawable/calendar_shape"
+                app:layout_constraintEnd_toStartOf="@+id/liveChatCard"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-    <ImageView
-        android:id="@+id/qualiCard"
-        android:layout_width="377dp"
-        android:layout_height="105dp"
-        android:layout_marginTop="221dp"
-        android:src="@drawable/calendar_shape"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+            <ImageView
+                android:id="@+id/raceCard"
+                android:layout_width="377dp"
+                android:layout_height="105dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="19dp"
+                android:src="@drawable/calendar_shape"
+                app:layout_constraintBottom_toTopOf="@+id/qualiCard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/liveChatCard" />
 
-    <TextView
-        android:id="@+id/quali"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
-        android:fontFamily="@font/formula1_bold"
-        android:text="QUALIFYING"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="@+id/qualiCard"
-        app:layout_constraintTop_toTopOf="@+id/qualiCard" />
+            <ImageView
+                android:id="@+id/qualiCard"
+                android:layout_width="377dp"
+                android:layout_height="105dp"
+                android:layout_marginTop="221dp"
+                android:src="@drawable/calendar_shape"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-    <TextView
-        android:id="@+id/orarioQuali"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="12dp"
-        android:fontFamily="@font/formula1_regular"
-        android:text="16:00 - 17:00"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="@+id/qualiCard"
-        app:layout_constraintStart_toStartOf="@+id/raceCard" />
+            <TextView
+                android:id="@+id/quali"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/formula1_bold"
+                android:text="QUALIFYING"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                app:layout_constraintStart_toStartOf="@+id/qualiCard"
+                app:layout_constraintTop_toTopOf="@+id/qualiCard" />
 
-    <ImageView
-        android:id="@+id/qualiBlackLine2"
-        android:layout_width="250dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="36dp"
-        android:src="@drawable/black_line"
-        app:layout_constraintBottom_toBottomOf="@+id/qualiCard"
-        app:layout_constraintStart_toStartOf="@+id/qualiCard" />
+            <TextView
+                android:id="@+id/orarioQuali"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="@font/formula1_regular"
+                android:text="16:00 - 17:00"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@+id/qualiCard"
+                app:layout_constraintStart_toStartOf="@+id/raceCard" />
 
-    <TextView
-        android:id="@+id/qualiDay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/formula1_bold"
-        android:text="20 MAY"
-        android:textColor="#FF0000"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="@+id/raceCard"
-        app:layout_constraintTop_toTopOf="@+id/qualiCard" />
+            <ImageView
+                android:id="@+id/qualiBlackLine2"
+                android:layout_width="250dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="36dp"
+                android:src="@drawable/black_line"
+                app:layout_constraintBottom_toBottomOf="@+id/qualiCard"
+                app:layout_constraintStart_toStartOf="@+id/qualiCard" />
 
-    <TextView
-        android:id="@+id/info3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/formula1_regular"
-        android:text="APRI"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@+id/liveChatCard"
-        app:layout_constraintStart_toStartOf="@+id/liveChatCard"
-        app:layout_constraintTop_toTopOf="@+id/liveChatCard" />
+            <TextView
+                android:id="@+id/qualiDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/formula1_bold"
+                android:text="20 MAY"
+                android:textColor="#FF0000"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/raceCard"
+                app:layout_constraintTop_toTopOf="@+id/qualiCard" />
 
-    <TextView
-        android:id="@+id/info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/formula1_regular"
-        android:text="INFO"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@+id/infoCircuitoCard"
-        app:layout_constraintStart_toStartOf="@+id/infoCircuitoCard"
-        app:layout_constraintTop_toTopOf="@+id/infoCircuitoCard" />
+            <TextView
+                android:id="@+id/info3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/formula1_regular"
+                android:text="APRI"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/liveChatCard"
+                app:layout_constraintStart_toStartOf="@+id/liveChatCard"
+                app:layout_constraintTop_toTopOf="@+id/liveChatCard" />
 
-    <TextView
-        android:id="@+id/circuito"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/formula1_bold"
-        android:text="CIRCUITO"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/infoCircuitoCard"
-        app:layout_constraintEnd_toEndOf="@+id/infoCircuitoCard"
-        app:layout_constraintStart_toStartOf="@+id/infoCircuitoCard" />
+            <TextView
+                android:id="@+id/info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/formula1_regular"
+                android:text="INFO"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/infoCircuitoCard"
+                app:layout_constraintStart_toStartOf="@+id/infoCircuitoCard"
+                app:layout_constraintTop_toTopOf="@+id/infoCircuitoCard" />
 
-    <TextView
-        android:id="@+id/circuito3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/formula1_bold"
-        android:text="LIVECHAT"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/liveChatCard"
-        app:layout_constraintEnd_toEndOf="@+id/liveChatCard"
-        app:layout_constraintStart_toStartOf="@+id/liveChatCard" />
+            <TextView
+                android:id="@+id/circuito"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/formula1_bold"
+                android:text="CIRCUITO"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/infoCircuitoCard"
+                app:layout_constraintEnd_toEndOf="@+id/infoCircuitoCard"
+                app:layout_constraintStart_toStartOf="@+id/infoCircuitoCard" />
 
-    <TextView
-        android:id="@+id/raceDay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/formula1_bold"
-        android:text="21 MAY"
-        android:textColor="#FF0000"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="@+id/raceCard"
-        app:layout_constraintTop_toTopOf="@+id/raceCard" />
+            <TextView
+                android:id="@+id/circuito3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/formula1_bold"
+                android:text="LIVECHAT"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/liveChatCard"
+                app:layout_constraintEnd_toEndOf="@+id/liveChatCard"
+                app:layout_constraintStart_toStartOf="@+id/liveChatCard" />
 
-    <TextView
-        android:id="@+id/orarioGara"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="12dp"
-        android:fontFamily="@font/formula1_regular"
-        android:text="15:00"
-        android:textColor="@color/black"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="@+id/raceCard"
-        app:layout_constraintStart_toStartOf="@+id/raceCard" />
+            <TextView
+                android:id="@+id/raceDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/formula1_bold"
+                android:text="21 MAY"
+                android:textColor="#FF0000"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/raceCard"
+                app:layout_constraintTop_toTopOf="@+id/raceCard" />
 
-    <TextView
-        android:id="@+id/race"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
-        android:fontFamily="@font/formula1_bold"
-        android:text="RACE"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="@+id/raceCard"
-        app:layout_constraintTop_toTopOf="@+id/raceCard" />
+            <TextView
+                android:id="@+id/orarioGara"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="@font/formula1_regular"
+                android:text="15:00"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@+id/raceCard"
+                app:layout_constraintStart_toStartOf="@+id/raceCard" />
 
-    <ImageView
-        android:id="@+id/qualiBlackLine"
-        android:layout_width="200dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="36dp"
-        android:src="@drawable/black_line"
-        app:layout_constraintBottom_toBottomOf="@+id/raceCard"
-        app:layout_constraintStart_toStartOf="@+id/raceCard" />
+            <TextView
+                android:id="@+id/race"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/formula1_bold"
+                android:text="RACE"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                app:layout_constraintStart_toStartOf="@+id/raceCard"
+                app:layout_constraintTop_toTopOf="@+id/raceCard" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="-39dp" />
+            <ImageView
+                android:id="@+id/qualiBlackLine"
+                android:layout_width="200dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginBottom="36dp"
+                android:src="@drawable/black_line"
+                app:layout_constraintBottom_toBottomOf="@+id/raceCard"
+                app:layout_constraintStart_toStartOf="@+id/raceCard" />
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="106dp"
-        android:layout_height="94dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="4dp"
-        app:layout_constraintEnd_toEndOf="@+id/qualiCard"
-        app:layout_constraintTop_toTopOf="@+id/qualiCard"
-        app:srcCompat="@drawable/img" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="-39dp" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="97dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
-        app:layout_constraintEnd_toEndOf="@+id/raceCard"
-        app:layout_constraintTop_toTopOf="@+id/raceCard"
-        app:srcCompat="@drawable/img_1" />
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="106dp"
+                android:layout_height="94dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintEnd_toEndOf="@+id/qualiCard"
+                app:layout_constraintTop_toTopOf="@+id/qualiCard"
+                app:srcCompat="@drawable/img" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="150dp"
+                android:layout_height="97dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintEnd_toEndOf="@+id/raceCard"
+                app:layout_constraintTop_toTopOf="@+id/raceCard"
+                app:srcCompat="@drawable/img_1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
