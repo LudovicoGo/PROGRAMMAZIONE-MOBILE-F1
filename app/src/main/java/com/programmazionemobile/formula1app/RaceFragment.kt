@@ -22,8 +22,13 @@ class RaceFragment: Fragment() {
 
         val thisView = inflater.inflate(R.layout.fragment_race_info, container, false)
 
+        val bundle = Bundle()
+
+        bundle.putString("circuitName", args.circuitName)
+        bundle.putString("circuitID", args.circuitID)
+
         thisView.findViewById<ImageView>(R.id.infoCircuitoCard).setOnClickListener{
-                view-> view.findNavController().navigate(R.id.action_raceFragment2_to_circuitInfoFragment)
+                view-> view.findNavController().navigate(R.id.action_raceFragment2_to_circuitInfoFragment, bundle)
         }
 
         return thisView

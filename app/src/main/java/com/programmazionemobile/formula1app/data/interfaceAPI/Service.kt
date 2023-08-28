@@ -10,6 +10,6 @@ interface Service {
     @GET("current.json")
     suspend fun currentCalendar(): Response<calendarData>
 
-    @GET("circuits/{circuitId}.json?limit=100")
+    @GET("circuits/{circuitId}.json")
     suspend fun infoCircuit(@Path("circuitId")circuitId: String): Response<Circuit>
 }

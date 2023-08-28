@@ -79,7 +79,7 @@ object DateConverter {
             // Calcola il numero di giorni rimanenti (dividendo per 86,400,000 millisecondi al giorno)
             val giorniRimanenti = (differenzaInMillisecondi / 86_400_000)
 
-            return if (giorniRimanenti >= 0)
+            return if (giorniRimanenti > 0)
                 giorniRimanenti.toString()
             else
                 "00"
@@ -115,7 +115,7 @@ object DateConverter {
             println("vval oreRimanenti = (differenzaInMillisecondi % 86400000) / 3600000")
             println(oreRimanenti)
 
-            return if (oreRimanenti >= 0)
+            return if (oreRimanenti > 0)
             {
                 println(oreRimanenti)
                 oreRimanenti.toString()
@@ -153,7 +153,7 @@ object DateConverter {
             println("vval oreRimanenti = (differenzaInMillisecondi % 86400000) / 3600000")
             println(minutiRimanenti)
 
-            return if (minutiRimanenti >= 0)
+            return if (minutiRimanenti > 0)
             {
                 println(minutiRimanenti)
                 minutiRimanenti.toString()

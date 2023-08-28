@@ -4,8 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.programmazionemobile.formula1app.data.calendarData.Circuit
-import com.programmazionemobile.formula1app.data.calendarData.Race
 import com.programmazionemobile.formula1app.data.interfaceAPI.Service
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
@@ -24,21 +22,5 @@ class CircuitInfoViewModel: ViewModel() {
 
     val circuit: LiveData<Map<String, String>>
         get() = _circuit
-
-    fun getCircuitName(circuitId: String): String{
-        var circuitName = "cialve"
-        viewModelScope.launch {
-            val response = api.infoCircuit(circuitId)
-
-            if (response.isSuccessful){
-                val info = response.body()
-
-                if (info != null){
-                    circuitName = info.circuitName
-                }
-            }
-        }
-        return circuitName
-    }
 
 }

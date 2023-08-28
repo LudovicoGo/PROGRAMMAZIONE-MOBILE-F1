@@ -1,310 +1,310 @@
 {
   "adelaide": {
-    "Lunghezza": "2.349 km",
+    "Lunghezza": 2.349,
     "Numero di Giri": 81
   },
   "ain-diab": {
-    "Lunghezza": "7.618 km",
+    "Lunghezza": 7.618,
     "Numero di Giri": 1
   },
   "aintree": {
-    "Lunghezza": "4.828 km",
+    "Lunghezza": 4.828,
     "Numero di Giri": 1
   },
   "albert_park": {
-    "Lunghezza": "5.303 km",
+    "Lunghezza": 5.303,
     "Numero di Giri": 58
   },
   "americas": {
-    "Lunghezza": "5.513 km",
+    "Lunghezza": 5.513,
     "Numero di Giri": 56
   },
   "anderstorp": {
-    "Lunghezza": "4.018 km",
+    "Lunghezza": 4.018,
     "Numero di Giri": 70
   },
   "avus": {
-    "Lunghezza": "8.300 km",
+    "Lunghezza": 8.300,
     "Numero di Giri": 1
   },
   "bahrain": {
-    "Lunghezza": "5.412 km",
+    "Lunghezza": 5.412,
     "Numero di Giri": 57
   },
   "baku": {
-    "Lunghezza": "6.003 km",
+    "Lunghezza": 6.003,
     "Numero di Giri": 51
   },
   "boavista": {
-    "Lunghezza": "7.145 km",
+    "Lunghezza": 7.145,
     "Numero di Giri": 1
   },
   "brands_hatch": {
-    "Lunghezza": "4.207 km",
+    "Lunghezza": 4.207,
     "Numero di Giri": 1
   },
   "bremgarten": {
-    "Lunghezza": "7.280 km",
+    "Lunghezza": 7.280,
     "Numero di Giri": 1
   },
   "buddh": {
-    "Lunghezza": "5.125 km",
+    "Lunghezza": 5.125,
     "Numero di Giri": 60
   },
   "catalunya": {
-    "Lunghezza": "4.655 km",
+    "Lunghezza": 4.655,
     "Numero di Giri": 66
   },
   "charade": {
-    "Lunghezza": "8.055 km",
+    "Lunghezza": 8.055,
     "Numero di Giri": 1
   },
   "dallas": {
-    "Lunghezza": "3.901 km",
+    "Lunghezza": 3.901,
     "Numero di Giri": 1
   },
   "detroit": {
-    "Lunghezza": "4.023 km",
+    "Lunghezza": 4.023,
     "Numero di Giri": 1
   },
   "dijon": {
-    "Lunghezza": "3.801 km",
+    "Lunghezza": 3.801,
     "Numero di Giri": 80
   },
   "donington": {
-    "Lunghezza": "4.023 km",
+    "Lunghezza": 4.023,
     "Numero di Giri": 1
   },
   "essarts": {
-    "Lunghezza": "6.542 km",
+    "Lunghezza": 6.542,
     "Numero di Giri": 1
   },
   "estoril": {
-    "Lunghezza": "4.360 km",
+    "Lunghezza": 4.360,
     "Numero di Giri": 70
   },
   "fuji": {
-    "Lunghezza": "4.563 km",
+    "Lunghezza": 4.563,
     "Numero di Giri": 53
   },
   "galvez": {
-    "Lunghezza": "4.806 km",
+    "Lunghezza": 4.806,
     "Numero di Giri": 72
   },
   "george": {
-    "Lunghezza": "3.920 km",
+    "Lunghezza": 3.920,
     "Numero di Giri": 1
   },
   "hockenheimring": {
-    "Lunghezza": "4.574 km",
+    "Lunghezza": 4.574,
     "Numero di Giri": 67
   },
   "hungaroring": {
-    "Lunghezza": "4.381 km",
+    "Lunghezza": 4.381,
     "Numero di Giri": 70
   },
   "imola": {
-    "Lunghezza": "4.909 km",
+    "Lunghezza": 4.909,
     "Numero di Giri": 63
   },
   "indianapolis": {
-    "Lunghezza": "4.195 km",
+    "Lunghezza": 4.195,
     "Numero di Giri": 73
   },
   "interlagos": {
-    "Lunghezza": "4.309 km",
+    "Lunghezza": 4.309,
     "Numero di Giri": 71
   },
   "istanbul": {
-    "Lunghezza": "5.338 km",
+    "Lunghezza": 5.338,
     "Numero di Giri": 58
   },
   "jacarepagua": {
-    "Lunghezza": "5.031 km",
+    "Lunghezza": 5.031,
     "Numero di Giri": 75
   },
   "jarama": {
-    "Lunghezza": "3.850 km",
+    "Lunghezza": 3.850,
     "Numero di Giri": 73
   },
   "jeddah": {
-    "Lunghezza": "6.175 km",
+    "Lunghezza": 6.175,
     "Numero di Giri": 50
   },
   "jerez": {
-    "Lunghezza": "4.428 km",
+    "Lunghezza": 4.428,
     "Numero di Giri": 69
   },
   "kyalami": {
-    "Lunghezza": "4.259 km",
+    "Lunghezza": 4.259,
     "Numero di Giri": 72
   },
   "las_vegas": {
-    "Lunghezza": "3.65 km",
+    "Lunghezza": 3.65,
     "Numero di Giri": 1
   },
   "lemans": {
-    "Lunghezza": "13.626 km",
+    "Lunghezza": 13.626,
     "Numero di Giri": 1
   },
   "long_beach": {
-    "Lunghezza": "3.275 km",
+    "Lunghezza": 3.275,
     "Numero di Giri": 80
   },
   "losail": {
-    "Lunghezza": "5.380 km",
+    "Lunghezza": 5.380,
     "Numero di Giri": 57
   },
   "magny_cours": {
-    "Lunghezza": "4.411 km",
+    "Lunghezza": 4.411,
     "Numero di Giri": 70
   },
   "marina_bay": {
-    "Lunghezza": "5.063 km",
+    "Lunghezza": 5.063,
     "Numero di Giri": 61
   },
   "miami": {
-    "Lunghezza": "5.516 km",
+    "Lunghezza": 5.516,
     "Numero di Giri": 60
   },
   "monaco": {
-    "Lunghezza": "3.337 km",
+    "Lunghezza": 3.337,
     "Numero di Giri": 78
   },
   "monsanto": {
-    "Lunghezza": "4.430 km",
+    "Lunghezza": 4.430,
     "Numero di Giri": 1
   },
   "montjuic": {
-    "Lunghezza": "3.790 km",
+    "Lunghezza": 3.790,
     "Numero di Giri": 1
   },
   "monza": {
-    "Lunghezza": "5.793 km",
+    "Lunghezza": 5.793,
     "Numero di Giri": 53
   },
   "mosport": {
-    "Lunghezza": "3.957 km",
+    "Lunghezza": 3.957,
     "Numero di Giri": 80
   },
   "mugello": {
-    "Lunghezza": "5.245 km",
+    "Lunghezza": 5.245,
     "Numero di Giri": 50
   },
   "nivelles": {
-    "Lunghezza": "4.100 km",
+    "Lunghezza": 4.100,
     "Numero di Giri": 1
   },
   "nurburgring": {
-    "Lunghezza": "5.148 km",
+    "Lunghezza": 5.148,
     "Numero di Giri": 60
   },
   "okayama": {
-    "Lunghezza": "3.703 km",
+    "Lunghezza": 3.703,
     "Numero di Giri": 83
   },
   "pedralbes": {
-    "Lunghezza": "6.316 km",
+    "Lunghezza": 6.316,
     "Numero di Giri": 1
   },
   "pescara": {
-    "Lunghezza": "25.800 km",
+    "Lunghezza": 25.800,
     "Numero di Giri": 1
   },
   "phoenix": {
-    "Lunghezza": "3.898 km",
+    "Lunghezza": 3.898,
     "Numero di Giri": 1
   },
   "portimao": {
-    "Lunghezza": "4.653 km",
+    "Lunghezza": 4.653,
     "Numero di Giri": 66
   },
   "red_bull_ring": {
-    "Lunghezza": "4.318 km",
+    "Lunghezza": 4.318,
     "Numero di Giri": 71
   },
   "reims": {
-    "Lunghezza": "8.302 km",
+    "Lunghezza": 8.302,
     "Numero di Giri": 1
   },
   "ricard": {
-    "Lunghezza": "5.842 km",
+    "Lunghezza": 5.842,
     "Numero di Giri": 53
   },
   "riverside": {
-    "Lunghezza": "5.311 km",
+    "Lunghezza": 5.311,
     "Numero di Giri": 1
   },
   "rodriguez": {
-    "Lunghezza": "4.304 km",
+    "Lunghezza": 4.304,
     "Numero di Giri": 71
   },
   "sebring": {
-    "Lunghezza": "5.953 km",
+    "Lunghezza": 5.953,
     "Numero di Giri": 66
   },
   "sepang": {
-    "Lunghezza": "5.543 km",
+    "Lunghezza": 5.543,
     "Numero di Giri": 56
   },
   "shanghai": {
-    "Lunghezza": "5.451 km",
+    "Lunghezza": 5.451,
     "Numero di Giri": 56
   },
   "silverstone": {
-    "Lunghezza": "5.891 km",
+    "Lunghezza": 5.891,
     "Numero di Giri": 52
   },
   "sochi": {
-    "Lunghezza": "5.848 km",
+    "Lunghezza": 5.848,
     "Numero di Giri": 53
   },
   "spa": {
-    "Lunghezza": "7.004 km",
+    "Lunghezza": 7.004,
     "Numero di Giri": 44
   },
   "suzuka": {
-    "Lunghezza": "5.807 km",
+    "Lunghezza": 5.807,
     "Numero di Giri": 53
   },
   "tremblant": {
-    "Lunghezza": "4.265 km",
+    "Lunghezza": 4.265,
     "Numero di Giri": 1
   },
   "valencia": {
-    "Lunghezza": "5.419 km",
+    "Lunghezza": 5.419,
     "Numero di Giri": 57
   },
   "vegas": {
-    "Lunghezza": "6.276 km",
+    "Lunghezza": 6.276,
     "Numero di Giri": 1
   },
   "villeneuve": {
-    "Lunghezza": "4.361 km",
+    "Lunghezza": 4.361,
     "Numero di Giri": 70
   },
   "watkins_glen": {
-    "Lunghezza": "5.435 km",
+    "Lunghezza": 5.435,
     "Numero di Giri": 59
   },
   "yas_marina": {
-    "Lunghezza": "5.554 km",
+    "Lunghezza": 5.554,
     "Numero di Giri": 55
   },
   "yeongam": {
-    "Lunghezza": "5.615 km",
+    "Lunghezza": 5.615,
     "Numero di Giri": 55
   },
   "zandvoort": {
-    "Lunghezza": "4.259 km",
+    "Lunghezza": 4.250,
     "Numero di Giri": 72
   },
   "zeltweg": {
-    "Lunghezza": "3.200 km",
+    "Lunghezza": 3.20,
     "Numero di Giri": 1
   },
   "zolder": {
-    "Lunghezza": "4.262 km",
+    "Lunghezza": 4.26,
     "Numero di Giri": 1
   }
 }
