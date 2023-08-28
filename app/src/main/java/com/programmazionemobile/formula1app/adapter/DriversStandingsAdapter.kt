@@ -38,16 +38,16 @@ class DriversStandingsAdapter(val data: MutableList<DriverStanding>, val context
             .inflate(R.layout.drivers_standings_recycler_view, parent, false)
         val holder = DriversStandingsViewHolder(layout)
 
-/*        holder.row.setOnClickListener { view ->
-            val bundle = Bundle()
-            bundle.putString("driverName", data[position].driverName)
-            bundle.putString("driverPosition", data[position].driverPosition)
+        /*        holder.row.setOnClickListener { view ->
+                    val bundle = Bundle()
+                    bundle.putString("driverName", data[position].driverName)
+                    bundle.putString("driverPosition", data[position].driverPosition)
 
-            val action =
-                DriversStandingsFragmentDirections.actionDriversStandingsFragmentToDriverProfileFragment()
-//            view.findNavController().navigate(R.id.action_driversStandingsFragment_to_driverProfileFragment)
-            view.findNavController().navigate(action)
-        }*/
+                    val action =
+                        DriversStandingsFragmentDirections.actionDriversStandingsFragmentToDriverProfileFragment()
+        //            view.findNavController().navigate(R.id.action_driversStandingsFragment_to_driverProfileFragment)
+                    view.findNavController().navigate(action)
+                }*/
 
 
         return holder

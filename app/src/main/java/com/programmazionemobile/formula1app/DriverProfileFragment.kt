@@ -98,21 +98,26 @@ class DriverProfileFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(DriverProfileViewModel::class.java)
 
         viewModel.driverData.observe(viewLifecycleOwner, Observer { driverData ->
-            driverCareerPoints.text = driverData.get("careerPoints") ?: "-"
-            driverCareerTitles.text = driverData.get("careerTitles") ?: "-"
             driverCareerPoles.text = driverData.get("careerPoles") ?: "-"
             driverCareerWins.text = driverData.get("careerWins") ?: "-"
             driverSeasonWins.text = driverData.get("seasonWins") ?: "-"
             driverCareerPodiums.text = driverData.get("careerPodiums") ?: "-"
             driverSeasonPodiums.text = driverData.get("seasonPodiums") ?: "-"
             driverCareerSeasons.text = driverData.get("careerSeasons") ?: "-"
-            driverCareerRaces.text = driverData.get("CareerRaces") ?: "-"
+            driverCareerRaces.text = driverData.get("careerRaces") ?: "-"
 
         })
-
         viewModel.getDriverStats(driverID)
+
+        viewModel.driverStandingsDataPoints.observe(viewLifecycleOwner, Observer { driverStandingsDataPoints ->
+            var totalPoints = args.DriverPoints.toFloat() + driverStandingsDataPoints.get("careerPoints")!!.toFloat()
+
+            driverCareerTitles.text = driverStandingsDataPoints.get("careerTitles")
+            driverCareerPoints.text = totalPoints.toString()
+
+        })
+        viewModel.getDriverPointsTitles(driverID)
 
 
     }
-
 }

@@ -15,6 +15,7 @@
     </item>
 
     <item
+        android:id="@+id/border_rectangle"
         android:bottom="0dp"
         android:left="-8dp"
         android:right="-8dp"

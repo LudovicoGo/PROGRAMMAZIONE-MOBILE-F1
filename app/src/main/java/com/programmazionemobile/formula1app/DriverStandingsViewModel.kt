@@ -1,5 +1,6 @@
 package com.programmazionemobile.formula1app
 
+import android.icu.util.Calendar
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -34,7 +35,8 @@ class DriverStandingsViewModel : ViewModel() {
     fun getAllDriverStandings() {
         viewModelScope.launch {
             try {
-                val response = api.getDriverStandings()
+                val currentYear = Calendar.getInstance().get(Calendar.YEAR).toString()
+                val response = api.getDriverStandings(currentYear)
 
 
                 if (response.isSuccessful) {
