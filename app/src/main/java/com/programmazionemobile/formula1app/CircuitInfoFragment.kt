@@ -2,16 +2,17 @@ package com.programmazionemobile.formula1app
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import coil.load
+import coil.transform.RoundedCornersTransformation
 import com.programmazionemobile.formula1app.model.CircuitInfoViewModel
-import org.json.JSONArray
 import org.json.JSONObject
 
 
@@ -30,12 +31,17 @@ class CircuitInfoFragment: Fragment() {
         return inflater.inflate(R.layout.fragment_circuit_info, container, false)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val circuit = view.findViewById<TextView>(R.id.nomeGara2)
         val laps = view.findViewById<TextView>(R.id.n_laps)
         val lapDistance = view.findViewById<TextView>(R.id.lap_distance)
         val raceDistance = view.findViewById<TextView>(R.id.raceDistance)
+        val firstGP = view.findViewById<TextView>(R.id.firstGP)
+        val fastestLap = view.findViewById<TextView>(R.id.lapRecord)
+        val driverFatsLap = view.findViewById<TextView>(R.id.lapRecordDriver)
+        val circuitoPng = view.findViewById<ImageView>(R.id.circuito)
 
         viewModel = ViewModelProvider(this).get(CircuitInfoViewModel::class.java)
 
@@ -51,7 +57,7 @@ class CircuitInfoFragment: Fragment() {
 
                 // Esempio: Estrai i dati dall'oggetto interno
                 if(args.circuitID == key){
-                    lapDistance.text = innerObject.getDouble("Lunghezza").toString() + " km"
+                    lapDistance.text = innerObject.getString("Lunghezza") + " km"
                     laps.text = innerObject.getInt("Numero di Giri").toString()
                     raceDistance.text = (innerObject.getInt("Numero di Giri")
                         .times(innerObject.getDouble("Lunghezza"))).toString() + " km"
@@ -60,5 +66,33 @@ class CircuitInfoFragment: Fragment() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+        viewModel.getFirstGPLiveData(args.circuitID).observe(viewLifecycleOwner) { firstGPData ->
+            firstGP.text = firstGPData
+        }
+
+        viewModel.getFastestLap(args.circuitID).observe(viewLifecycleOwner) { firstGPData ->
+            fastestLap.text = firstGPData
+        }
+        viewModel.getDriverFastLap(args.circuitID).observe(viewLifecycleOwner) { firstGPData ->
+            driverFatsLap.text = firstGPData
+        }
+        circuitoPng.load("https://media.formula1.com/image/upload/content" +
+                "/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/${getCircuitCode(args.circuitID)}_Circuit.png." +
+                "transform/7col-retina/image.png")
     }
+}
+
+fun getCircuitCode(circuitID: String): String? {
+    val countryNameToCodeMap = mapOf(
+        "monza" to "Italy",
+        "jeddah" to "Abu_Dhabi",
+        "bahrain" to "Bahrain",
+        "spa" to "Belgium",
+        "albert_park" to "Australia",
+        "miami" to "Miami",
+        "monaco" to "Monoco",
+        "catalunya" to "Spain",
+        "villeneuve" to "Canada",
+    )
+    return countryNameToCodeMap[circuitID]
 }

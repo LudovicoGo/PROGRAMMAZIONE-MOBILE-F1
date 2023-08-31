@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.TextView
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.constraintlayout.widget.ConstraintSet.Layout
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView.*
 import coil.load
@@ -90,10 +91,9 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context)
                         (75f, 30f, 0f, 30f))
                 }
 
-                holder.itemView.setOnClickListener {
+                holder.row.findViewById<View>(R.id.prossimoEvento).setOnClickListener {
                     it.findNavController().navigate(R.id.action_calendarFragment_to_raceFragment2, bundle)
                 }
-
             }
 
             is RaceListViewHolder -> {
