@@ -11,8 +11,6 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
-import com.programmazionemobile.formula1app.adapter.DriversStandingsAdapter
-import com.programmazionemobile.formula1app.data.driverStandingsData.DriverStanding
 import com.programmazionemobile.formula1app.model.DriverProfileViewModel
 
 class DriverProfileFragment : Fragment() {
@@ -23,11 +21,6 @@ class DriverProfileFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-        /*        arguments?.let {
-                param1 = it.getString(ARG_PARAM1)
-                param2 = it.getString(ARG_PARAM2)
-            }*/
     }
 
     override fun onCreateView(
@@ -36,20 +29,14 @@ class DriverProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_driver_profile, container, false)
-
-        /*val max = "hamilton"
-        viewModel.getDriverSeasons(max)
-        viewModel.getDriverStats(max)
-//        Log.d("pippo", max)*/
-
-
-//        return inflater.inflate(R.layout.fragment_driver_profile, container, false)
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val driverID = args.DriverID
+        val selectedSeason = view.findViewById<TextView>(R.id.DriverProfileSelectedSeason)
+
         val driverName = view.findViewById<TextView>(R.id.DriverProfileName)
         val driverFamilyName = view.findViewById<TextView>(R.id.DriverProfileSurname)
         val driverCountry = view.findViewById<TextView>(R.id.DriverProfileCountry)
@@ -71,12 +58,17 @@ class DriverProfileFragment : Fragment() {
         val driverCareerRaces = view.findViewById<TextView>(R.id.careerRaces)
 
 
-//        val driverCountry = view.findViewById<TextView>(R.id.DriverProfileCountry)
-//        Log.d("asdasdasdasdasdasdasdasdasdasdasdasdasdasd", driverData.url)
+        Log.d("YEAR SELECTED DRIVER PROFILE", "${ args.SelectedYearSpinner }")
+        selectedSeason.text = args.SelectedYearSpinner + " SEASON"
         driverName.text = args.DriverName
         driverFamilyName.text = args.DriverFamilyName
         driverCountry.text = args.DriverCountry
-        driverNumber.text = args.DriverNumber
+        if (args.DriverNumber != null && args.DriverNumber != "noDriverNumber") {
+            driverNumber.text = args.DriverNumber
+        } else {
+            driverNumber.text = ""
+
+        }
         driverBirth.text = args.DriverBirth
         driverTeam.text = args.DriverTeam
         driverSeasonPosition.text = args.DriverCurrentSeasonPosition
@@ -91,7 +83,8 @@ class DriverProfileFragment : Fragment() {
             // Se l'ID è diverso da 0, il drawable è stato trovato
             driverImage.setImageResource(drawableResId) // Imposta il drawable dell'ImageView
         } else {
-            // Il drawable non è stato trovato
+            // Il drawable non è stato trovato, imposto immagine di default
+            driverImage.setImageResource(R.drawable.nodriverpic)
         }
 
 
@@ -107,7 +100,7 @@ class DriverProfileFragment : Fragment() {
             driverCareerRaces.text = driverData.get("careerRaces") ?: "-"
 
         })
-        viewModel.getDriverStats(driverID)
+        viewModel.getDriverStats(driverID, args.SelectedYearSpinner)
 
         viewModel.driverStandingsDataPoints.observe(viewLifecycleOwner, Observer { driverStandingsDataPoints ->
             var totalPoints = args.DriverPoints.toFloat() + driverStandingsDataPoints.get("careerPoints")!!.toFloat()

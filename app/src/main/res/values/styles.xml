@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="StandingsSpinner" parent="android:Widget.TextView.SpinnerItem">
+        <item name="android:layout">@layout/standings_spinner_closed_item_layout</item>
+        <!-- Personalizza altre proprietà come colore del testo, sfondo, ecc. -->
+    </style>
+
+</resources>

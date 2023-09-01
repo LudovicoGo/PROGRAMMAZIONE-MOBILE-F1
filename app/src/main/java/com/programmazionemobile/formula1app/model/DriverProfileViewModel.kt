@@ -1,14 +1,11 @@
 package com.programmazionemobile.formula1app.model
 
-import android.icu.util.Calendar
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.programmazionemobile.formula1app.data.interfaceAPI.ErgastApi
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -37,38 +34,6 @@ class DriverProfileViewModel : ViewModel() {
         get() = _driverStandingsData
 
 
-    /* fun getDriverSeasons(driverID: String): String {
-         var total = "0"
-         viewModelScope.launch {
-             try {
-                 val response = api.getDriverSeasons(driverID)
-                 if (response.isSuccessful) {
-                     val driverDataJson = response.body()
- //                    Log.d(TAG, response.toString())
-
-                     if (driverDataJson != null) {
-
-                         total = driverDataJson.mRData.total
-                         Log.d(TAG, "stagioni " + total)
-                     } else {
-                         total = "0"
-                     }
-
-                 }
-                 seasons = total
-             } catch (e: Exception) {
-                 Log.e(TAG, e.toString())
-             }
-         }
-         return total
-     }*/
-
-    /*private fun getCareerFLaps(driverID: String): String {
-        var fLaps = 0
-
-        return fLaps.toString()
-    }*/
-
     private fun getCareerTitles(driverID: String): String {
         var titles = 0
 
@@ -96,8 +61,8 @@ class DriverProfileViewModel : ViewModel() {
                             }
                         }
                     }
-                    Log.d(TAG, "PUNTI PUNTI ${points}")
-                    Log.d(TAG, "TITOLI TITOLI ${titles}")
+//                    Log.d(TAG, "PUNTI PUNTI ${points}")
+//                    Log.d(TAG, "TITOLI TITOLI ${titles}")
                     data = mutableMapOf(
                         "careerPoints" to points.toString(),
                         "careerTitles" to titles.toString()
@@ -109,14 +74,14 @@ class DriverProfileViewModel : ViewModel() {
             } catch (e: Exception) {
                 Log.d(TAG, e.toString())
             }
-            Log.d(TAG, "PUNTI PUNTI ${points}")
-            Log.d(TAG, "TITOLI TITOLI ${titles}")
+//            Log.d(TAG, "PUNTI PUNTI ${points}")
+//            Log.d(TAG, "TITOLI TITOLI ${titles}")
 
         }
     }
 
 
-    fun getDriverStats(driverID: String) {
+    fun getDriverStats(driverID: String, selectedYearSpinner: String) {
         var careerRaces = ""
         var careerWins = 0
         var seasonWins = 0
@@ -124,7 +89,8 @@ class DriverProfileViewModel : ViewModel() {
         var seasonPodiums = 0
         var careerFLap = 0
         var careerPoles = 0
-        val currentYear = Calendar.getInstance().get(Calendar.YEAR)
+//        val currentYear = Calendar.getInstance().get(Calendar.YEAR)
+        val currentYear = selectedYearSpinner
         var seasons = mutableListOf<String>()
 
 
@@ -171,12 +137,12 @@ class DriverProfileViewModel : ViewModel() {
                     }
 
 
-                    Log.d(TAG, "gare ${careerRaces}")
-                    Log.d(TAG, "vittorie ${careerWins}")
-                    Log.d(TAG, "podi ${careerPodiums}")
-                    Log.d(TAG, "giri veloci ${careerFLap}")
-                    Log.d(TAG, "poles ${careerPoles}")
-                    Log.d(TAG, "seasons ${seasons.size}")
+//                    Log.d(TAG, "gare ${careerRaces}")
+//                    Log.d(TAG, "vittorie ${careerWins}")
+//                    Log.d(TAG, "podi ${careerPodiums}")
+//                    Log.d(TAG, "giri veloci ${careerFLap}")
+//                    Log.d(TAG, "poles ${careerPoles}")
+//                    Log.d(TAG, "seasons ${seasons.size}")
 
                     var data = mutableMapOf(
                         "careerRaces" to "${careerRaces}",

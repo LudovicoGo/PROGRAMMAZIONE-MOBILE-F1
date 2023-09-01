@@ -606,7 +606,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/DriverProfileSelectedSeason"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -671,7 +671,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="36dp"
                 android:src="@drawable/white_line"
-                app:layout_constraintStart_toEndOf="@+id/textView3"
+                app:layout_constraintStart_toEndOf="@+id/DriverProfileSelectedSeason"
                 app:layout_constraintTop_toBottomOf="@+id/DriverProfileImage" />
 
             <ImageView
@@ -683,7 +683,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/textView25"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                app:layout_constraintTop_toBottomOf="@+id/DriverProfileSelectedSeason"
                 app:srcCompat="@drawable/white_line" />
 
             <TextView

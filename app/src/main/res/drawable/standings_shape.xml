@@ -13,9 +13,9 @@
 
         </shape>
     </item>
+<!--
 
     <item
-        android:id="@+id/border_rectangle"
         android:bottom="0dp"
         android:left="-8dp"
         android:right="-8dp"
@@ -29,9 +29,6 @@
 
         </shape>
     </item>
+-->
 
-</layer-list><!--
-    <solid android:color="@color/white"/>
-    <corners android:radius="16dp" />
-    -->
-    <!--</shape>-->
+</layer-list>

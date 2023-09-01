@@ -7,4 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+<!--    colori team    -->
+    <color name="Mercedes">#00D2BE</color>
+    <color name="RedBull">#243BB4</color>
+    <color name="Ferrari">#DC0000</color>
+    <color name="McLaren">#FF9800</color>
+    <color name="AstonMartin">#006F62</color>
+    <color name="AlpineF1Team">#0090FF</color>
+    <color name="AlphaTauri">#2B4562</color>
+    <color name="AlfaRomeo">#900000</color>
+    <color name="HaasF1Team">#9C9C9C</color>
+    <color name="Williams">#0011FF</color>
 </resources>

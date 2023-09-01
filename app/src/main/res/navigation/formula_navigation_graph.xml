@@ -74,6 +74,10 @@
             android:name="DriverCurrentSeasonPosition"
             app:argType="string"
             android:defaultValue="noDriverCurrentSeasonPosition" />
+        <argument
+            android:name="SelectedYearSpinner"
+            app:argType="string"
+            android:defaultValue="noYearSelected" />
     </fragment>
     <fragment
         android:id="@+id/raceFragment2"

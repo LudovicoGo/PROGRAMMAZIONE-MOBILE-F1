@@ -1,12 +1,18 @@
 package com.programmazionemobile.formula1app
 
 import android.annotation.SuppressLint
+import android.icu.util.Calendar
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.lifecycle.Observer
@@ -32,45 +38,107 @@ class DriversStandingsFragment : Fragment() {
 
         }*/
     }
+
     private lateinit var viewModel: DriverStandingsViewModel
     private lateinit var textView: TextView
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    @SuppressLint("MissingInflatedId")
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
 
         val view = inflater.inflate(R.layout.fragment_drivers_standings, container, false)
 
         val rv: RecyclerView = view.findViewById(R.id.driversRecycler)
         val layoutManager = LinearLayoutManager(requireContext())
+
+        var selectedYear = 2023
+
         rv.layoutManager = layoutManager
 
         // Inizializza il ViewModel
         viewModel = ViewModelProvider(this).get(DriverStandingsViewModel::class.java)
-
-/*
-        val spinner: Spinner = view.findViewById(R.id.)
-
-        // Dati da visualizzare nello Spinner
-        val spinnerItems = listOf("Item 1", "Item 2", "Item 3")
-
-        // Creare l'ArrayAdapter e collegarlo allo Spinner
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, spinnerItems)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner.adapter = adapter
-*/
-
-
         // Osserva il LiveData driverStandings
+
+        //spinner
+        val years = (1950..Calendar.getInstance().get(Calendar.YEAR)).toList().reversed()
+        val yearsArray = years.toTypedArray()
+
+        val spinnerAdapter = ArrayAdapter(requireContext(), R.layout.standings_spinner_closed_item_layout, yearsArray)
+        spinnerAdapter.setDropDownViewResource(R.layout.years_spinner_dropdown_layout)
+        val DriversStandingsSpinner = view.findViewById<Spinner>(R.id.DriversStandingsSpinner)
+
+        DriversStandingsSpinner.adapter = spinnerAdapter
+        DriversStandingsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val item = years.get(position).toString()
+                // Chiama la funzione passata come parametro
+//                Log.d("YEAR SELECTED FRAGMENT", "${DriversStandingsSpinner.selectedItem}")
+                viewModel.getAllDriverStandings(item)
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Non è necessario gestire questo caso
+            }
+        }
+
+
+
+
+
+
+
+
         viewModel.driverStandings.observe(viewLifecycleOwner, Observer { driverStandings ->
             val lista = mutableListOf<DriverStanding>()
             lista.addAll(driverStandings)
 
-            val adapter = DriversStandingsAdapter(lista, requireContext())
+            val adapter = DriversStandingsAdapter(lista, requireContext(), DriversStandingsSpinner.selectedItem.toString())
             rv.adapter = adapter
         })
-        // Chiamata per ottenere i dati sulla classifica dei piloti
-        viewModel.getAllDriverStandings()
+
+        val progressBar = view.findViewById<ProgressBar>(R.id.DriverStandingsProgressBar)
+        val progressBarTextView = view.findViewById<TextView>(R.id.DriverStandingsProgressBarText)
+        val progressBarBackground = view.findViewById<ImageView>(R.id.DriverStandingsProgressBarBackground)
+        val progressOverlay = view.findViewById<View>(R.id.DriverStandingsprogressOverlay)
+
+
+        viewModel.loadingState.observe(viewLifecycleOwner, Observer { isLoading ->
+            if (isLoading) {
+
+                //tolgo la possibilità di interagire con le viste durante il caricamento
+                getActivity()?.getWindow()?.setFlags(
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+                //mostro la progressbar e il testo
+                progressOverlay.visibility = View.VISIBLE
+                progressBar.visibility = View.VISIBLE
+                progressBarBackground.visibility = View.VISIBLE
+                progressBarTextView.visibility = View.VISIBLE
+
+
+            } else {
+
+                //rimetto  la possibilità di interagire con le viste durante il caricamento
+                getActivity()?.getWindow()?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                //nascondo la progressbar e il testo
+                progressOverlay.visibility = View.GONE
+                progressBar.visibility = View.GONE
+                progressBarBackground.visibility = View.GONE
+                progressBarTextView.visibility = View.GONE
+            }
+        })
+
+
+        //chiamata per ottenere i dati sulla classifica dei piloti
+        val currentYear = Calendar.getInstance().get(Calendar.YEAR).toString()
+        viewModel.getAllDriverStandings(currentYear)
 
         return view
 

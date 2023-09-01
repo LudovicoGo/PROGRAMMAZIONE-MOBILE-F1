@@ -13,6 +13,7 @@ import com.programmazionemobile.formula1app.data.interfaceAPI.ErgastApi
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.time.Year
 
 class DriverStandingsViewModel : ViewModel() {
     private val BASE_URL = "https://ergast.com/api/f1/"
@@ -24,41 +25,50 @@ class DriverStandingsViewModel : ViewModel() {
         .build()
         .create(ErgastApi::class.java)
 
-    //    private val _driverStandings = MutableLiveData<DriverStandingsDataClass>()
+    //per progressbar
+    private val _loadingState = MutableLiveData<Boolean>()
+    val loadingState: LiveData<Boolean>
+        get() = _loadingState
+
+
+
     private val _driverStandings = MutableLiveData<List<DriverStanding>>()
 
-    //    val driverStandings: LiveData<String>
-//    val driverStandings: LiveData<DriverStandingsDataClass>
     val driverStandings: LiveData<List<DriverStanding>>
         get() = _driverStandings
 
-    fun getAllDriverStandings() {
+
+    //imposto a falso lo stato di caricamento all'inizio
+    init {
+        _loadingState.value = false
+    }
+
+
+    fun getAllDriverStandings(year: String) {
         viewModelScope.launch {
             try {
-                val currentYear = Calendar.getInstance().get(Calendar.YEAR).toString()
-                val response = api.getDriverStandings(currentYear)
+                //quando devo eseguire la chiamata imposto a true lo stato del caricamento
+                _loadingState.value = true
+
+                val response = api.getDriverStandings(year)
 
 
                 if (response.isSuccessful) {
                     val driverStandingsData = response.body()
+//                    Log.d("FAIL", "${driverStandingsData.toString()}")
 
 
                     if (driverStandingsData != null) {
                         val driverStandingsList = mutableListOf<DriverStanding>()
-//                        Log.d("FAIL", "NON NULLONON NULLONON NULLONON NULLONON NULLONON NULLO")
                         for (standingsList in driverStandingsData.mRData.standingsTable.standingsLists) {
-//                            Log.d("FAIL", "PRIMO FOR")
 
                             for (driverStanding in standingsList.driverStandings) {
                                 driverStandingsList.add(driverStanding)
-//                                Log.d("FAIL", "SECONDO FOR")
 
-//                                Log.d("FAIL", "${driverStanding}")
 
                             }
                         }
                         _driverStandings.value = driverStandingsList
-//                        Log.d("driverStandingsListdriverStandingsListdriverStandingsListdriverStandingsList", "${driverStandingsList}")
 
 
                     }
@@ -70,8 +80,10 @@ class DriverStandingsViewModel : ViewModel() {
                 }
             } catch (e: Exception) {
                 // Handle exception
-                Log.d("FAIL EXCEPTION", e.toString())
-            }
+                Log.d("FAIL, EXCEPTION:", e.toString())
+            } finally {//dopo aver terminato la chiamata alle api imposto lo stato di caricamento a falso
+            _loadingState.value = false
+        }
         }
     }
 
