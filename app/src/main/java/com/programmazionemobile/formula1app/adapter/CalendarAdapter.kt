@@ -9,11 +9,13 @@ import android.view.View
 import android.widget.TextView
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.constraintlayout.widget.ConstraintSet.Layout
+import android.widget.Spinner
+import androidx.core.view.marginTop
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView.*
 import coil.load
 import coil.transform.RoundedCornersTransformation
+import com.programmazionemobile.formula1app.CalendarFragment
 import com.programmazionemobile.formula1app.DateConverter
 import com.programmazionemobile.formula1app.R
 import com.programmazionemobile.formula1app.data.calendarData.Race
@@ -40,6 +42,10 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context)
         val nomeProssimaGara = row.findViewById<TextView>(R.id.nomeProssimaGara)
         val descProssimaGara = row.findViewById<TextView>(R.id.descrizioneProssimaGara)
         val flagProssimaGara = row.findViewById<ImageView>(R.id.flagProssimaGara)
+        // val spinner = row.findViewById<Spinner>(R.id.spinner)
+        val prossimoEventoText = row.findViewById<TextView>(R.id.proxEv)
+        val prossimoEventoCard = row.findViewById<ImageView>(R.id.proxEvCard)
+        val calendarHeader = row.findViewById<View>(R.id.calendar_header)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -66,33 +72,44 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context)
 
         when(holder) {
             is HeaderViewHolder -> {
+                if (DateConverter.convertDateYear(data.get(round).date) == "2023"){
+                    holder.dataProssimaGara.text = DateConverter.convertDate(nextRace(data)?.date!!)
+                    holder.nomeProssimaGara.text = nextRace(data)?.raceName
+                    holder.descProssimaGara.text = nextRace(data)?.circuit?.circuitName
+                    val countryName = nextRace(data)?.circuit?.location?.country
 
-                holder.dataProssimaGara.text = DateConverter.convertDate(nextRace(data)?.date!!)
-                holder.nomeProssimaGara.text = nextRace(data)?.raceName
-                holder.descProssimaGara.text = nextRace(data)?.circuit?.circuitName
-                val countryName = nextRace(data)?.circuit?.location?.country
+                    val countryCode = getCountryCode(countryName!!)
 
-                val countryCode = getCountryCode(countryName!!)
-
-                val bundle = Bundle()
-                bundle.putString("raceName", nextRace(data)?.raceName)
-                bundle.putString("circuitName", nextRace(data)?.circuit?.circuitName)
-                bundle.putString("circuitID", nextRace(data)?.circuit?.circuitId)
-                bundle.putString("raceDate", nextRace(data)?.date!!)
-                bundle.putString("firstDate", nextRace(data)?.firstPractice?.date!!)
-                bundle.putString("qualiDate", nextRace(data)?.qualifying?.date!!)
-                bundle.putString("raceHour", nextRace(data)?.time)
-                bundle.putString("qualiHour", nextRace(data)?.qualifying?.time!!)
+                    val bundle = Bundle()
+                    bundle.putString("raceName", nextRace(data)?.raceName)
+                    bundle.putString("circuitName", nextRace(data)?.circuit?.circuitName)
+                    bundle.putString("circuitID", nextRace(data)?.circuit?.circuitId)
+                    bundle.putString("raceDate", nextRace(data)?.date!!)
+                    bundle.putString("firstDate", nextRace(data)?.firstPractice?.date!!)
+                    bundle.putString("qualiDate", nextRace(data)?.qualifying?.date!!)
+                    bundle.putString("raceHour", nextRace(data)?.time)
+                    bundle.putString("qualiHour", nextRace(data)?.qualifying?.time!!)
 
 
-                holder.flagProssimaGara.load("https://flagpedia.net/data/flags/w1160/$countryCode.webp")
-                {
-                    transformations(RoundedCornersTransformation
-                        (75f, 30f, 0f, 30f))
-                }
+                    holder.flagProssimaGara.load("https://flagpedia.net/data/flags/w1160/$countryCode.webp")
+                    {
+                        transformations(RoundedCornersTransformation
+                            (75f, 30f, 0f, 30f))
+                    }
 
-                holder.row.findViewById<View>(R.id.prossimoEvento).setOnClickListener {
-                    it.findNavController().navigate(R.id.action_calendarFragment_to_raceFragment2, bundle)
+                    holder.row.findViewById<View>(R.id.prossimoEvento).setOnClickListener {
+                        it.findNavController().navigate(R.id.action_calendarFragment_to_raceFragment2, bundle)
+                    }
+                } else{
+                    holder.dataProssimaGara.visibility = GONE
+                    holder.nomeProssimaGara.visibility = GONE
+                    holder.descProssimaGara.visibility = GONE
+                    holder.flagProssimaGara.visibility = GONE
+                    holder.prossimoEventoText.visibility = GONE
+                    holder.prossimoEventoCard.visibility = GONE
+
+                    holder.calendarHeader.layoutParams.height = 240
+
                 }
             }
 
@@ -110,10 +127,18 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context)
                 bundle.putString("circuitName", data.get(round - 1).circuit.circuitName)
                 bundle.putString("circuitID", data.get(round - 1).circuit.circuitId)
                 bundle.putString("raceDate", data.get(round - 1).date)
-                bundle.putString("firstDate", data.get(round - 1).firstPractice.date)
-                bundle.putString("qualiDate", data.get(round -1 ).qualifying.date)
+
+                if (DateConverter.convertDateYear(data.get(round - 1).date).toInt() > 2020){
+                    bundle.putString("qualiDate", data.get(round -1 ).qualifying.date)
+                    bundle.putString("qualiHour", data.get(round - 1).qualifying.time)
+                    bundle.putString("firstDate", data.get(round - 1).firstPractice.date)
+                } else{
+                    bundle.putString("firstDate", "Dati non disponibili")
+                    bundle.putString("qualiHour", "Dati non disponibili")
+                    bundle.putString("qualiDate", "Dati non disponibili")
+                }
+
                 bundle.putString("raceHour", data.get(round - 1).time)
-                bundle.putString("qualiHour", data.get(round - 1).qualifying.time)
 
                 holder.flagGara.load("https://flagpedia.net/data/flags/w1160/$countryCode.webp")
                 {
@@ -140,76 +165,75 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context)
         // conta gli elementi per la recyclerview
         return data.size + HEADER_NUMBER
     }
-}
 
-@SuppressLint("SimpleDateFormat")
-fun nextRace(gare: List<Race>): Race? {
-    // Ottieni la data corrente
-    val dataCorrente = Date()
-
-    // Inizializza la gara prossima
-    var garaProssima: Race? = null
-    var dataProssima: Date? = null
-
-    // Formato per il parsing delle date
-    val dateFormat = SimpleDateFormat("yyyy-MM-dd")
-
-    // Itera attraverso tutte le gare nella collezione
-    for (gara in gare) {
-        val dataGara = dateFormat.parse(gara.date)
-
-        // Se la data della gara è uguale alla data corrente, restituiscila immediatamente
-        if (dataGara == dataCorrente) {
-            garaProssima = gara
-        }
-
-        // Se la data della gara è nel futuro e più vicina alla data corrente rispetto
-        // alla gara prossima attualmente impostata, aggiornala come gara prossima
-        if (dataGara > dataCorrente && (dataProssima == null || dataGara.before(dataProssima))) {
-            garaProssima = gara
-            dataProssima = dataGara
-        }
+    fun getCountryCode(countryName: String): String? {
+        val countryNameToCodeMap = mapOf(
+            "Australia" to "au",
+            "Austria" to "at",
+            "Azerbaijan" to "az",
+            "Bahrain" to "bh",
+            "Belgium" to "be",
+            "Brazil" to "br",
+            "Canada" to "ca",
+            "China" to "cn",
+            "France" to "fr",
+            "Germany" to "de",
+            "Hungary" to "hu",
+            "India" to "in",
+            "Italy" to "it",
+            "Japan" to "jp",
+            "Malaysia" to "my",
+            "Mexico" to "mx",
+            "Monaco" to "mc",
+            "Netherlands" to "nl",
+            "Portugal" to "pt",
+            "Russia" to "ru",
+            "Singapore" to "sg",
+            "South Africa" to "za",
+            "Saudi Arabia" to "sa",
+            "Spain" to "es",
+            "Sweden" to "se",
+            "Switzerland" to "ch",
+            "Turkey" to "tr",
+            "UAE" to "ae",
+            "United Arab Emirates" to "ae",
+            "United Kingdom" to "gb",
+            "UK" to "gb",
+            "United States" to "us",
+            "USA" to "us",
+            "Qatar" to "qa"
+        )
+        return countryNameToCodeMap[countryName]
     }
-    return garaProssima
-}
 
+    @SuppressLint("SimpleDateFormat")
+    fun nextRace(gare: List<Race>): Race? {
+        // Ottieni la data corrente
+        val dataCorrente = Date()
 
-fun getCountryCode(countryName: String): String? {
-    val countryNameToCodeMap = mapOf(
-        "Australia" to "au",
-        "Austria" to "at",
-        "Azerbaijan" to "az",
-        "Bahrain" to "bh",
-        "Belgium" to "be",
-        "Brazil" to "br",
-        "Canada" to "ca",
-        "China" to "cn",
-        "France" to "fr",
-        "Germany" to "de",
-        "Hungary" to "hu",
-        "India" to "in",
-        "Italy" to "it",
-        "Japan" to "jp",
-        "Malaysia" to "my",
-        "Mexico" to "mx",
-        "Monaco" to "mc",
-        "Netherlands" to "nl",
-        "Portugal" to "pt",
-        "Russia" to "ru",
-        "Singapore" to "sg",
-        "South Africa" to "za",
-        "Saudi Arabia" to "sa",
-        "Spain" to "es",
-        "Sweden" to "se",
-        "Switzerland" to "ch",
-        "Turkey" to "tr",
-        "UAE" to "ae",
-        "United Arab Emirates" to "ae",
-        "United Kingdom" to "gb",
-        "UK" to "gb",
-        "United States" to "us",
-        "USA" to "us",
-        "Qatar" to "qa"
-    )
-    return countryNameToCodeMap[countryName]
+        // Inizializza la gara prossima
+        var garaProssima: Race? = null
+        var dataProssima: Date? = null
+
+        // Formato per il parsing delle date
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd")
+
+        // Itera attraverso tutte le gare nella collezione
+        for (gara in gare) {
+            val dataGara = dateFormat.parse(gara.date)
+
+            // Se la data della gara è uguale alla data corrente, restituiscila immediatamente
+            if (dataGara == dataCorrente) {
+                garaProssima = gara
+            }
+
+            // Se la data della gara è nel futuro e più vicina alla data corrente rispetto
+            // alla gara prossima attualmente impostata, aggiornala come gara prossima
+            if (dataGara > dataCorrente && (dataProssima == null || dataGara.before(dataProssima))) {
+                garaProssima = gara
+                dataProssima = dataGara
+            }
+        }
+        return garaProssima
+    }
 }

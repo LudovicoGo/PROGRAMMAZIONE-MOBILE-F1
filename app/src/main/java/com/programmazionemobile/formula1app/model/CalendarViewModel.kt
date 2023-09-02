@@ -1,4 +1,4 @@
-package com.programmazionemobile.formula1app
+package com.programmazionemobile.formula1app.model
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -10,6 +10,7 @@ import com.programmazionemobile.formula1app.data.interfaceAPI.Service
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.time.Year
 
 
 class CalendarViewModel: ViewModel() {
@@ -26,10 +27,10 @@ class CalendarViewModel: ViewModel() {
     val calendar: LiveData<List<Race>>
         get() = _calendar
 
-    fun getCalendar() {
+    fun getCalendar(year: String) {
         viewModelScope.launch {
 
-            val response = api.currentCalendar()
+            val response = api.currentCalendar(year)
 
             if (response.isSuccessful) {
                 val calendarData = response.body()

@@ -59,8 +59,9 @@ class CircuitInfoFragment: Fragment() {
                 if(args.circuitID == key){
                     lapDistance.text = innerObject.getString("Lunghezza") + " km"
                     laps.text = innerObject.getInt("Numero di Giri").toString()
-                    raceDistance.text = (innerObject.getInt("Numero di Giri")
-                        .times(innerObject.getDouble("Lunghezza"))).toString() + " km"
+                    val km = String.format("%.3f", (innerObject.getInt("Numero di Giri")
+                        .times(innerObject.getDouble("Lunghezza"))))
+                    raceDistance.text = "$km km"
                 }
             }
         } catch (e: Exception) {
@@ -80,19 +81,31 @@ class CircuitInfoFragment: Fragment() {
                 "/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/${getCircuitCode(args.circuitID)}_Circuit.png." +
                 "transform/7col-retina/image.png")
     }
-}
 
-fun getCircuitCode(circuitID: String): String? {
-    val countryNameToCodeMap = mapOf(
-        "monza" to "Italy",
-        "jeddah" to "Abu_Dhabi",
-        "bahrain" to "Bahrain",
-        "spa" to "Belgium",
-        "albert_park" to "Australia",
-        "miami" to "Miami",
-        "monaco" to "Monoco",
-        "catalunya" to "Spain",
-        "villeneuve" to "Canada",
-    )
-    return countryNameToCodeMap[circuitID]
+    fun getCircuitCode(circuitID: String): String? {
+        val countryNameToCodeMap = mapOf(
+            "monza" to "Italy",
+            "jeddah" to "Abu_Dhabi",
+            "bahrain" to "Bahrain",
+            "spa" to "Belgium",
+            "albert_park" to "Australia",
+            "miami" to "Miami",
+            "monaco" to "Monoco",
+            "catalunya" to "Spain",
+            "villeneuve" to "Canada",
+            "red_bull_ring" to "Austria",
+            "silverstone" to "Great_Britain",
+            "hungaroring" to "Hungary",
+            "zandvoort" to "Netherlands",
+            "marina_bay" to "Singapore",
+            "suzuka" to "Japan",
+            "losail" to "Qatar",
+            "americas" to "USA",
+            "rodriguez" to "Mexico",
+            "interlagos" to "Brazil",
+            "vegas" to "Las_Vegas",
+            "yas_marina" to "Abu_Dhabi"
+        )
+        return countryNameToCodeMap[circuitID]
+    }
 }

@@ -8,8 +8,8 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface Service {
-    @GET("current.json")
-    suspend fun currentCalendar(): Response<CalendarData>
+    @GET("{year}.json")
+    suspend fun currentCalendar(@Path("year") year: String): Response<CalendarData>
 
     @GET("circuits/{circuitId}/results/1.json?limit=1")
     suspend fun infoCircuit(@Path("circuitId")circuitId: String): Response<Circuit>

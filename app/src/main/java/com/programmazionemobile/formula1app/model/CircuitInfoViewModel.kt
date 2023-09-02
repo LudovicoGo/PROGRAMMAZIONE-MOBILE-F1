@@ -45,7 +45,7 @@ class CircuitInfoViewModel: ViewModel() {
 
         viewModelScope.launch {
             try {
-                if (getFirstGPLiveData(circuitID).toString() != "2023"){
+                if (getFirstGPLiveData(circuitID).value != "2023"){
                     val response = api.fastestLap(circuitID)
 
                     if (response.isSuccessful) {
@@ -87,32 +87,36 @@ class CircuitInfoViewModel: ViewModel() {
 
         viewModelScope.launch {
             try {
-                val response = api.fastestLap(circuitID)
+                if (getFirstGPLiveData(circuitID).value != "2023"){
 
-                if (response.isSuccessful) {
-                    var fl: String? = null
-                    var pilota: String? = null
+                    val response = api.fastestLap(circuitID)
 
-                    for (race in response.body()?.mRData?.raceTable?.races.orEmpty()) {
-                        val results = race.results
-                        if (results.isNotEmpty()) {
-                            val currentFastestLapTime = results.first().fastestLap.time.time
-                            if (fl == null || (currentFastestLapTime < fl)) {
-                                fl = currentFastestLapTime
-                                pilota = '(' + race.results.first().driver.givenName + ' ' +
-                                        race.results.first().driver.familyName + ' ' +
-                                        race.season + ')'
+                    if (response.isSuccessful) {
+                        var fl: String? = null
+                        var pilota: String? = null
+
+                        for (race in response.body()?.mRData?.raceTable?.races.orEmpty()) {
+                            val results = race.results
+                            if (results.isNotEmpty()) {
+                                val currentFastestLapTime = results.first().fastestLap.time.time
+                                if (fl == null || (currentFastestLapTime < fl)) {
+                                    fl = currentFastestLapTime
+                                    pilota = '(' + race.results.first().driver.givenName + ' ' +
+                                            race.results.first().driver.familyName + ' ' +
+                                            race.season + ')'
+                                }
                             }
                         }
+
+                        if (fl == null) {
+                            giroVeloce.value = "Dati non disponibili"
+                        } else {
+                            giroVeloce.value = pilota
+                        }
+                    } else {
+                        giroVeloce.value = "Errore nella richiesta"
                     }
 
-                    if (fl == null) {
-                        giroVeloce.value = "Dati non disponibili"
-                    } else {
-                        giroVeloce.value = pilota
-                    }
-                } else {
-                    giroVeloce.value = "Errore nella richiesta"
                 }
             } catch (e: Exception) {
                 giroVeloce.value = "Errore: ${e.message}"

@@ -23,6 +23,20 @@ object DateConverter {
             return originalDate // In caso di errore, restituisci la data originale
         }
     }
+
+    fun convertDateYear(originalDate: String): String {
+        try {
+            val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val outputFormat = SimpleDateFormat("yyyy", Locale.ITALIAN)
+
+            val date = inputFormat.parse(originalDate)
+            return outputFormat.format(date)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return originalDate // In caso di errore, restituisci la data originale
+        }
+    }
+
     fun convertDateInfo(originalDate: String): String {
         try {
             val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
@@ -77,7 +91,7 @@ object DateConverter {
             val differenzaInMillisecondi = dataSpecificata.time - dataCorrente.time
 
             // Calcola il numero di giorni rimanenti (dividendo per 86,400,000 millisecondi al giorno)
-            val giorniRimanenti = (differenzaInMillisecondi / 86_400_000)
+            val giorniRimanenti = (differenzaInMillisecondi / 86_400_000) + 1
 
             return if (giorniRimanenti > 0)
                 giorniRimanenti.toString()
@@ -86,7 +100,7 @@ object DateConverter {
         } catch (e: Exception) {
             // Gestione dell'eccezione nel caso in cui la stringa della data non sia valida
             println("Errore: Data non valida.")
-            return 30.toString()
+            return "DN"
         }
     }
 
@@ -99,32 +113,23 @@ object DateConverter {
         try {
             // Ottieni la data e l'orario correnti
             val dataCorrente = Date()
-            println("val dataCorrente = Date()")
 
             // Converti la stringa della data in una data
             val dataSpecificata = formatoData.parse("$dataString $orarioGaraString")
-            println("val dataSpecificata = formatoData.parse(dataString orarioGaraStrin)")
 
             // Calcola la differenza tra le due date in millisecondi
             val differenzaInMillisecondi = dataSpecificata.time - dataCorrente.time
-            println("val differenzaInMillisecondi = dataSpecificata.time - dataCorrente.time")
 
 
             // Calcola il numero di ore rimanenti (dividendo per 3,600,000 millisecondi all'ora)
             val oreRimanenti = (differenzaInMillisecondi % 86_400_000) / 3_600_000
-            println("vval oreRimanenti = (differenzaInMillisecondi % 86400000) / 3600000")
-            println(oreRimanenti)
 
             return if (oreRimanenti > 0)
-            {
-                println(oreRimanenti)
                 oreRimanenti.toString()
-            }
             else
                 "00"
         } catch (e: Exception) {
             // Gestione dell'eccezione nel caso in cui la stringa della data non sia valida
-            println("Errore: Data non valida.")
             return "DN"
         }
     }
@@ -137,32 +142,23 @@ object DateConverter {
         try {
             // Ottieni la data e l'orario correnti
             val dataCorrente = Date()
-            println(dataCorrente)
 
             // Converti la stringa della data in una data
             val dataSpecificata = formatoData.parse("$dataString $orarioGaraString")
-            println("val dataSpecificata = formatoData.parse(dataString orarioGaraStrin)")
 
             // Calcola la differenza tra le due date in millisecondi
             val differenzaInMillisecondi = dataSpecificata.time - dataCorrente.time
-            println("val differenzaInMillisecondi = dataSpecificata.time - dataCorrente.time")
 
 
             // Calcola il numero di ore rimanenti (dividendo per 3,600,000 millisecondi all'ora)
             val minutiRimanenti = ((differenzaInMillisecondi % 86_400_000) % 3_600_000) / 60_000
-            println("vval oreRimanenti = (differenzaInMillisecondi % 86400000) / 3600000")
-            println(minutiRimanenti)
 
             return if (minutiRimanenti > 0)
-            {
-                println(minutiRimanenti)
                 minutiRimanenti.toString()
-            }
             else
                 "00"
         } catch (e: Exception) {
             // Gestione dell'eccezione nel caso in cui la stringa della data non sia valida
-            println("Errore: Data non valida.")
             return "DN"
         }
     }

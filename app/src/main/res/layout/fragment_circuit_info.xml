@@ -104,7 +104,7 @@
                 android:id="@+id/nomeGara2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/formula1_bold"
                 android:text="@string/emilian_ngrand_prix"
                 android:textAlignment="center"
