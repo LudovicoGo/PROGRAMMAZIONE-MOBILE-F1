@@ -26,19 +26,34 @@ class CircuitInfoViewModel: ViewModel() {
         val dataFirstGP = MutableLiveData<String?>()
 
         viewModelScope.launch {
-            val response = api.infoCircuit(circuitID)
-            println(response)
+            try {
+                val response = api.infoCircuit(circuitID)
+                println(response)
 
-            if (response.isSuccessful) {
-                val season = response.body()?.mRData?.raceTable?.races?.first()?.season
-                dataFirstGP.value = season
-            } else {
-                dataFirstGP.value = "Dati non disponibili"
+                if (response.isSuccessful) {
+                    val races = response.body()?.mRData?.raceTable?.races
+                    if (!races.isNullOrEmpty()) {
+                        val season = races.firstOrNull()?.season
+                        if (season != null) {
+                            dataFirstGP.value = season
+                        } else {
+                            dataFirstGP.value = "Season data not available"
+                        }
+                    } else {
+                        dataFirstGP.value = "No race data available"
+                    }
+                } else {
+                    dataFirstGP.value = "API request failed"
+                }
+            } catch (e: Exception) {
+                // Handle any exceptions that occur during the API call here
+                dataFirstGP.value = "Error occurred: ${e.message}"
             }
         }
 
         return dataFirstGP
     }
+
 
     fun getFastestLap(circuitID: String): LiveData<String?> {
         val fastestLap = MutableLiveData<String?>()
@@ -109,7 +124,7 @@ class CircuitInfoViewModel: ViewModel() {
                         }
 
                         if (fl == null) {
-                            giroVeloce.value = "Dati non disponibili"
+                            giroVeloce.value = ""
                         } else {
                             giroVeloce.value = pilota
                         }

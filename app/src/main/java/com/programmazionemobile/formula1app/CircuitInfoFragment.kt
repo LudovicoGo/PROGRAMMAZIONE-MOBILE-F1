@@ -71,11 +71,18 @@ class CircuitInfoFragment: Fragment() {
             firstGP.text = firstGPData
         }
 
-        viewModel.getFastestLap(args.circuitID).observe(viewLifecycleOwner) { firstGPData ->
-            fastestLap.text = firstGPData
+        if (firstGP.text.toString() < "2023"){
+            viewModel.getFastestLap(args.circuitID).observe(viewLifecycleOwner) { firstGPData ->
+                fastestLap.text = firstGPData
+            }
+            viewModel.getDriverFastLap(args.circuitID).observe(viewLifecycleOwner) { firstGPData ->
+                driverFatsLap.text = firstGPData
+            }
         }
-        viewModel.getDriverFastLap(args.circuitID).observe(viewLifecycleOwner) { firstGPData ->
-            driverFatsLap.text = firstGPData
+        else{
+
+            fastestLap.text = "GP non ancora disputato"
+            driverFatsLap.text = ""
         }
         circuitoPng.load("https://media.formula1.com/image/upload/content" +
                 "/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/${getCircuitCode(args.circuitID)}_Circuit.png." +
