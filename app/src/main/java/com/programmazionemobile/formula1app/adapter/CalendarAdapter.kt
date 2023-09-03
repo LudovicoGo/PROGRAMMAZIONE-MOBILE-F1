@@ -3,6 +3,7 @@ package com.programmazionemobile.formula1app.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.icu.text.SimpleDateFormat
+import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,8 @@ import com.programmazionemobile.formula1app.CalendarFragment
 import com.programmazionemobile.formula1app.DateConverter
 import com.programmazionemobile.formula1app.R
 import com.programmazionemobile.formula1app.data.calendarData.Race
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.Date
 
 class CalendarAdapter (val data: MutableList<Race>, val context: Context)
@@ -42,7 +45,6 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context)
         val nomeProssimaGara = row.findViewById<TextView>(R.id.nomeProssimaGara)
         val descProssimaGara = row.findViewById<TextView>(R.id.descrizioneProssimaGara)
         val flagProssimaGara = row.findViewById<ImageView>(R.id.flagProssimaGara)
-        // val spinner = row.findViewById<Spinner>(R.id.spinner)
         val prossimoEventoText = row.findViewById<TextView>(R.id.proxEv)
         val prossimoEventoCard = row.findViewById<ImageView>(R.id.proxEvCard)
         val calendarHeader = row.findViewById<View>(R.id.calendar_header)
@@ -133,7 +135,6 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context)
                     bundle.putString("qualiHour", data.get(round - 1).qualifying.time)
                     bundle.putString("firstDate", data.get(round - 1).firstPractice.date)
                 } else{
-                    bundle.putString("firstDate", "Dati non disponibili")
                     bundle.putString("qualiHour", "Dati non disponibili")
                     bundle.putString("qualiDate", "Dati non disponibili")
                 }
@@ -209,31 +210,44 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context)
     @SuppressLint("SimpleDateFormat")
     fun nextRace(gare: List<Race>): Race? {
         // Ottieni la data corrente
-        val dataCorrente = Date()
+        val dataCorrente = LocalDate.now()
 
         // Inizializza la gara prossima
         var garaProssima: Race? = null
-        var dataProssima: Date? = null
+        var dataProssima: LocalDate? = null
 
         // Formato per il parsing delle date
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd")
+        val dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 
         // Itera attraverso tutte le gare nella collezione
         for (gara in gare) {
-            val dataGara = dateFormat.parse(gara.date)
+            val dataGara = LocalDate.parse(gara.date, dateFormat)
+
+            // Se la data della gara è nel futuro e più vicina alla data corrente rispetto
+            // alla gara prossima attualmente impostata, aggiornala come gara prossima
+            if (dataGara.isAfter(dataCorrente) && (dataProssima == null || dataGara.isBefore(dataProssima))) {
+                garaProssima = gara
+                dataProssima = dataGara
+            }
 
             // Se la data della gara è uguale alla data corrente, restituiscila immediatamente
             if (dataGara == dataCorrente) {
                 garaProssima = gara
-            }
-
-            // Se la data della gara è nel futuro e più vicina alla data corrente rispetto
-            // alla gara prossima attualmente impostata, aggiornala come gara prossima
-            if (dataGara > dataCorrente && (dataProssima == null || dataGara.before(dataProssima))) {
-                garaProssima = gara
-                dataProssima = dataGara
+                break
             }
         }
         return garaProssima
     }
+
+    fun isSameDay(date1: Date, date2: Date): Boolean {
+        val cal1 = Calendar.getInstance()
+        cal1.time = date1
+        val cal2 = Calendar.getInstance()
+        cal2.time = date2
+
+        return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH) &&
+                cal1.get(Calendar.DAY_OF_MONTH) == cal2.get(Calendar.DAY_OF_MONTH)
+    }
+
 }

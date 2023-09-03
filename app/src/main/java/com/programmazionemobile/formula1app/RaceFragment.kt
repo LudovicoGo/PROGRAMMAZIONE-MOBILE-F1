@@ -60,6 +60,10 @@ class RaceFragment: Fragment() {
         oreMancanti.text = DateConverter.oreRimanenti(args.raceDate, args.raceHour)
         minutiMancanti.text = DateConverter.minutiRimanenti(args.raceDate, args.raceHour)
         raceHourRaceCard.text = DateConverter.convertUTCtoLocalTime2(args.raceHour, args.raceDate)
-        qualiHourRaceCard.text = DateConverter.convertUTCtoLocalTime2(args.qualiHour, args.raceDate)
+        if (args.qualiHour == "Dati non disponibili")
+            qualiHourRaceCard.text = args.qualiHour
+        else
+            qualiHourRaceCard.text = DateConverter.convertUTCtoLocalTime2(args.qualiHour, args.raceDate)
+
     }
 }

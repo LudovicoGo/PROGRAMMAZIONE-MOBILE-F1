@@ -91,7 +91,7 @@ object DateConverter {
             val differenzaInMillisecondi = dataSpecificata.time - dataCorrente.time
 
             // Calcola il numero di giorni rimanenti (dividendo per 86,400,000 millisecondi al giorno)
-            val giorniRimanenti = (differenzaInMillisecondi / 86_400_000) + 1
+            val giorniRimanenti = (differenzaInMillisecondi / 86_400_000)
 
             return if (giorniRimanenti > 0)
                 giorniRimanenti.toString()

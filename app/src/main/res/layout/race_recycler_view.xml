@@ -13,7 +13,7 @@
 
     <TextView
         android:id="@+id/nomeGara"
-        android:layout_width="180dp"
+        android:layout_width="155dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:fontFamily="@font/formula1_bold"
