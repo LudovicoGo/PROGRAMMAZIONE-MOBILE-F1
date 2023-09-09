@@ -2,6 +2,7 @@ package com.programmazionemobile.formula1app
 
 import android.icu.util.Calendar
 import android.util.Log
+import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

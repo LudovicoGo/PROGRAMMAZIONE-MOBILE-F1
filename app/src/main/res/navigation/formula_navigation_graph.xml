@@ -24,7 +24,11 @@
         android:id="@+id/championshipFragment"
         android:name="com.programmazionemobile.formula1app.ChampionshipFragment"
         android:label="fragment_championship"
-        tools:layout="@layout/fragment_championship" />
+        tools:layout="@layout/fragment_championship" >
+        <action
+            android:id="@+id/action_championshipFragment_to_constructorProfileFragment"
+            app:destination="@id/constructorProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/driversStandingsFragment"
         android:name="com.programmazionemobile.formula1app.DriversStandingsFragment"
@@ -124,5 +128,39 @@
             android:name="circuitName"
             app:argType="string"
             android:defaultValue="noCircuitName" />
+    </fragment>
+    <fragment
+        android:id="@+id/constructorProfileFragment"
+        android:name="com.programmazionemobile.formula1app.ConstructorProfileFragment"
+        android:label="fragment_constructor_profile"
+        tools:layout="@layout/fragment_constructor_profile" >
+        <argument
+            android:name="constructorName"
+            app:argType="string"
+            android:defaultValue="noConstructorName" />
+        <argument
+            android:name="constructorID"
+            app:argType="string"
+            android:defaultValue="noConstructorID" />
+        <argument
+            android:name="constructorSeasonWins"
+            app:argType="string"
+            android:defaultValue="noConstructorSeasonWins" />
+        <argument
+            android:name="constructorSeasonPoints"
+            app:argType="string"
+            android:defaultValue="noConstructorSeasonPoints" />
+        <argument
+            android:name="constructorSeasonPosition"
+            app:argType="string"
+            android:defaultValue="noConstructorSeasonPosition" />
+        <argument
+            android:name="constructorNationality"
+            app:argType="string"
+            android:defaultValue="noConstructorNationality" />
+        <argument
+            android:name="selectedSpinnerYear"
+            app:argType="string"
+            android:defaultValue="noSelectedSpinnerYear" />
     </fragment>
 </navigation>

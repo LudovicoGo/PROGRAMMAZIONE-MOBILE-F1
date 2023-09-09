@@ -1,7 +1,6 @@
 package com.programmazionemobile.formula1app.adapter
 
 import android.content.Context
-import android.icu.util.Calendar
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +10,7 @@ import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -28,8 +28,6 @@ class DriversStandingsAdapter(
 
     private val TYPE_HEADER = 0
     private val TYPE_ITEM = 1
-    private var spinnerFlag = 0
-    private var spinnerYearFlag = Calendar.getInstance().get(Calendar.YEAR).toString()
 
     class HeaderViewHolder(val row: View) : RecyclerView.ViewHolder(row) {
 
@@ -46,7 +44,7 @@ class DriversStandingsAdapter(
     class DriversStandingsViewHolder(val row: View) : RecyclerView.ViewHolder(row) {
 
         val DriverName = row.findViewById<TextView>(R.id.DriverName)
-        val DriverID = row.findViewById<TextView>(R.id.DriverID)
+        val DriverID = row.findViewById<TextView>(R.id.ConstructorID)
         val DriverFamilyName = row.findViewById<TextView>(R.id.DriverSurname)
         val DriverPosition = row.findViewById<TextView>(R.id.DriverPosition)
         val DriverNumber = row.findViewById<TextView>(R.id.DriverNumber)
@@ -106,7 +104,7 @@ class DriversStandingsAdapter(
                     if (!data[position - 1].driver.permanentNumber.isNullOrEmpty()) {
 //                            bundle.putString("DriverNumber", data[position - 1].driver.permanentNumber)
                         holder.DriverNumber.text = data[position - 1].driver.permanentNumber
-                    } else{
+                    } else {
                         holder.DriverNumber.text = ""
                     }
 //                    holder.DriverNumber.text = data[position - 1].driver.permanentNumber
@@ -114,15 +112,13 @@ class DriversStandingsAdapter(
 
 
                     val driverId = data[position - 1].driver.driverId // ID del pilota
-                    val drawableResId =
-                        context.resources.getIdentifier(driverId, "drawable", context.packageName)
+                    val drawableResId = context.resources.getIdentifier(driverId, "drawable", context.packageName)
                     if (drawableResId != 0) {
                         // Se l'ID è diverso da 0, il drawable è stato trovato
                         holder.DriverImage.setImageResource(drawableResId) // Imposta il drawable dell'ImageView
                     } else {
                         holder.DriverImage.setImageResource(R.drawable.nodriverpic)
                     }
-
 
 
 //                    var driverConstructor = data[position - 1].constructors[0].name
@@ -133,30 +129,32 @@ class DriversStandingsAdapter(
                         driverConstructor = driverConstructor + constructor.name + " "
                     }
                     holder.DriverTeam.text = driverConstructor
-//
-//                    val backgroundDrawable = ContextCompat.getDrawable(context, R.drawable.standings_bottom_border)
-//                    backgroundDrawable?.setTint(0xFF00FF00.toInt())
 
                     //bordo inferiore
                     //prendo il colore del team dal file colors.xml
-                    val teamColorResId = context.resources.getIdentifier(
-                        "${driverConstructor.replace(" ", "")}",
-                        "color",
-                        context.packageName
-                    )
-                    if (teamColorResId != 0) {
-                        val teamColor = ContextCompat.getColor(context, teamColorResId)
+                    if (data[position - 1].constructors.size == 1) {
+                       if (context.resources.getIdentifier("${data[position - 1].constructors[0].constructorId.replace("-","_")}","color", context.packageName) != 0) {
+                            var teamColorResId = context.resources.getIdentifier("${data[position - 1].constructors[0].constructorId.replace("-","_")}","color", context.packageName)
 
-                        // Cambiare il colore del drawable di sfondo
-                        val backgroundDrawable = ContextCompat.getDrawable(context, R.drawable.standings_bottom_border)
-                        backgroundDrawable?.setTint(teamColor)
-//                            .setColorFilter(teamColor, PorterDuff.Mode.SRC_IN)
+                            Log.d("teamcolorresId", teamColorResId.toString())
+
+                            val teamColor = ContextCompat.getColor(context, teamColorResId)
+
+                            // Cambiare il colore del drawable di sfondo
+                            val backgroundDrawable = ContextCompat.getDrawable(context, R.drawable.standings_bottom_border)
+                            backgroundDrawable?.setTint(teamColor)
+                            holder.DriverNumber.setTextColor(
+                                ColorUtils.setAlphaComponent(
+                                    teamColor,
+                                    32
+                                )
+                            )
+
+                            holder.BottomBorderImage.background = backgroundDrawable
+                        }
 
 
-                        holder.BottomBorderImage.background = backgroundDrawable
                     }
-
-
 
                     holder.row.setOnClickListener { view ->
                         val bundle = Bundle()
@@ -167,7 +165,10 @@ class DriversStandingsAdapter(
                         bundle.putString("DriverFamilyName", data[position - 1].driver.familyName)
                         bundle.putString("DriverCountry", data[position - 1].driver.nationality)
                         if (!data[position - 1].driver.permanentNumber.isNullOrEmpty()) {
-                            bundle.putString("DriverNumber", data[position - 1].driver.permanentNumber)
+                            bundle.putString(
+                                "DriverNumber",
+                                data[position - 1].driver.permanentNumber
+                            )
                         }
                         bundle.putString("DriverBirth", data[position - 1].driver.dateOfBirth)
                         bundle.putString("DriverCurrentSeasonPosition", data[position - 1].position)

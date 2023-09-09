@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="118dp"
+    android:layout_height="88dp"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
     android:layout_marginBottom="10dp"
@@ -21,14 +21,29 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="115dp"
+        android:layout_height="85dp"
         android:background="@drawable/standings_shape"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/backgroundTeam"
+            android:layout_width="wrap_content"
+            android:layout_height="220dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="-60dp"
+            android:alpha=".15"
+            android:rotation="2"
+            android:rotationX="0"
+            android:rotationY="-12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/haas_logo" />
+
         <TextView
-            android:id="@+id/DriverPosition"
+            android:id="@+id/ConstructorPosition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -37,6 +52,34 @@
             android:text="24"
             android:textColor="#000000"
             android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--  <TextView
+            android:id="@+id/DriverName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="9dp"
+            android:fontFamily="@font/formula1_regular"
+            android:text="Max"
+            android:textColor="#000000"
+            android:textSize="21sp"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintTop_toTopOf="parent" />-->
+
+        <TextView
+            android:id="@+id/ConstructorName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/formula1_regular"
+            android:text="Ferrari"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            android:textSize="21sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,45 +92,8 @@
             android:text="."
             android:textColor="#000000"
             android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@+id/DriverPosition"
+            app:layout_constraintStart_toEndOf="@+id/ConstructorPosition"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/DriverName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="9dp"
-            android:fontFamily="@font/formula1_regular"
-            android:text="Max"
-            android:textColor="#000000"
-            android:textSize="21sp"
-            app:layout_constraintStart_toEndOf="@+id/textView2"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/DriverSurname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="36dp"
-            android:fontFamily="@font/formula1_bold"
-            android:text="VERSTAPPEN"
-            android:textAllCaps="true"
-            android:textColor="#000000"
-            android:textSize="21sp"
-            app:layout_constraintStart_toEndOf="@+id/textView2"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/DriverImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="78dp"
-            android:elevation="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/nodriverpic" />
 
         <TextView
             android:id="@+id/textView4"
@@ -102,7 +108,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.428" />
-
+        <!--
         <TextView
             android:id="@+id/DriverNumber"
             android:layout_width="160dp"
@@ -115,21 +121,9 @@
             android:textColor="#2711233C"
             android:textSize="80sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <TextView
-            android:id="@+id/DriverPoints"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:fontFamily="@font/formula1_bold"
-            android:text="340"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/textView4"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
+        <!-- <TextView
             android:id="@+id/DriverTeam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -140,6 +134,33 @@
             android:textColor="#000000"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintTop_toTopOf="parent" />-->
+
+        <TextView
+            android:id="@+id/ConstructorPoints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="2dp"
+            android:fontFamily="@font/formula1_bold"
+            android:text="340"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/textView4"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ConstructorWins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/formula1italic"
+            android:text="Wins: 0"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -148,7 +169,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="96dp"
             android:layout_marginEnd="24dp"
-            android:text="DriverID"
+            android:text="ConstructorID"
             android:textColor="#00FF236E"
             android:textStyle="bold"
             android:visibility="invisible"
@@ -156,6 +177,7 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

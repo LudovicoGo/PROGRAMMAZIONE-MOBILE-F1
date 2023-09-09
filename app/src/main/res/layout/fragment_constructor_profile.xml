@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConstructorProfileFragment">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/constructorProfileSelectedSeasonDrivers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="195dp"
+                android:fontFamily="@font/formula1_regular"
+                android:text="2023 DRIVERS"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/ConstructorProfileImage" />
+
+            <ImageView
+                android:id="@+id/imageView14"
+                android:layout_width="196dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="203dp"
+                android:src="@drawable/white_line"
+                app:layout_constraintStart_toEndOf="@+id/constructorProfileSelectedSeasonDrivers"
+                app:layout_constraintTop_toBottomOf="@+id/ConstructorProfileImage" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="30dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="203dp"
+                android:src="@drawable/white_line"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ConstructorProfileImage" />
+
+            <ImageView
+                android:id="@+id/imageView27"
+                android:layout_width="330dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.506"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView26"
+                app:srcCompat="@drawable/white_line" />
+
+            <TextView
+                android:id="@+id/textView45"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:elevation="50dp"
+                android:fontFamily="@font/formula1_regular"
+                android:padding="4dp"
+                android:paddingStart="10dp"
+                android:text="RACES"
+                android:textAlignment="textStart"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/imageView27"
+                app:layout_constraintTop_toTopOf="@+id/imageView27" />
+
+            <TextView
+                android:id="@+id/careerRaces"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+
+                android:elevation="50dp"
+                android:fontFamily="@font/formula1_regular"
+                android:paddingTop="4dp"
+                android:paddingEnd="10dp"
+                android:text="-"
+                android:textAlignment="textEnd"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/imageView27"
+                app:layout_constraintTop_toTopOf="@+id/imageView27" />
+
+            <ImageView
+                android:id="@+id/imageView26"
+                android:layout_width="330dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView21"
+                app:srcCompat="@drawable/white_line" />
+
+            <TextView
+                android:id="@+id/textView44"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:elevation="50dp"
+                android:fontFamily="@font/formula1_regular"
+                android:padding="4dp"
+                android:paddingStart="10dp"
+                android:text="SEASONS"
+                android:textAlignment="textStart"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/imageView26"
+                app:layout_constraintTop_toTopOf="@+id/imageView26" />
+
+            <TextView
+                android:id="@+id/careerSeasons"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:elevation="50dp"
+                android:fontFamily="@font/formula1_regular"
+                android:paddingTop="4dp"
+                android:paddingEnd="10dp"
+                android:text="-"
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/imageView26"
+                app:layout_constraintTop_toTopOf="@+id/imageView26" />
+
+            <ImageView
+                android:id="@+id/imageView21"
+                android:layout_width="330dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView15"
+                app:srcCompat="@drawable/white_line" />
+
+            <TextView
+                android:id="@+id/careerTitles"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+
+                android:elevation="50dp"
+                android:fontFamily="@font/formula1_regular"
+                android:paddingTop="4dp"
+                android:paddingEnd="10dp"
+                android:text="-"
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/imageView21"
+                app:layout_constraintTop_toTopOf="@+id/imageView21" />
+
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:elevation="50dp"
+                android:fontFamily="@font/formula1_regular"
+                android:padding="4dp"
+                android:paddingStart="10dp"
+                android:text="TITLES"
+                android:textAlignment="textStart"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/imageView21"
+                app:layout_constraintTop_toTopOf="@+id/imageView21" />
+
+            <ImageView
+                android:id="@+id/imageView17"
+                android:layout_width="330dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView11"
+                app:srcCompat="@drawable/white_line" />
+
+            <ImageView
+                android:id="@+id/imageView15"
+                android:layout_width="330dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView16"
+                app:srcCompat="@drawable/white_line" />
+
+            <TextView
+                android:id="@+id/careerPoles"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:elevation="50dp"
+                android:fontFamily="@font/formula1_regular"
+                android:paddingTop="4dp"
+                android:paddingEnd="10dp"
+                android:text="-"
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/imageView15"
+                app:layout_constraintTop_toTopOf="@+id/imageView15" />
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:elevation="50dp"
+                android:fontFamily="@font/formula1_regular"
+                android:padding="4dp"
+                android:paddingStart="10dp"
+                android:text="POLES"
+                android:textAlignment="textStart"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/imageView15"
+                app:layout_constraintTop_toTopOf="@+id/imageView15" />
+
+            <ImageView
+                android:id="@+id/imageView16"
+                android:layout_width="330dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView17"
+                app:srcCompat="@drawable/white_line" />
+
+            <TextView
+                android:id="@+id/careerPodiums"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:elevation="50dp"
+                android:fontFamily="@font/formula1_regular"
+                android:paddingTop="4dp"
+                android:paddingEnd="10dp"
+                android:text="-"
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/imageView16"
+                app:layout_constraintTop_toTopOf="@+id/imageView16" />
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:elevation="50dp"
+                android:fontFamily="@font/formula1_regular"
+                android:padding="4dp"
+                android:paddingStart="10dp"
+                android:text="PODIUMS"
+                android:textAlignment="textStart"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/imageView16"
+                app:layout_constraintTop_toTopOf="@+id/imageView16" />
+
+            <TextView
+                android:id="@+id/careerWins"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+
+                android:elevation="50dp"
+                android:fontFamily="@font/formula1_regular"
+                android:paddingTop="4dp"
+                android:paddingEnd="10dp"
+                android:text="-"
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/imageView17"
+                app:layout_constraintTop_toTopOf="@+id/imageView17" />
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:elevation="50dp"
+                android:fontFamily="@font/formula1_regular"
+                android:padding="4dp"
+                android:paddingStart="10dp"
+                android:text="WINS"
+                android:textAlignment="textStart"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/imageView17"
+                app:layout_constraintTop_toTopOf="@+id/imageView17" />
+
+            <ImageView
+                android:id="@+id/imageView13"
+                android:layout_width="330dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView12"
+                app:srcCompat="@drawable/white_line" />
+
+            <TextView
+                android:id="@+id/seasonPoints"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+
+                android:elevation="50dp"
+                android:fontFamily="@font/formula1_regular"
+                android:paddingTop="4dp"
+                android:paddingEnd="10dp"
+                android:text="-"
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/imageView13"
+                app:layout_constraintTop_toTopOf="@+id/imageView13" />
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:elevation="50dp"
+                android:fontFamily="@font/formula1_regular"
+                android:padding="4dp"
+                android:paddingStart="10dp"
+                android:text="POINTS"
+                android:textAlignment="textStart"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/imageView13"
+                app:layout_constraintTop_toTopOf="@+id/imageView13" />
+
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="330dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView11"
+                app:srcCompat="@drawable/white_line" />
+
+            <TextView
+                android:id="@+id/seasonPosition"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+
+                android:elevation="50dp"
+                android:fontFamily="@font/formula1_regular"
+                android:paddingTop="4dp"
+                android:paddingEnd="10dp"
+                android:text="-"
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/imageView12"
+                app:layout_constraintTop_toTopOf="@+id/imageView12" />
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:elevation="50dp"
+                android:fontFamily="@font/formula1_regular"
+                android:padding="4dp"
+                android:paddingStart="10dp"
+                android:text="POSITION"
+                android:textAlignment="textStart"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/imageView12"
+                app:layout_constraintTop_toTopOf="@+id/imageView12" />
+
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="330dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView9"
+                app:srcCompat="@drawable/white_line" />
+
+            <TextView
+                android:id="@+id/seasonPodiums"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:elevation="50dp"
+                android:fontFamily="@font/formula1_regular"
+                android:paddingTop="4dp"
+                android:paddingEnd="10dp"
+                android:text="-"
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/imageView11"
+                app:layout_constraintTop_toTopOf="@+id/imageView11" />
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:elevation="50dp"
+                android:fontFamily="@font/formula1_regular"
+                android:padding="4dp"
+                android:paddingStart="10dp"
+                android:text="PODIUMS"
+                android:textAlignment="textStart"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/imageView11"
+                app:layout_constraintTop_toTopOf="@+id/imageView11" />
+
+            <TextView
+                android:id="@+id/ConstructorProfileName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/formula1bold3"
+                android:text="ALPINE F1 TEAM"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="330dp"
+                android:layout_height="250dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/driver_profile_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ConstructorProfileName" />
+
+            <ImageView
+                android:id="@+id/ConstructorProfileImage"
+                android:layout_width="280dp"
+                android:layout_height="230dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="43dp"
+                android:layout_marginEnd="5dp"
+                android:elevation="10dp"
+                android:src="@drawable/alfa_logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ConstructorProfileName" />
+
+            <TextView
+                android:id="@+id/ConstructorProfileCountry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/formula1_regular"
+                android:text="NETHERLAND"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ConstructorProfileName" />
+
+            <TextView
+                android:id="@+id/ConstructorProfileSelectedSeason"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/formula1_regular"
+                android:text="THIS SEASON"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/ConstructorProfileImage" />
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="30dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="36dp"
+                android:src="@drawable/white_line"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ConstructorProfileImage" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/formula1_regular"
+                android:text="HISTORY"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/imageView4"
+                app:layout_constraintTop_toBottomOf="@+id/constructorProfileDriversListView" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="30dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="33dp"
+                android:src="@drawable/white_line"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constructorProfileDriversListView" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="240dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="33dp"
+                android:src="@drawable/white_line"
+                app:layout_constraintStart_toEndOf="@+id/textView11"
+                app:layout_constraintTop_toBottomOf="@+id/constructorProfileDriversListView" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="200dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="36dp"
+                android:src="@drawable/white_line"
+                app:layout_constraintStart_toEndOf="@+id/ConstructorProfileSelectedSeason"
+                app:layout_constraintTop_toBottomOf="@+id/ConstructorProfileImage" />
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="330dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/textView25"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ConstructorProfileSelectedSeason"
+                app:srcCompat="@drawable/white_line" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:elevation="50dp"
+                android:fontFamily="@font/formula1_regular"
+                android:padding="4dp"
+                android:paddingStart="10dp"
+                android:text="WINS"
+                android:textAlignment="textStart"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="@+id/imageView9"
+                app:layout_constraintTop_toTopOf="@+id/imageView9" />
+
+            <TextView
+                android:id="@+id/SeasonWins"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:elevation="50dp"
+                android:fontFamily="@font/formula1_regular"
+                android:paddingTop="4dp"
+                android:paddingEnd="10dp"
+                android:text="-"
+                android:textAlignment="viewEnd"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/imageView9"
+                app:layout_constraintTop_toTopOf="@+id/imageView9" />
+
+            <ListView
+                android:id="@+id/constructorProfileDriversListView"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:divider="#00000000"
+                android:dividerHeight="5dp"
+                android:foregroundGravity="center_horizontal"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constructorProfileSelectedSeasonDrivers" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</FrameLayout>

@@ -56,8 +56,6 @@ class DriversStandingsFragment : Fragment() {
         val rv: RecyclerView = view.findViewById(R.id.driversRecycler)
         val layoutManager = LinearLayoutManager(requireContext())
 
-        var selectedYear = 2023
-
         rv.layoutManager = layoutManager
 
         // Inizializza il ViewModel
