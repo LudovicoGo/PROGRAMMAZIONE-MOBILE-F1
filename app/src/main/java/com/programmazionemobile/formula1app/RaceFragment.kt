@@ -1,5 +1,6 @@
 package com.programmazionemobile.formula1app
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +8,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import com.programmazionemobile.formula1app.model.CircuitInfoViewModel
 
 class RaceFragment: Fragment() {
 
@@ -34,6 +37,7 @@ class RaceFragment: Fragment() {
         return thisView
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val raceName = view.findViewById<TextView>(R.id.nomeGara)
@@ -50,20 +54,26 @@ class RaceFragment: Fragment() {
         val qualiHourRaceCard = view.findViewById<TextView>(R.id.orarioQuali)
 
         raceName.text = args.raceName
-        raceDate.text = DateConverter.convertDateInfo(args.raceDate).toUpperCase()
+        raceDate.text = DateConverter.convertDateInfo(args.raceDate).uppercase()
         startWeekEnd.text = DateConverter.convertDateGiorno(args.firstDate)
-        raceDateRaceCard.text = DateConverter.convertDate(args.raceDate).toUpperCase()
-        qualiDateRaceCard.text = DateConverter.convertDate(args.qualiDate).toUpperCase()
+        raceDateRaceCard.text = DateConverter.convertDate(args.raceDate).uppercase()
+        qualiDateRaceCard.text = DateConverter.convertDate(args.qualiDate).uppercase()
         endWeekEnd.text = DateConverter.convertDateGiorno(args.raceDate)
-        meseWeekEnd.text = DateConverter.convertDateMese(args.raceDate).toUpperCase()
+        meseWeekEnd.text = DateConverter.convertDateMese(args.raceDate).uppercase()
         giorniMancanti.text = DateConverter.giorniRimanenti(args.raceDate)
-        oreMancanti.text = DateConverter.oreRimanenti(args.raceDate, args.raceHour)
-        minutiMancanti.text = DateConverter.minutiRimanenti(args.raceDate, args.raceHour)
-        raceHourRaceCard.text = DateConverter.convertUTCtoLocalTime2(args.raceHour, args.raceDate)
+
+        if (args.raceHour == "Dati non disponibili"){
+            oreMancanti.text = "00"
+            minutiMancanti.text = "00"
+            raceHourRaceCard.text = args.raceHour
+        } else {
+            oreMancanti.text = DateConverter.oreRimanenti(args.raceDate, args.raceHour)
+            minutiMancanti.text = DateConverter.minutiRimanenti(args.raceDate, args.raceHour)
+            raceHourRaceCard.text = DateConverter.convertUTCtoLocalTime2(args.raceHour, args.raceDate)
+        }
         if (args.qualiHour == "Dati non disponibili")
             qualiHourRaceCard.text = args.qualiHour
         else
             qualiHourRaceCard.text = DateConverter.convertUTCtoLocalTime2(args.qualiHour, args.raceDate)
-
     }
 }

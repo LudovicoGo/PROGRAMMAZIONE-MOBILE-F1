@@ -131,7 +131,7 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context)
                 bundle.putString("raceDate", data.get(round - 1).date)
 
                 if (DateConverter.convertDateYear(data.get(round - 1).date).toInt() > 2020){
-                    bundle.putString("qualiDate", data.get(round -1 ).qualifying.date)
+                    bundle.putString("qualiDate", data.get(round -1).qualifying.date)
                     bundle.putString("qualiHour", data.get(round - 1).qualifying.time)
                     bundle.putString("firstDate", data.get(round - 1).firstPractice.date)
                 } else{
@@ -139,7 +139,11 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context)
                     bundle.putString("qualiDate", "Dati non disponibili")
                 }
 
-                bundle.putString("raceHour", data.get(round - 1).time)
+                if (DateConverter.convertDateYear(data.get(round - 1).date).toInt() > 2004)
+                    bundle.putString("raceHour", data.get(round - 1).time)
+                else
+                    bundle.putString("raceHour", "Dati non disponibili")
+
 
                 holder.flagGara.load("https://flagpedia.net/data/flags/w1160/$countryCode.webp")
                 {
@@ -202,7 +206,8 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context)
             "UK" to "gb",
             "United States" to "us",
             "USA" to "us",
-            "Qatar" to "qa"
+            "Qatar" to "qa",
+            "Korea" to "kr"
         )
         return countryNameToCodeMap[countryName]
     }

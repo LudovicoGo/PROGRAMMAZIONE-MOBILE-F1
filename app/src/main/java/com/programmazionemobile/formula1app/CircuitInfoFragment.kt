@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import coil.load
-import coil.transform.RoundedCornersTransformation
 import com.programmazionemobile.formula1app.model.CircuitInfoViewModel
 import org.json.JSONObject
 
@@ -79,11 +78,11 @@ class CircuitInfoFragment: Fragment() {
                 driverFatsLap.text = firstGPData
             }
         }
-        else{
-
+        else {
             fastestLap.text = "GP non ancora disputato"
             driverFatsLap.text = ""
         }
+
         circuitoPng.load("https://media.formula1.com/image/upload/content" +
                 "/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/${getCircuitCode(args.circuitID)}_Circuit.png." +
                 "transform/7col-retina/image.png")
@@ -111,7 +110,8 @@ class CircuitInfoFragment: Fragment() {
             "rodriguez" to "Mexico",
             "interlagos" to "Brazil",
             "vegas" to "Las_Vegas",
-            "yas_marina" to "Abu_Dhabi"
+            "yas_marina" to "Abu_Dhabi",
+            "ricard" to "France"
         )
         return countryNameToCodeMap[circuitID]
     }

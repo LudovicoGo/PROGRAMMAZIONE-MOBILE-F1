@@ -50,7 +50,7 @@
             <ImageView
                 android:id="@+id/imageView23"
                 android:layout_width="330dp"
-                android:layout_height="50dp"
+                android:layout_height="45dp"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/white_line"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -74,10 +74,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="15dp"
                 android:fontFamily="@font/formula1_regular"
                 android:text="RECORD"
                 android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView23"
                 app:layout_constraintStart_toStartOf="@+id/imageView23"
                 app:layout_constraintTop_toTopOf="@+id/imageView23" />
 
@@ -97,21 +97,21 @@
                 android:id="@+id/lapRecord"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="9dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="8dp"
                 android:fontFamily="@font/formula1_bold"
+                android:textAlignment="textEnd"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/imageView23"
-                app:layout_constraintStart_toStartOf="@+id/lapRecordDriver"
                 app:layout_constraintTop_toTopOf="@+id/imageView23" />
 
             <TextView
                 android:id="@+id/lapRecordDriver"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="21dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="8dp"
                 android:fontFamily="@font/formula1_regular"
                 android:textColor="#000000"
                 android:textSize="10sp"
