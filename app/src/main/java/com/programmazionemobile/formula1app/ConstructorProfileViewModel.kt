@@ -86,7 +86,7 @@ class ConstructorProfileViewModel : ViewModel() {
                         var drivers = mutableListOf<Driver>()
                         for (driver in responseObj) {
                             drivers.add(driver)
-                            Log.d(TAG, driver.toString())
+//                            Log.d(TAG, driver.toString())
 
                         }
                         _constructorDrivers.value = drivers
@@ -131,8 +131,8 @@ class ConstructorProfileViewModel : ViewModel() {
 
                         while (totalStarts > 0) {
                             offsetCounter++
-                            Log.d("OFFSET", "COUNTER ${offsetCounter}")
-                            Log.d("OFFSET", "totalStarts ${totalStarts}")
+//                            Log.d("OFFSET", "COUNTER ${offsetCounter}")
+//                            Log.d("OFFSET", "totalStarts ${totalStarts}")
 
                                 val offsetResponse = api.getConstructorResults(
                                     constructorID, offset = "${offsetCounter * 1000}"//1000

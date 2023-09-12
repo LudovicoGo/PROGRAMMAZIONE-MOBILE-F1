@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rightBorderElement"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="4dp"
+    android:background="@drawable/standings_bottom_border"
+    android:elevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="3dp"
+        android:background="@drawable/race_results_standings_shape"
+        android:paddingVertical="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/positionRaceResults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:fontFamily="@font/formula1_regular"
+            android:text="25"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/driverRaceResults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:fontFamily="@font/formula1_regular"
+            android:text="VERSTAPPEN"
+            android:textAlignment="textStart"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="@+id/positionRaceResults"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/positionRaceResults" />
+
+        <TextView
+            android:id="@+id/timeRaceResults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="190dp"
+            android:fontFamily="@font/formula1_regular"
+            android:text="1.45.45.548"
+            android:textAlignment="textStart"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="@+id/driverRaceResults"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/driverRaceResults" />
+
+        <TextView
+            android:id="@+id/pointsRaceResults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="19dp"
+            android:fontFamily="@font/formula1_regular"
+            android:text="25"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="@+id/timeRaceResults"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/timeRaceResults" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

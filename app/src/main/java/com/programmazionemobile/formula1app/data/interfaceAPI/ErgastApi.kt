@@ -7,6 +7,7 @@ import com.programmazionemobile.formula1app.data.constructorStandingsData.Constr
 import com.programmazionemobile.formula1app.data.driverResultsData.DriverResultsDataClass
 import com.programmazionemobile.formula1app.data.driverSeasonsData.DriverSeasonsDataClass
 import com.programmazionemobile.formula1app.data.driverStandingsData.DriverStandingsDataClass
+import com.programmazionemobile.formula1app.data.raceResultsData.RaceResultsDataClass
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -16,7 +17,6 @@ import java.time.Year
 interface ErgastApi {
     @GET("{year}/constructorStandings.json")
     suspend fun getConstructorStandings(@Path("year") year: String): Response<ConstructorStandingsDataClass>
-
 
     @GET("{year}/driverStandings.json")
     suspend fun getDriverStandings(@Path("year") year: String): Response<DriverStandingsDataClass>
@@ -32,13 +32,16 @@ interface ErgastApi {
     suspend fun getDriverResults(@Path("driverID") driverID: String): Response<DriverResultsDataClass>
 
     @GET("constructors/{constructorID}/results.json")
-//    suspend fun getConstructorResults(@Path("constructorID") constructorID: String, @Path("offset") offset: String): Response<ConstructorResultsDataClass>@GET("constructors/{constructorID}/results.json")
     suspend fun getConstructorResults(@Path("constructorID") constructorID: String, @Query("limit") limit: Int = 1000, @Query("offset") offset: String): Response<ConstructorResultsDataClass>
-
 
     @GET("constructorStandings/1.json?limit=1000")
     suspend fun getConstructorChampions(): Response<ConstructorStandingsDataClass>
 
     @GET("{year}/constructors/{constructorID}/drivers.json")
-    suspend fun getConstructorDrivers(@Path("constructorID") constructorID: String, @Path("year") year: String, ): Response<ConstructorDriversDataClass>
+    suspend fun getConstructorDrivers(@Path("constructorID") constructorID: String, @Path("year") year: String): Response<ConstructorDriversDataClass>
+
+
+
+    @GET("{year}/{round}/results.json")
+    suspend fun getRaceResults(@Path("year") year: String, @Path("round") round: String): Response<RaceResultsDataClass>
 }

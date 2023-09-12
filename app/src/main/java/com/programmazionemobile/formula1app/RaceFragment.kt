@@ -2,6 +2,7 @@ package com.programmazionemobile.formula1app
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,13 +26,26 @@ class RaceFragment: Fragment() {
 
         val thisView = inflater.inflate(R.layout.fragment_race_info, container, false)
 
-        val bundle = Bundle()
+        val infoCircuitBundle = Bundle()
 
-        bundle.putString("circuitName", args.circuitName)
-        bundle.putString("circuitID", args.circuitID)
+        infoCircuitBundle.putString("circuitName", args.circuitName)
+        infoCircuitBundle.putString("circuitID", args.circuitID)
 
         thisView.findViewById<ImageView>(R.id.infoCircuitoCard).setOnClickListener{
-                view-> view.findNavController().navigate(R.id.action_raceFragment2_to_circuitInfoFragment, bundle)
+                view-> view.findNavController().navigate(R.id.action_raceFragment2_to_circuitInfoFragment, infoCircuitBundle)
+        }
+
+
+        val raceResultsBundle = Bundle()
+
+        raceResultsBundle.putString("circuitName", args.circuitName)
+        raceResultsBundle.putString("circuitID", args.circuitID)
+        raceResultsBundle.putString("raceDate", args.raceDate)
+        raceResultsBundle.putString("raceName", args.raceName)
+        raceResultsBundle.putString("seasonRound", args.calendarRound)
+
+        thisView.findViewById<ImageView>(R.id.raceCard).setOnClickListener{
+                view-> view.findNavController().navigate(R.id.action_raceFragment2_to_raceResultsFragment, raceResultsBundle)
         }
 
         return thisView

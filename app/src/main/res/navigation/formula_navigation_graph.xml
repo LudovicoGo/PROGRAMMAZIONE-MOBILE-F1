@@ -91,6 +91,9 @@
         <action
             android:id="@+id/action_raceFragment2_to_circuitInfoFragment"
             app:destination="@id/circuitInfoFragment" />
+        <action
+            android:id="@+id/action_raceFragment2_to_raceResultsFragment"
+            app:destination="@id/raceResultsFragment" />
     </fragment>
     <fragment
         android:id="@+id/circuitInfoFragment"
@@ -128,6 +131,10 @@
             android:name="circuitName"
             app:argType="string"
             android:defaultValue="noCircuitName" />
+        <argument
+            android:name="calendarRound"
+            app:argType="string"
+            android:defaultValue="noCalendarRound" />
     </fragment>
     <fragment
         android:id="@+id/constructorProfileFragment"
@@ -162,5 +169,31 @@
             android:name="selectedSpinnerYear"
             app:argType="string"
             android:defaultValue="noSelectedSpinnerYear" />
+    </fragment>
+    <fragment
+        android:id="@+id/raceResultsFragment"
+        android:name="com.programmazionemobile.formula1app.RaceResultsFragment"
+        android:label="fragment_race_results"
+        tools:layout="@layout/fragment_race_results" >
+        <argument
+            android:name="circuitID"
+            app:argType="string"
+            android:defaultValue="noCircuitID" />
+        <argument
+            android:name="circuitName"
+            app:argType="string"
+            android:defaultValue="noCircuitName" />
+        <argument
+            android:name="raceDate"
+            app:argType="string"
+            android:defaultValue="noRaceDate" />
+        <argument
+            android:name="raceName"
+            app:argType="string"
+            android:defaultValue="noRaceName" />
+        <argument
+            android:name="seasonRound"
+            app:argType="string"
+            android:defaultValue="noSeasonRound" />
     </fragment>
 </navigation>

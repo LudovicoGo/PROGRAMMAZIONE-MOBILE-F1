@@ -136,7 +136,7 @@ class DriversStandingsAdapter(
                        if (context.resources.getIdentifier("${data[position - 1].constructors[0].constructorId.replace("-","_")}","color", context.packageName) != 0) {
                             var teamColorResId = context.resources.getIdentifier("${data[position - 1].constructors[0].constructorId.replace("-","_")}","color", context.packageName)
 
-                            Log.d("teamcolorresId", teamColorResId.toString())
+//                            Log.d("teamcolorresId", teamColorResId.toString())
 
                             val teamColor = ContextCompat.getColor(context, teamColorResId)
 
