@@ -32,9 +32,9 @@
             android:text="@string/logout"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/saveButton"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toEndOf="@+id/saveButton">
 
         </com.google.android.material.button.MaterialButton>
 
@@ -47,11 +47,11 @@
             android:text="Salva"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@+id/logoutButton"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/logoutButton"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/logoutButton"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/logoutButton"
-            app:layout_constraintVertical_bias="1.0">
+            app:layout_constraintVertical_bias="0.0">
 
         </com.google.android.material.button.MaterialButton>
 
@@ -100,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="14dp"
             android:fontFamily="@font/formula1_bold"
-            android:text="NomeUtente"
+            android:text="Username"
             android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView28"

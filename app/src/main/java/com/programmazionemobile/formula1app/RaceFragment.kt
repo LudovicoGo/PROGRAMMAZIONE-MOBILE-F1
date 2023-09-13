@@ -83,37 +83,60 @@ class RaceFragment: Fragment() {
         meseWeekEnd.text = DateConverter.convertDateMese(args.raceDate).uppercase()
         giorniMancanti.text = DateConverter.giorniRimanenti(args.raceDate)
 
-        if (args.raceHour == "Dati non disponibili"){
+        if (args.raceHour == "Dati non disponibili") {
             oreMancanti.text = "00"
             minutiMancanti.text = "00"
             raceHourRaceCard.text = args.raceHour
         } else {
             oreMancanti.text = DateConverter.oreRimanenti(args.raceDate, args.raceHour)
             minutiMancanti.text = DateConverter.minutiRimanenti(args.raceDate, args.raceHour)
-            raceHourRaceCard.text = DateConverter.convertUTCtoLocalTime2(args.raceHour, args.raceDate)
+            raceHourRaceCard.text =
+                DateConverter.convertUTCtoLocalTime2(args.raceHour, args.raceDate)
         }
         if (args.qualiHour == "Dati non disponibili")
             qualiHourRaceCard.text = args.qualiHour
         else
-            qualiHourRaceCard.text = DateConverter.convertUTCtoLocalTime2(args.qualiHour, args.raceDate)
+            qualiHourRaceCard.text =
+                DateConverter.convertUTCtoLocalTime2(args.qualiHour, args.raceDate)
 
         val controllo = auth.currentUser?.email
 
-        if (controllo == null)
-            liveChatCard.setOnClickListener{
-                Toast.makeText(requireContext(), "Per entrare nella Chat effettuare il login", Toast.LENGTH_SHORT).show()
+        if (controllo == null) {
+            liveChatCard.setOnClickListener {
+                Toast.makeText(
+                    requireContext(),
+                    "Per entrare nella Chat effettuare il login",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-        else if(DateConverter.calcolaMinutiMancanti(dataDesiderata = args.raceDate, orarioString = args.raceHour) > 1440){
-            liveChatCard.setOnClickListener{
-                Toast.makeText(requireContext(), "La Chat si aprirà 24 ore prima dell'inizio del Gran Premio", Toast.LENGTH_SHORT).show()
+        } else if (args.raceDate != "Dati non disponibili" && args.raceHour != "Dati non disponibili") {
+            if (DateConverter.calcolaMinutiMancanti(
+                    dataDesiderata = args.raceDate,
+                    orarioString = args.raceHour
+                ) > 1440
+            ) {
+                liveChatCard.setOnClickListener {
+                    Toast.makeText(
+                        requireContext(),
+                        "La Chat si aprirà 24 ore prima dell'inizio del Gran Premio",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            } else
+                liveChatCard.setOnClickListener {
+                    Toast.makeText(requireContext(), "Ciao", Toast.LENGTH_SHORT).show()
+                }
+        } else {
+            liveChatCard.setOnClickListener {
+                Toast.makeText(requireContext(),
+                    "La Chat relativa a questo Gran Premio è stata chiusa",
+                    Toast.LENGTH_LONG).show()
             }
-        } /*else if (DateConverter.calcolaMinutiMancanti(dataDesiderata = args.raceDate, orarioString = args.raceHour) < -1440)
+        }
+
+        /*else if (DateConverter.calcolaMinutiMancanti(dataDesiderata = args.raceDate, orarioString = args.raceHour) < -1440)
             liveChatCard.setOnClickListener{
                 Toast.makeText(requireContext(), "La Chat si chiude dopo 24 ore dalla fine del Gran Premio", Toast.LENGTH_SHORT).show()
             }*/
-        else
-            liveChatCard.setOnClickListener{
-                Toast.makeText(requireContext(), "Ciao", Toast.LENGTH_SHORT).show()
-            }
     }
 }

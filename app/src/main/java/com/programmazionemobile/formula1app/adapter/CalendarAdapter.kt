@@ -210,7 +210,8 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context)
             "United States" to "us",
             "USA" to "us",
             "Qatar" to "qa",
-            "Korea" to "kr"
+            "Korea" to "kr",
+            "Argentina" to "ar"
         )
         return countryNameToCodeMap[countryName]
     }

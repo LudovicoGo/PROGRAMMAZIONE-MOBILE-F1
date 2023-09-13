@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
     android:layout_gravity="center"
-    android:background="@drawable/navbar_shape"
+    android:background="@drawable/spinner"
     android:fontFamily="@font/formula1_regular"
     android:gravity="center|center_horizontal|center_vertical"
     android:padding="5dp"

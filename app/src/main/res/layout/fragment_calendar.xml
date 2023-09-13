@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="32dp"
             android:layout_marginBottom="2dp"
-            android:background="@drawable/navbar_shape"
+            android:background="@drawable/spinner"
             android:dropDownWidth="match_parent"
             android:elevation="40dp"
             android:paddingStart="10dp"
