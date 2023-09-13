@@ -10,9 +10,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/profilePic"
+            android:layout_width="216dp"
+            android:layout_height="197dp"
+            app:circularflow_radiusInDP="75dp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView28"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            app:layout_constraintVertical_bias="0.5" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/logoutButton"
-            android:layout_width="300dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:backgroundTint="#F4F4F4"
@@ -20,9 +32,26 @@
             android:text="@string/logout"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/saveButton"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent">
+
+        </com.google.android.material.button.MaterialButton>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#F4F4F4"
+            android:fontFamily="@font/formula1_bold"
+            android:text="Salva"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/logoutButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/logoutButton"
+            app:layout_constraintTop_toTopOf="@+id/logoutButton"
+            app:layout_constraintVertical_bias="1.0">
 
         </com.google.android.material.button.MaterialButton>
 
@@ -45,11 +74,11 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="236dp"
             android:layout_marginEnd="10dp"
             android:src="@drawable/settings_shape"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -57,10 +86,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
-            android:textSize="15sp"
-            android:textColor="@color/black"
             android:fontFamily="@font/formula1_regular"
             android:text="Nome utente"
+            android:textColor="@color/black"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView28"
             app:layout_constraintStart_toStartOf="@+id/imageView28"
             app:layout_constraintTop_toTopOf="@+id/imageView28" />
@@ -95,10 +124,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
-            android:textSize="15sp"
-            android:textColor="@color/black"
             android:fontFamily="@font/formula1_regular"
             android:text="Nome"
+            android:textColor="@color/black"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView29"
             app:layout_constraintStart_toStartOf="@+id/imageView29"
             app:layout_constraintTop_toTopOf="@+id/imageView29" />
@@ -132,10 +161,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
-            android:textSize="15sp"
-            android:textColor="@color/black"
             android:fontFamily="@font/formula1_regular"
             android:text="Cognome"
+            android:textColor="@color/black"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView30"
             app:layout_constraintStart_toStartOf="@+id/imageView30"
             app:layout_constraintTop_toTopOf="@+id/imageView30" />
@@ -169,10 +198,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
-            android:textSize="15sp"
-            android:textColor="@color/black"
             android:fontFamily="@font/formula1_regular"
             android:text="Email"
+            android:textColor="@color/black"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView31"
             app:layout_constraintStart_toStartOf="@+id/imageView31"
             app:layout_constraintTop_toTopOf="@+id/imageView31" />
@@ -188,7 +217,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/imageView31"
             app:layout_constraintEnd_toEndOf="@+id/imageView31"
             app:layout_constraintTop_toTopOf="@+id/imageView31" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
