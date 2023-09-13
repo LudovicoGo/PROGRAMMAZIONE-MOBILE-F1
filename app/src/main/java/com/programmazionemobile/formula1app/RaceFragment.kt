@@ -8,10 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.firebase.auth.FirebaseAuth
 import com.programmazionemobile.formula1app.model.CircuitInfoViewModel
 
 class RaceFragment: Fragment() {
@@ -53,6 +56,9 @@ class RaceFragment: Fragment() {
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        val auth = FirebaseAuth.getInstance()
+
         super.onViewCreated(view, savedInstanceState)
         val raceName = view.findViewById<TextView>(R.id.nomeGara)
         val raceDate = view.findViewById<TextView>(R.id.dataGara)
@@ -66,6 +72,7 @@ class RaceFragment: Fragment() {
         val minutiMancanti = view.findViewById<TextView>(R.id.leftMins)
         val raceHourRaceCard = view.findViewById<TextView>(R.id.orarioGara)
         val qualiHourRaceCard = view.findViewById<TextView>(R.id.orarioQuali)
+        val liveChatCard = view.findViewById<ImageView>(R.id.liveChatCard)
 
         raceName.text = args.raceName
         raceDate.text = DateConverter.convertDateInfo(args.raceDate).uppercase()
@@ -89,5 +96,24 @@ class RaceFragment: Fragment() {
             qualiHourRaceCard.text = args.qualiHour
         else
             qualiHourRaceCard.text = DateConverter.convertUTCtoLocalTime2(args.qualiHour, args.raceDate)
+
+        val controllo = auth.currentUser?.email
+
+        if (controllo == null)
+            liveChatCard.setOnClickListener{
+                Toast.makeText(requireContext(), "Per entrare nella Chat effettuare il login", Toast.LENGTH_SHORT).show()
+            }
+        else if(DateConverter.calcolaMinutiMancanti(dataDesiderata = args.raceDate, orarioString = args.raceHour) > 1440){
+            liveChatCard.setOnClickListener{
+                Toast.makeText(requireContext(), "La Chat si aprirà 24 ore prima dell'inizio del Gran Premio", Toast.LENGTH_SHORT).show()
+            }
+        } /*else if (DateConverter.calcolaMinutiMancanti(dataDesiderata = args.raceDate, orarioString = args.raceHour) < -1440)
+            liveChatCard.setOnClickListener{
+                Toast.makeText(requireContext(), "La Chat si chiude dopo 24 ore dalla fine del Gran Premio", Toast.LENGTH_SHORT).show()
+            }*/
+        else
+            liveChatCard.setOnClickListener{
+                Toast.makeText(requireContext(), "Ciao", Toast.LENGTH_SHORT).show()
+            }
     }
 }

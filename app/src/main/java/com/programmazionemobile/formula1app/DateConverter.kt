@@ -4,9 +4,11 @@ import android.annotation.SuppressLint
 import android.icu.text.SimpleDateFormat
 import android.icu.util.TimeZone
 import java.time.Instant
+import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 import java.util.Date
 import java.util.Locale
 
@@ -179,4 +181,14 @@ object DateConverter {
 
         return formattedTime
     }
+
+    fun calcolaMinutiMancanti(dataDesiderata: String, orarioString: String): Long {
+        val dataDesiderataString = "$dataDesiderata-$orarioString"
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ssX")
+        val dataDesiderata = LocalDateTime.parse(dataDesiderataString, formatter)
+        val dataAttuale = LocalDateTime.now()
+
+        return ChronoUnit.MINUTES.between(dataAttuale, dataDesiderata)
+    }
+
 }

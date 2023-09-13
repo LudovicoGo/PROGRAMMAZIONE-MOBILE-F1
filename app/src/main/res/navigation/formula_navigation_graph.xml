@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_calendarFragment_to_raceFragment2"
             app:destination="@id/raceFragment2" />
+        <action
+            android:id="@+id/action_calendarFragment_to_fragment_account"
+            app:destination="@id/accountFragment" />
     </fragment>
     <fragment
         android:id="@+id/championshipFragment"
@@ -94,6 +97,9 @@
         <action
             android:id="@+id/action_raceFragment2_to_raceResultsFragment"
             app:destination="@id/raceResultsFragment" />
+        <action
+            android:id="@+id/action_raceFragment2_to_accountFragment"
+            app:destination="@id/accountFragment" />
     </fragment>
     <fragment
         android:id="@+id/circuitInfoFragment"
@@ -195,5 +201,35 @@
             android:name="seasonRound"
             app:argType="string"
             android:defaultValue="noSeasonRound" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.programmazionemobile.formula1app.LoginFragment"
+        android:label="Account"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_accountFragment_to_accountFragment4"
+            app:destination="@id/accountFragment4" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountFragment4"
+        android:name="com.programmazionemobile.formula1app.AccountFragment"
+        android:label="AccountFragment"
+        tools:layout="@layout/fragment_account_logged">
+        <action
+            android:id="@+id/action_accountFragment4_to_accountFragment"
+            app:destination="@id/accountFragment" />
+        <argument
+            android:name="displayName"
+            app:argType="string"
+            android:defaultValue="No Name"/>
+        <argument
+            android:name="familyName"
+            app:argType="string"
+            android:defaultValue="No FamilyName"/>
+        <argument
+            android:name="email"
+            app:argType="string"
+            android:defaultValue="No Email"/>
     </fragment>
 </navigation>

@@ -29,7 +29,7 @@
         android:layout_marginBottom="4dp"
         android:background="@drawable/navbar_shape"
         app:elevation="500dp"
-        app:itemIconSize="30dp"
+        app:itemIconSize="28dp"
         app:itemIconTint="@color/white"
         app:itemTextColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"

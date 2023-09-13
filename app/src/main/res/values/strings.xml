@@ -8,4 +8,7 @@
     <string name="emilian_ngrand_prix">EMILIAN \nGRAND PRIX</string>
     <string name="_21_maggio_2023">21 Maggio 2023</string>
     <string name="_19_21_may">19 - 21 MAY</string>
+    <string name="web_client_id">253752480176-4ij5114or5hbc48glkh961l5au6bpj18.apps.googleusercontent.com</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
 </resources>

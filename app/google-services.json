@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "253752480176",
+    "project_id": "formula1app-684c4",
+    "storage_bucket": "formula1app-684c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253752480176:android:1aaa567f81a9dc1cbd8675",
+        "android_client_info": {
+          "package_name": "com.programmazionemobile.formula1app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1-kAe1kVsm8lYPXUIKvsmqluOi2ZFMbc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
