@@ -6,9 +6,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.marginBottom
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -16,6 +19,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
 import com.programmazionemobile.formula1app.model.CircuitInfoViewModel
+import kotlin.math.absoluteValue
 
 class RaceFragment: Fragment() {
 
@@ -54,7 +58,7 @@ class RaceFragment: Fragment() {
         return thisView
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "CutPasteId")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         val auth = FirebaseAuth.getInstance()
@@ -124,7 +128,7 @@ class RaceFragment: Fragment() {
                 }
             } else
                 liveChatCard.setOnClickListener {
-                    Toast.makeText(requireContext(), "Ciao", Toast.LENGTH_SHORT).show()
+                    view.findNavController().navigate(R.id.action_raceFragment2_to_liveChatFragment)
                 }
         } else {
             liveChatCard.setOnClickListener {

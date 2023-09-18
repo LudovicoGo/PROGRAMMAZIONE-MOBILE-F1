@@ -93,6 +93,7 @@ class CircuitInfoFragment: Fragment() {
             "monza" to "Italy",
             "jeddah" to "Abu_Dhabi",
             "bahrain" to "Bahrain",
+            "baku" to "Baku",
             "spa" to "Belgium",
             "albert_park" to "Australia",
             "miami" to "Miami",

@@ -182,8 +182,10 @@
             android:src="@drawable/white_line"
             app:layout_constraintBottom_toBottomOf="@+id/raceResultsRecyclerView"
             app:layout_constraintEnd_toEndOf="@+id/raceResultsRecyclerView"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/raceResultsRecyclerView"
-            app:layout_constraintTop_toBottomOf="@+id/imageView25" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView25"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/raceResultsNotAvailableTextView"

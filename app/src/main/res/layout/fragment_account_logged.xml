@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
             android:fontFamily="@font/formula1_regular"
-            android:text="Nome utente"
+            android:text="Username"
             android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView28"
@@ -192,6 +192,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView30" />
 
+        <ImageView
+            android:id="@+id/imageView33"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/settings_shape"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView31" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/formula1_regular"
+            android:text="Notifiche"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView33"
+            app:layout_constraintStart_toStartOf="@+id/imageView33"
+            app:layout_constraintTop_toTopOf="@+id/imageView33" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -215,6 +241,14 @@
             app:layout_constraintBottom_toBottomOf="@+id/imageView31"
             app:layout_constraintEnd_toEndOf="@+id/imageView31"
             app:layout_constraintTop_toTopOf="@+id/imageView31" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="14dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView33"
+            app:layout_constraintEnd_toEndOf="@+id/imageView33"
+            app:layout_constraintTop_toTopOf="@+id/imageView33" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
