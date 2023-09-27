@@ -31,9 +31,8 @@ class DriversStandingsAdapter(
 
     class HeaderViewHolder(val row: View) : RecyclerView.ViewHolder(row) {
 
-        val DriverStandingsYearSpinner = row.findViewById<Spinner>(R.id.DriverStandingsYearSpinner)
-        val DriverStandingsYearSpinnerText =
-            row.findViewById<TextView>(R.id.DriverStandingsYearSpinnerText)
+//        val DriverStandingsYearSpinner = row.findViewById<Spinner>(R.id.DriverStandingsYearSpinner)
+//        val DriverStandingsYearSpinnerText = row.findViewById<TextView>(R.id.DriverStandingsYearSpinnerText)
 
 
         init {
@@ -158,8 +157,7 @@ class DriversStandingsAdapter(
 
                     holder.row.setOnClickListener { view ->
                         val bundle = Bundle()
-                        val selectedYear =
-                            view.findViewById<Spinner>(R.id.DriverStandingsYearSpinner)
+//                        val selectedYear  view.findViewById<Spinner>(R.id.DriverStandingsYearSpinner)
                         bundle.putString("DriverID", data[position - 1].driver.driverId)
                         bundle.putString("DriverName", data[position - 1].driver.givenName)
                         bundle.putString("DriverFamilyName", data[position - 1].driver.familyName)
@@ -174,13 +172,11 @@ class DriversStandingsAdapter(
                         bundle.putString("DriverCurrentSeasonPosition", data[position - 1].position)
                         bundle.putString("DriverPoints", data[position - 1].points)
                         bundle.putString("DriverTeam", driverConstructor)
-                        bundle.putString("SelectedYearSpinner", selectedYearSpinner)
+//                        bundle.putString("SelectedYearSpinner", selectedYearSpinner)
 
                         view.findNavController().navigate(R.id.driverProfileFragment, bundle)
                     }
                 } else {
-
-                    /// TODO: ddddddddddd
                 }
 
             }

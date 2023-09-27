@@ -43,7 +43,7 @@ class ChampionshipFragment : Fragment() {
 
 
         //spinner
-        val years = (1950..Calendar.getInstance().get(Calendar.YEAR)).toList().reversed()
+        val years = (1958..Calendar.getInstance().get(Calendar.YEAR)).toList().reversed()
         val yearsArray = years.toTypedArray()
         val spinnerAdapter = ArrayAdapter(requireContext(), R.layout.standings_spinner_closed_item_layout, yearsArray)
         spinnerAdapter.setDropDownViewResource(R.layout.years_spinner_dropdown_layout)
