@@ -1,13 +1,16 @@
 package com.programmazionemobile.formula1app
 
 import android.annotation.SuppressLint
+import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -15,8 +18,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import coil.load
 import coil.transform.RoundedCornersTransformation
+import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.programmazionemobile.formula1app.notification.NotificationApp
 
 class AccountFragment: Fragment() {
 
@@ -100,6 +105,27 @@ class AccountFragment: Fragment() {
                 }
         }
         emailText.text = auth.currentUser?.email
+
+
+        val sharedPreferences = requireContext().getSharedPreferences("preferenze_utente", MODE_PRIVATE)
+
+        val isNotificationEnabled = sharedPreferences.getBoolean("notification_enabled", false)
+
+        val notificationCheck = view.findViewById<SwitchMaterial>(R.id.notificationSwitch)
+        notificationCheck.isChecked = isNotificationEnabled
+
+        notificationCheck.setOnCheckedChangeListener { _, isChecked ->
+            val editor = sharedPreferences.edit()
+            Log.d("NOTIFICATION CHECK", isChecked.toString() + " CHECCCKKATOOO")
+            editor.putBoolean("notification_enabled", isChecked)
+            editor.apply()
+            if(isChecked)
+                (requireActivity().application as NotificationApp).generateNotifications()
+        }
+
+
+
+
 
         return view
     }

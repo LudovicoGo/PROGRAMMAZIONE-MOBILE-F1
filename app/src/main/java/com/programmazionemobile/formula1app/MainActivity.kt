@@ -1,5 +1,6 @@
 package com.programmazionemobile.formula1app
 
+import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
@@ -18,5 +19,6 @@ class MainActivity : AppCompatActivity() {
         findViewById<BottomNavigationView>(R.id.bottom_nav).setupWithNavController(navController)
 
         FirebaseApp.initializeApp(this)
+
     }
 }

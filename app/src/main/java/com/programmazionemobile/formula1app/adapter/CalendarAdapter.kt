@@ -2,31 +2,45 @@ package com.programmazionemobile.formula1app.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
+import android.icu.util.TimeUnit
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Spinner
-import androidx.core.view.marginTop
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView.*
+import androidx.work.Constraints
+import androidx.work.Data
+import androidx.work.ExistingWorkPolicy
+import androidx.work.NetworkType
+import androidx.work.OneTimeWorkRequest
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import coil.load
 import coil.transform.RoundedCornersTransformation
-import com.programmazionemobile.formula1app.CalendarFragment
 import com.programmazionemobile.formula1app.DateConverter
 import com.programmazionemobile.formula1app.R
 import com.programmazionemobile.formula1app.data.calendarData.Race
+import com.programmazionemobile.formula1app.notification.NotificationWorker
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Date
+import kotlin.time.DurationUnit
 
-class CalendarAdapter (val data: MutableList<Race>, val context: Context)
-    : Adapter<ViewHolder>()
-{
+
+
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import androidx.work.*
+import com.google.gson.Gson
+
+class CalendarAdapter (val data: MutableList<Race>, val context: Context): Adapter<ViewHolder>(){
+
     companion object{
         private const val HEADER_NUMBER = 1
         private const val TYPE_ITEM_HEADER = 0
@@ -117,7 +131,6 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context)
             }
 
             is RaceListViewHolder -> {
-
                 holder.dataGara.text = DateConverter.convertDate(data.get(round - 1).date)
                 holder.nomeGara.text = data.get(round - 1).raceName
                 holder.descGara.text = data.get(round - 1).circuit.circuitName
