@@ -38,17 +38,13 @@ class ConstructorStandingsViewModel : ViewModel() {
     val constructorStandings: LiveData<List<ConstructorStanding>>
         get() = _constructorStandings
 
+    private val _isInternetConnected = MutableLiveData<Boolean>()
+    val isInternetConnected: LiveData<Boolean>
+        get() = _isInternetConnected
 
-//    private val _constructorStandingsString = MutableLiveData<String>()
-
-//    val constructorStandingsString: LiveData<String>
-//        get() = _constructorStandingsString
-
-
-    //imposto a falso lo stato di caricamento all'inizio
-    /*  init {
-          _loadingState.value = false
-      }*/
+    init{
+        _isInternetConnected.value = true
+    }
 
 
     fun getAllConstructorStandings(year: String) {
@@ -57,6 +53,8 @@ class ConstructorStandingsViewModel : ViewModel() {
 //                _loadingState.value = true
 
                 val response = api.getConstructorStandings(year)
+
+                _isInternetConnected.value = true
                 val constructorStandingsList = mutableListOf<ConstructorStanding>()
 
 
@@ -81,33 +79,16 @@ class ConstructorStandingsViewModel : ViewModel() {
 
 
                     }
-                    /*
-                    if (constructorStandingsData != null) {
-
-                        for (constructor in constructorStandingsData.mRData.standingsTable.standingsLists[0].constructorStandings) {
-                            constructorStandingsList.add(constructor)
-
-
-//                            constructorStandingString =
-//                                constructorStandingString + "cosotruttore: " + constructor.constructor + "\n" + "punti: " +
-//                                        constructor.points + "\n" + "posizione: " + constructor.position + "\n" + "vittorie: " + constructor.wins + "\n\n\n"
-
-                        }
-                    }
-                    _constructorStandings.value = constructorStandingsList
-//                    _constructorStandingsString.value = constructorStandingString
-//                    Log.d("COSTRUTTORI", "${constructorStandingString.toString()}")*/
 
                 } else {
-                    // Handle unsuccessful response
-//                    _driverStandings.value = "API call failed with response code: ${response.code()}"
-//                    Log.d("FAIL", "API call failed with response code: ${response.code()}")
+                   //                    Log.d("FAIL", "API call failed with response code: ${response.code()}")
                 }
 
 
             } catch (e: Exception) {
                 // Handle exception
                 Log.d("FAIL, EXCEPTION:", e.toString())
+                _isInternetConnected.value = false
             } /*finally {//dopo aver terminato la chiamata alle api imposto lo stato di caricamento a falso
                 _loadingState.value = false
             }*/

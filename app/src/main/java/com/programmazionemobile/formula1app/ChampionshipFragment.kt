@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.lifecycle.Observer
@@ -50,9 +51,14 @@ class ChampionshipFragment : Fragment() {
         val ConstructorStandingsSpinner = view.findViewById<Spinner>(R.id.constructorStandingsSpinner)
 
         ConstructorStandingsSpinner.adapter = spinnerAdapter
+        val connectionOverlayButton = view.findViewById<View>(R.id.connectionOverlayButton)
+
         ConstructorStandingsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val item = years.get(position).toString()
+                connectionOverlayButton.setOnClickListener {
+                    viewModel.getAllConstructorStandings(item)
+                }
 //                Log.d("YEAR SELECTED CONSTRUCTOR STANDINGS FRAGMENT", "${ConstructorStandingsSpinner.selectedItem}")
                 viewModel.getAllConstructorStandings(item)
 
@@ -66,6 +72,36 @@ class ChampionshipFragment : Fragment() {
         ///////////////fine spinner///////////////
 
 
+        val connectionOverlayBackground = view.findViewById<ImageView>(R.id.connectionOverlayBackground)
+        val connectionOverlayTextView = view.findViewById<TextView>(R.id.connectionOverlayTextView)
+        val connectionOverlayLogo = view.findViewById<ImageView>(R.id.connectionOverlayLogo)
+
+
+        viewModel.isInternetConnected.observe(viewLifecycleOwner) { isInternetConnected ->
+            if (isInternetConnected == false) {
+
+//                connectionOverlay.visibility = View.VISIBLE
+                rv.visibility = View.GONE
+                ConstructorStandingsSpinner.visibility = View.GONE
+                connectionOverlayButton.visibility = View.VISIBLE
+                connectionOverlayBackground.visibility = View.VISIBLE
+                connectionOverlayTextView.visibility = View.VISIBLE
+                connectionOverlayLogo.visibility = View.VISIBLE
+
+
+            } else {
+
+//                connectionOverlay.visibility = View.GONE
+                rv.visibility = View.VISIBLE
+                ConstructorStandingsSpinner.visibility = View.VISIBLE
+                connectionOverlayTextView.visibility = View.GONE
+                connectionOverlayBackground.visibility = View.GONE
+                connectionOverlayLogo.visibility = View.GONE
+                connectionOverlayButton.visibility = View.GONE
+            }
+        }
+
+
         viewModel.constructorStandings.observe(viewLifecycleOwner, Observer { constructorStandings ->
                 val adapter = ConstructorStandingsListAdapter(requireContext(), ConstructorStandingsSpinner.selectedItem.toString())
                 rv.adapter = adapter
@@ -74,6 +110,10 @@ class ChampionshipFragment : Fragment() {
             })
         viewModel.getAllConstructorStandings(ConstructorStandingsSpinner.selectedItem.toString())
         return view
+
+
+
+        
 
 
     }

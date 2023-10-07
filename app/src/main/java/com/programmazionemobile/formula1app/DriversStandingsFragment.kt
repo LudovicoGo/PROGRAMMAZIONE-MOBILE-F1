@@ -71,12 +71,18 @@ class DriversStandingsFragment : Fragment() {
         val DriversStandingsSpinner = view.findViewById<Spinner>(R.id.DriversStandingsSpinner)
 
         DriversStandingsSpinner.adapter = spinnerAdapter
+
+        val connectionOverlayButton = view.findViewById<View>(R.id.connectionOverlayButton)
+
         DriversStandingsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val item = years.get(position).toString()
                 // Chiama la funzione passata come parametro
 //                Log.d("YEAR SELECTED FRAGMENT", "${DriversStandingsSpinner.selectedItem}")
                 viewModel.getAllDriverStandings(item)
+                connectionOverlayButton.setOnClickListener {
+                    viewModel.getAllDriverStandings(item)
+                }
 
             }
 
@@ -84,13 +90,6 @@ class DriversStandingsFragment : Fragment() {
                 // Non è necessario gestire questo caso
             }
         }
-
-
-
-
-
-
-
 
         viewModel.driverStandings.observe(viewLifecycleOwner, Observer { driverStandings ->
             val lista = mutableListOf<DriverStanding>()
@@ -134,6 +133,34 @@ class DriversStandingsFragment : Fragment() {
         })
 
 
+        val connectionOverlayBackground = view.findViewById<ImageView>(R.id.connectionOverlayBackground)
+        val connectionOverlayTextView = view.findViewById<TextView>(R.id.connectionOverlayTextView)
+        val connectionOverlayLogo = view.findViewById<ImageView>(R.id.connectionOverlayLogo)
+
+
+        viewModel.isInternetConnected.observe(viewLifecycleOwner) { isInternetConnected ->
+            if (isInternetConnected == false) {
+
+//                connectionOverlay.visibility = View.VISIBLE
+                rv.visibility = View.GONE
+                DriversStandingsSpinner.visibility = View.GONE
+                connectionOverlayButton.visibility = View.VISIBLE
+                connectionOverlayBackground.visibility = View.VISIBLE
+                connectionOverlayTextView.visibility = View.VISIBLE
+                connectionOverlayLogo.visibility = View.VISIBLE
+
+
+            } else {
+
+//                connectionOverlay.visibility = View.GONE
+                rv.visibility = View.VISIBLE
+                DriversStandingsSpinner.visibility = View.VISIBLE
+                connectionOverlayTextView.visibility = View.GONE
+                connectionOverlayBackground.visibility = View.GONE
+                connectionOverlayLogo.visibility = View.GONE
+                connectionOverlayButton.visibility = View.GONE
+            }
+        }
         //chiamata per ottenere i dati sulla classifica dei piloti
         val currentYear = Calendar.getInstance().get(Calendar.YEAR).toString()
         viewModel.getAllDriverStandings(currentYear)

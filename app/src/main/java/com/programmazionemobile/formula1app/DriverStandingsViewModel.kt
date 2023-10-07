@@ -38,10 +38,14 @@ class DriverStandingsViewModel : ViewModel() {
     val driverStandings: LiveData<List<DriverStanding>>
         get() = _driverStandings
 
+    private val _isInternetConnected = MutableLiveData<Boolean>()
+    val isInternetConnected: LiveData<Boolean>
+        get() = _isInternetConnected
 
-    //imposto a falso lo stato di caricamento all'inizio
+
     init {
-        _loadingState.value = false
+        _isInternetConnected.value = true
+        _loadingState.value = false //imposto a falso lo stato di caricamento all'inizio
     }
 
 
@@ -52,6 +56,8 @@ class DriverStandingsViewModel : ViewModel() {
                 _loadingState.value = true
 
                 val response = api.getDriverStandings(year)
+
+                _isInternetConnected.value = true
 
 
                 if (response.isSuccessful) {
@@ -82,6 +88,7 @@ class DriverStandingsViewModel : ViewModel() {
             } catch (e: Exception) {
                 // Handle exception
                 Log.d("FAIL, EXCEPTION:", e.toString())
+                _isInternetConnected.value = false
             } finally {//dopo aver terminato la chiamata alle api imposto lo stato di caricamento a falso
             _loadingState.value = false
         }

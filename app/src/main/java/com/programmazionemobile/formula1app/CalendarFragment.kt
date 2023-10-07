@@ -54,6 +54,8 @@ class CalendarFragment : Fragment() {
         val calendarSpinner = view.findViewById<Spinner>(R.id.spinner)
 
         calendarSpinner.adapter = spinnerAdapter
+        val connectionOverlayButton = view.findViewById<View>(R.id.connectionOverlayButton)
+
         calendarSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val item = yearsArray.get(position)
@@ -61,12 +63,17 @@ class CalendarFragment : Fragment() {
 //                Log.d("YEAR SELECTED FRAGMENT", "${DriversStandingsSpinner.selectedItem}")
                 viewModel.getCalendar(item.toString())
 
+                connectionOverlayButton.setOnClickListener {
+                    viewModel.getCalendar(item.toString())
+                }
+
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 // Non è necessario gestire questo caso
             }
         }
+
 
         viewModel.calendar.observe(viewLifecycleOwner) { calendar ->
             val list = mutableListOf<Race>()
@@ -76,6 +83,40 @@ class CalendarFragment : Fragment() {
             //rv.adapter = HeaderRaceAdapter(headerView, adapter)
             rv.adapter = adapter
         }
+
+
+
+
+        val connectionOverlayBackground = view.findViewById<ImageView>(R.id.connectionOverlayBackground)
+        val connectionOverlayTextView = view.findViewById<TextView>(R.id.connectionOverlayTextView)
+        val connectionOverlayLogo = view.findViewById<ImageView>(R.id.connectionOverlayLogo)
+
+
+        viewModel.isInternetConnected.observe(viewLifecycleOwner) { isInternetConnected ->
+            if (isInternetConnected == false) {
+
+//                connectionOverlay.visibility = View.VISIBLE
+                rv.visibility = View.GONE
+                connectionOverlayButton.visibility = View.VISIBLE
+                connectionOverlayBackground.visibility = View.VISIBLE
+                connectionOverlayTextView.visibility = View.VISIBLE
+                connectionOverlayLogo.visibility = View.VISIBLE
+
+
+            } else {
+
+//                connectionOverlay.visibility = View.GONE
+                rv.visibility = View.VISIBLE
+                connectionOverlayTextView.visibility = View.GONE
+                connectionOverlayBackground.visibility = View.GONE
+                connectionOverlayLogo.visibility = View.GONE
+                connectionOverlayButton.visibility = View.GONE
+            }
+        }
+
+
+
+
 
         viewModel.getCalendar(currentYear.toString())
 
