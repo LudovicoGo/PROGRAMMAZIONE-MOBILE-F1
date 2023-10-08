@@ -33,21 +33,27 @@ class DriverProfileViewModel : ViewModel() {
     val driverStandingsDataPoints: LiveData<Map<String, String>>
         get() = _driverStandingsData
 
+    private val _isInternetConnected = MutableLiveData<Boolean>()
+    val isInternetConnected: LiveData<Boolean>
+        get() = _isInternetConnected
 
+    init{
+        _isInternetConnected.value = true
+    }
+
+/*
     private fun getCareerTitles(driverID: String): String {
         var titles = 0
 
         return titles.toString()
-    }
+    }*/
 
     fun getDriverPointsTitles(driverID: String) {//per prendere il totale dei punti in tutte le stagioni passate
         viewModelScope.launch {
             var points = 0.0
             var titles = 0
             try {
-
                 val response = api.getSingleDriverStandings(driverID)
-
                 if (response.isSuccessful) {
                     val driverStandingsData = response.body()
 
@@ -61,22 +67,19 @@ class DriverProfileViewModel : ViewModel() {
                             }
                         }
                     }
-//                    Log.d(TAG, "PUNTI PUNTI ${points}")
-//                    Log.d(TAG, "TITOLI TITOLI ${titles}")
                     data = mutableMapOf(
                         "careerPoints" to points.toString(),
                         "careerTitles" to titles.toString()
                     )
                     _driverStandingsData.value = data
-                    //                    data["careerPoints"] = points.toString()
                 }
+                _isInternetConnected.value = true
 
             } catch (e: Exception) {
                 Log.d(TAG, e.toString())
+                _isInternetConnected.value = false
+//                if(_isInternetConnected.value == true)
             }
-//            Log.d(TAG, "PUNTI PUNTI ${points}")
-//            Log.d(TAG, "TITOLI TITOLI ${titles}")
-
         }
     }
 
@@ -152,7 +155,7 @@ class DriverProfileViewModel : ViewModel() {
                         "seasonPodiums" to "${seasonPodiums}",
                         "careerPoles" to "${careerPoles}",
                         "careerSeasons" to seasons.size.toString(),
-                        "careerTitles" to getCareerTitles(driverID),
+//                        "careerTitles" to getCareerTitles(driverID),
                         "careerFLap" to careerFLap.toString()
                     )
                     _driverData.value = data
@@ -165,4 +168,8 @@ class DriverProfileViewModel : ViewModel() {
 
 
     }
+    fun setInternetConnectionStatus(isConnected: Boolean) {
+        _isInternetConnected.value = isConnected
+    }
+
 }

@@ -40,6 +40,14 @@ class ConstructorProfileViewModel : ViewModel() {
     val constructorTitles: LiveData<String>
         get() = _constructorTitles
 
+    private val _isInternetConnected = MutableLiveData<Boolean>()
+    val isInternetConnected: LiveData<Boolean>
+        get() = _isInternetConnected
+
+    init{
+        _isInternetConnected.value = true
+    }
+
 
 
 
@@ -67,6 +75,7 @@ class ConstructorProfileViewModel : ViewModel() {
 
             } catch (e: Exception) {
                 Log.d(TAG, e.toString())
+
             }
 
         }
@@ -80,23 +89,22 @@ class ConstructorProfileViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val response = api.getConstructorDrivers(constructorID, selectedYearSpinner)
+                _isInternetConnected.value = true
                 var responseObj = response.body()?.mRData?.driverTable?.drivers
                 if (response.isSuccessful) {
                     if (responseObj != null) {
                         var drivers = mutableListOf<Driver>()
                         for (driver in responseObj) {
                             drivers.add(driver)
-//                            Log.d(TAG, driver.toString())
-
                         }
                         _constructorDrivers.value = drivers
-//                        Log.d(TAG, responseObj[0].toString() + " " + responseObj[1].toString())
                     }
 
                 }
 
             } catch (e: Exception) {
                 Log.e(TAG, e.toString())
+                _isInternetConnected.value = false
             }
 
         }
@@ -196,13 +204,6 @@ class ConstructorProfileViewModel : ViewModel() {
                 }
 
 
-//                Log.d(TAG, "gare ${historyRaces}")
-//                Log.d(TAG, "vittorie ${historyWins}")
-//                Log.d(TAG, "podi ${historyPodiums}")
-//                Log.d(TAG, "giri veloci ${historyFLap}")
-//                Log.d(TAG, "poles ${historyPoles}")
-//                Log.d(TAG, "seasons ${seasons.size}")
-
                 var data = mutableMapOf(
                     "historyRaces" to "${historyRaces}",
                     "historyWins" to "${historyWins}",
@@ -222,5 +223,9 @@ class ConstructorProfileViewModel : ViewModel() {
                 Log.e(TAG, e.toString())
             }
         }
+    }
+
+    fun setInternetConnectionStatus(isConnected: Boolean) {
+        _isInternetConnected.value = isConnected
     }
 }

@@ -21,6 +21,14 @@ class CircuitInfoViewModel: ViewModel() {
         .build()
         .create(Service::class.java)
 
+    private val _isInternetConnected = MutableLiveData<Boolean>()
+    val isInternetConnected: LiveData<Boolean>
+        get() = _isInternetConnected
+
+    init{
+        _isInternetConnected.value = true
+    }
+
     fun getFirstGPLiveData(circuitID: String): MutableLiveData<String?> {
 
         val dataFirstGP = MutableLiveData<String?>()
@@ -28,6 +36,7 @@ class CircuitInfoViewModel: ViewModel() {
         viewModelScope.launch {
             try {
                 val response = api.infoCircuit(circuitID)
+                _isInternetConnected.value = true
                 println(response)
 
                 if (response.isSuccessful) {
@@ -47,7 +56,9 @@ class CircuitInfoViewModel: ViewModel() {
                 }
             } catch (e: Exception) {
                 // Handle any exceptions that occur during the API call here
-                dataFirstGP.value = "Error occurred: ${e.message}"
+//                dataFirstGP.value = "Error occurred: ${e.message}"
+                dataFirstGP.value = "-"
+                _isInternetConnected.value = false
             }
         }
 
@@ -88,7 +99,8 @@ class CircuitInfoViewModel: ViewModel() {
                     fastestLap.value = "Dati non disponibili"
                 }
             } catch (e: Exception) {
-                fastestLap.value = "Errore: ${e.message}"
+//                fastestLap.value = "Errore: ${e.message}"
+                fastestLap.value = "-"
             }
         }
 
@@ -134,10 +146,15 @@ class CircuitInfoViewModel: ViewModel() {
 
                 }
             } catch (e: Exception) {
-                giroVeloce.value = "Errore: ${e.message}"
+//                giroVeloce.value = "Errore: ${e.message}"
+                giroVeloce.value = "-"
             }
         }
 
         return giroVeloce
+    }
+
+    fun setInternetConnectionStatus(isConnected: Boolean) {
+        _isInternetConnected.value = isConnected
     }
 }

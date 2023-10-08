@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
@@ -70,6 +71,7 @@ class CircuitInfoFragment: Fragment() {
             firstGP.text = firstGPData
         }
 
+
         if (firstGP.text.toString() < "2023"){
             viewModel.getFastestLap(args.circuitID).observe(viewLifecycleOwner) { firstGPData ->
                 fastestLap.text = firstGPData
@@ -83,9 +85,29 @@ class CircuitInfoFragment: Fragment() {
             driverFatsLap.text = ""
         }
 
-        circuitoPng.load("https://media.formula1.com/image/upload/content" +
-                "/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/${getCircuitCode(args.circuitID)}_Circuit.png." +
-                "transform/7col-retina/image.png")
+        if (viewModel.isInternetConnected.value == true) {
+            circuitoPng.visibility = View.VISIBLE
+            circuitoPng.load(
+                "https://media.formula1.com/image/upload/content" +
+                        "/dam/fom-website/2018-redesign-assets/Circuit%20maps%2016x9/" +
+                        "${getCircuitCode(args.circuitID)}_Circuit.png." +
+                        "transform/7col-retina/image.png"
+            )
+        }
+
+
+        viewModel.isInternetConnected.observe(viewLifecycleOwner) { isInternetConnected ->
+            if (!isInternetConnected) {
+                val toastMessage = "Can't load stats. Check your internet connection!"
+                val duration = Toast.LENGTH_LONG
+                val toast = Toast.makeText(context, toastMessage, duration)
+                viewModel.setInternetConnectionStatus(true)
+                toast.show()
+                circuitoPng.visibility = View.GONE
+            } else{
+//                circuitoPng.visibility = View.VISIBLE
+            }
+        }
     }
 
     fun getCircuitCode(circuitID: String): String? {

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
@@ -102,6 +103,19 @@ class DriverProfileFragment : Fragment() {
         })
         viewModel.getDriverStats(driverID, args.SelectedYearSpinner)
 
+
+
+        viewModel.isInternetConnected.observe(viewLifecycleOwner) { isInternetConnected ->
+            if (!isInternetConnected) {
+                val toastMessage = "Can't load stats. Check your internet connection!"
+                val duration = Toast.LENGTH_LONG
+                val toast = Toast.makeText(context, toastMessage, duration)
+                viewModel.setInternetConnectionStatus(true)
+                toast.show()
+            }
+        }
+
+
         viewModel.driverStandingsDataPoints.observe(viewLifecycleOwner, Observer { driverStandingsDataPoints ->
             var totalPoints = args.DriverPoints.toFloat() + driverStandingsDataPoints.get("careerPoints")!!.toFloat()
 
@@ -110,6 +124,9 @@ class DriverProfileFragment : Fragment() {
 
         })
         viewModel.getDriverPointsTitles(driverID)
+
+
+
 
 
     }

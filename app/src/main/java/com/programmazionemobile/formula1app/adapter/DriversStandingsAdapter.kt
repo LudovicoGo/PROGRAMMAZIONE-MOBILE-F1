@@ -95,22 +95,22 @@ class DriversStandingsAdapter(
 
                     val itemPosition = position - 1
 
-                    holder.DriverPosition.text = data.get(position - 1).positionText
-                    holder.DriverID.text = data.get(position - 1).driver.driverId
-                    holder.DriverName.text = data[position - 1].driver.givenName
-                    holder.DriverFamilyName.text = data[position - 1].driver.familyName
-                    holder.DriverPoints.text = data[position - 1].points
-                    if (!data[position - 1].driver.permanentNumber.isNullOrEmpty()) {
-//                            bundle.putString("DriverNumber", data[position - 1].driver.permanentNumber)
-                        holder.DriverNumber.text = data[position - 1].driver.permanentNumber
+                    holder.DriverPosition.text = data.get(itemPosition).positionText
+                    holder.DriverID.text = data.get(itemPosition).driver.driverId
+                    holder.DriverName.text = data[itemPosition].driver.givenName
+                    holder.DriverFamilyName.text = data[itemPosition].driver.familyName
+                    holder.DriverPoints.text = data[itemPosition].points
+                    if (!data[itemPosition].driver.permanentNumber.isNullOrEmpty()) {
+//                            bundle.putString("DriverNumber", data[itemPosition].driver.permanentNumber)
+                        holder.DriverNumber.text = data[itemPosition].driver.permanentNumber
                     } else {
                         holder.DriverNumber.text = ""
                     }
-//                    holder.DriverNumber.text = data[position - 1].driver.permanentNumber
-//                    val seasonWins = data[position - 1].wins
+//                    holder.DriverNumber.text = data[itemPosition].driver.permanentNumber
+//                    val seasonWins = data[itemPosition].wins
 
 
-                    val driverId = data[position - 1].driver.driverId // ID del pilota
+                    val driverId = data[itemPosition].driver.driverId // ID del pilota
                     val drawableResId = context.resources.getIdentifier(driverId, "drawable", context.packageName)
                     if (drawableResId != 0) {
                         // Se l'ID è diverso da 0, il drawable è stato trovato
@@ -120,20 +120,20 @@ class DriversStandingsAdapter(
                     }
 
 
-//                    var driverConstructor = data[position - 1].constructors[0].name
+//                    var driverConstructor = data[itemPosition].constructors[0].name
                     var driverConstructor = ""
 
 
-                    for (constructor in data[position - 1].constructors) {
+                    for (constructor in data[itemPosition].constructors) {
                         driverConstructor = driverConstructor + constructor.name + " "
                     }
                     holder.DriverTeam.text = driverConstructor
 
                     //bordo inferiore
                     //prendo il colore del team dal file colors.xml
-                    if (data[position - 1].constructors.size == 1) {
-                       if (context.resources.getIdentifier("${data[position - 1].constructors[0].constructorId.replace("-","_")}","color", context.packageName) != 0) {
-                            var teamColorResId = context.resources.getIdentifier("${data[position - 1].constructors[0].constructorId.replace("-","_")}","color", context.packageName)
+                    if (data[itemPosition].constructors.size == 1) {
+                       if (context.resources.getIdentifier("${data[itemPosition].constructors[0].constructorId.replace("-","_")}","color", context.packageName) != 0) {
+                            var teamColorResId = context.resources.getIdentifier("${data[itemPosition].constructors[0].constructorId.replace("-","_")}","color", context.packageName)
 
 //                            Log.d("teamcolorresId", teamColorResId.toString())
 
@@ -158,25 +158,21 @@ class DriversStandingsAdapter(
                     holder.row.setOnClickListener { view ->
                         val bundle = Bundle()
 //                        val selectedYear  view.findViewById<Spinner>(R.id.DriverStandingsYearSpinner)
-                        bundle.putString("DriverID", data[position - 1].driver.driverId)
-                        bundle.putString("DriverName", data[position - 1].driver.givenName)
-                        bundle.putString("DriverFamilyName", data[position - 1].driver.familyName)
-                        bundle.putString("DriverCountry", data[position - 1].driver.nationality)
-                        if (!data[position - 1].driver.permanentNumber.isNullOrEmpty()) {
-                            bundle.putString(
-                                "DriverNumber",
-                                data[position - 1].driver.permanentNumber
-                            )
+                        bundle.putString("DriverID", data[itemPosition].driver.driverId)
+                        bundle.putString("DriverName", data[itemPosition].driver.givenName)
+                        bundle.putString("DriverFamilyName", data[itemPosition].driver.familyName)
+                        bundle.putString("DriverCountry", data[itemPosition].driver.nationality)
+                        if (!data[itemPosition].driver.permanentNumber.isNullOrEmpty()) {
+                            bundle.putString("DriverNumber", data[itemPosition].driver.permanentNumber)
                         }
-                        bundle.putString("DriverBirth", data[position - 1].driver.dateOfBirth)
-                        bundle.putString("DriverCurrentSeasonPosition", data[position - 1].position)
-                        bundle.putString("DriverPoints", data[position - 1].points)
+                        bundle.putString("DriverBirth", data[itemPosition].driver.dateOfBirth)
+                        bundle.putString("DriverCurrentSeasonPosition", data[itemPosition].position)
+                        bundle.putString("DriverPoints", data[itemPosition].points)
                         bundle.putString("DriverTeam", driverConstructor)
-//                        bundle.putString("SelectedYearSpinner", selectedYearSpinner)
+                        bundle.putString("SelectedYearSpinner", selectedYearSpinner)
 
                         view.findNavController().navigate(R.id.driverProfileFragment, bundle)
                     }
-                } else {
                 }
 
             }

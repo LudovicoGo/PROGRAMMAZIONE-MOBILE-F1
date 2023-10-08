@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.programmazionemobile.formula1app.adapter.ConstructorProfileDriversAdapter
@@ -48,22 +49,14 @@ class ConstructorProfileFragment : Fragment() {
         val selectedSeason = view.findViewById<TextView>(R.id.ConstructorProfileSelectedSeason)
 
         val constructorName = view.findViewById<TextView>(R.id.ConstructorProfileName)
-//        val driverFamilyName = view.findViewById<TextView>(R.id.DriverProfileSurname)
         val constructorNationality = view.findViewById<TextView>(R.id.ConstructorProfileCountry)
-//        val driverBirth = view.findViewById<TextView>(R.id.DriverProfileBirthDate)
-//        val driverTeam = view.findViewById<TextView>(R.id.DriverProfileTeam)
-//        val driverNumber = view.findViewById<TextView>(R.id.DriverProfileNumber)
+        val constructorImageBackground = view.findViewById<ImageView>(R.id.ConstructorProfileImageBackground)
         val constructorImage = view.findViewById<ImageView>(R.id.ConstructorProfileImage)
         val constructorSeasonPosition = view.findViewById<TextView>(R.id.seasonPosition)
         val constructorSeasonPoints = view.findViewById<TextView>(R.id.seasonPoints)
         val constructorSeasonPodiums = view.findViewById<TextView>(R.id.seasonPodiums)
         val constructorSeasonWins = view.findViewById<TextView>(R.id.SeasonWins)
 
-
-//        val constructorDriversListView = view.findViewById<ListView>(R.id.constructorProfileDriversListView)
-
-
-        val constructorHistoryPoints = view.findViewById<TextView>(R.id.careerPoints)
         val constructorHistoryTitles = view.findViewById<TextView>(R.id.careerTitles)
         val constructorHistoryPoles = view.findViewById<TextView>(R.id.careerPoles)
         val constructorHistoryWins = view.findViewById<TextView>(R.id.careerWins)
@@ -74,12 +67,6 @@ class ConstructorProfileFragment : Fragment() {
         val constructorProfileSelectedSeason = view.findViewById<TextView>(R.id.ConstructorProfileSelectedSeason)
         val constructorProfileSelectedSeasonDrivers = view.findViewById<TextView>(R.id.constructorProfileSelectedSeasonDrivers)
 
-
-        Log.d("YEAR SELECTED DRIVER PROFILE", "${args.toString()}")
-        Log.d("YEAR SELECTED DRIVER PROFILE", "${args.constructorName}")
-        Log.d("YEAR SELECTED DRIVER PROFILE", "${args.constructorID}")
-        Log.d("YEAR SELECTED DRIVER PROFILE", "${args.constructorNationality}")
-//        selectedSeason.text = args.SelectedYearSpinner + " SEASON"
         constructorName.text = args.constructorName
         constructorNationality.text = args.constructorNationality
         constructorSeasonPosition.text = args.constructorSeasonPosition
@@ -95,10 +82,14 @@ class ConstructorProfileFragment : Fragment() {
             requireContext().packageName
         )
         if (drawableResId != 0) {
-            // Se l'ID è diverso da 0, il drawable è stato trovato
-            constructorImage.setImageResource(drawableResId) // Imposta il drawable dell'ImageView
+            //se l'ID è diverso da 0, il drawable è stato trovato
+            constructorImage.visibility = View.VISIBLE
+            constructorImageBackground.visibility = View.VISIBLE
+            constructorImage.setImageResource(drawableResId) //imposta il drawable dell'ImageView
         } else {
-            // Il drawable non è stato trovato, imposto immagine di default
+            //il drawable non è stato trovato, imposto immagine di default
+            constructorImageBackground.visibility = View.GONE
+            constructorImage.visibility = View.GONE
             constructorImage.setImageResource(R.drawable.nodriverpic)
         }
 
@@ -114,17 +105,15 @@ class ConstructorProfileFragment : Fragment() {
 
 
         viewModel.constructorDrivers.observe(viewLifecycleOwner, Observer { constructorDrivers ->
-//            adapter.clear() // Pulisce l'adapter
-//            adapter.addAll(constructorDrivers) // Aggiunge i nuovi dati all'adapter
-//            adapter.notifyDataSetChanged() // Notifica all'adapter che i dati sono cambiati
+
             val layoutParams = listView.layoutParams
             layoutParams.height = (122*constructorDrivers.size * resources.displayMetrics.density).toInt() // Sostituisci "nuovaAltezza" con l'altezza desiderata in pixel
             listView.layoutParams = layoutParams
-//            listView.minimumHeight()
 
             val adapter = ConstructorProfileDriversAdapter(requireContext(), constructorDrivers)
             listView.adapter = adapter
         })
+
         viewModel.getConstructorDrivers(args.constructorID, args.selectedSpinnerYear)
 
         viewModel.constructorData.observe(viewLifecycleOwner, Observer { constructorData ->
@@ -143,6 +132,17 @@ class ConstructorProfileFragment : Fragment() {
             constructorHistoryTitles.text = constructorTitles
         })
         viewModel.getConstructorTitles(constructorID)
+
+        viewModel.isInternetConnected.observe(viewLifecycleOwner) { isInternetConnected ->
+            if (!isInternetConnected) {
+                val toastMessage = "Can't load stats. Check your internet connection!"
+                val duration = Toast.LENGTH_LONG
+                val toast = Toast.makeText(context, toastMessage, duration)
+                viewModel.setInternetConnectionStatus(true)
+                toast.show()
+            }
+        }
+
     }
 
 }
