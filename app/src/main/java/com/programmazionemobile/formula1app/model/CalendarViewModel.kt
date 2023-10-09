@@ -63,6 +63,8 @@ class CalendarViewModel: ViewModel() {
 
                 _isInternetConnected.value = true
                 if (response.isSuccessful) {
+                    Log.d("1FAIL", "API call failed with response code: ${response.code()}")
+
                     val calendarData = response.body()
 
                     if (calendarData != null) {

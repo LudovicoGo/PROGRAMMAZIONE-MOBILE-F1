@@ -8,29 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.programmazionemobile.formula1app.data.raceResultsData.Result
 
-import android.annotation.SuppressLint
-import android.graphics.drawable.Drawable
-import android.icu.text.SimpleDateFormat
-import android.icu.util.Calendar
-import android.os.Bundle
-import android.util.Log
-import android.widget.ImageView
-import android.widget.Spinner
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.ColorUtils
-import androidx.core.view.marginTop
-import androidx.navigation.findNavController
-import androidx.recyclerview.widget.RecyclerView.*
-import coil.load
-import coil.transform.RoundedCornersTransformation
-import com.programmazionemobile.formula1app.CalendarFragment
-import com.programmazionemobile.formula1app.DateConverter
 import com.programmazionemobile.formula1app.R
-import com.programmazionemobile.formula1app.data.calendarData.Race
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.Date
 
 class RaceResultsAdapter(
     private val context: Context,
@@ -38,10 +18,10 @@ class RaceResultsAdapter(
 ) : RecyclerView.Adapter<RaceResultsAdapter.RaceResultsViewHolder>() {
 
     inner class RaceResultsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val positionRaceResults: TextView = itemView.findViewById(R.id.positionRaceResults)
-        val driverRaceResults: TextView = itemView.findViewById(R.id.driverRaceResults)
+        val positionRaceResults: TextView = itemView.findViewById(R.id.positionQualifying)
+        val driverRaceResults: TextView = itemView.findViewById(R.id.driverQualifying)
         val pointsRaceResults: TextView = itemView.findViewById(R.id.pointsRaceResults)
-        val timeRaceResults: TextView = itemView.findViewById(R.id.timeRaceResults)
+        val timeRaceResults: TextView = itemView.findViewById(R.id.timeQ1)
         val rightBorderElement: ConstraintLayout = itemView.findViewById(R.id.rightBorderElement)
     }
 

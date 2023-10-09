@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/positionRaceResults"
+            android:id="@+id/positionQualifying"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
@@ -38,7 +38,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/driverRaceResults"
+            android:id="@+id/driverQualifying"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="55dp"
@@ -46,12 +46,12 @@
             android:text="VERSTAPPEN"
             android:textAlignment="textStart"
             android:textColor="#000000"
-            app:layout_constraintBottom_toBottomOf="@+id/positionRaceResults"
+            app:layout_constraintBottom_toBottomOf="@+id/positionQualifying"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/positionRaceResults" />
+            app:layout_constraintTop_toTopOf="@+id/positionQualifying" />
 
         <TextView
-            android:id="@+id/timeRaceResults"
+            android:id="@+id/timeQ1"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="190dp"
@@ -59,9 +59,9 @@
             android:text="1.45.45.548"
             android:textAlignment="textStart"
             android:textColor="#000000"
-            app:layout_constraintBottom_toBottomOf="@+id/driverRaceResults"
+            app:layout_constraintBottom_toBottomOf="@+id/driverQualifying"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/driverRaceResults" />
+            app:layout_constraintTop_toTopOf="@+id/driverQualifying" />
 
         <TextView
             android:id="@+id/pointsRaceResults"
@@ -71,9 +71,9 @@
             android:fontFamily="@font/formula1_regular"
             android:text="25"
             android:textColor="#000000"
-            app:layout_constraintBottom_toBottomOf="@+id/timeRaceResults"
+            app:layout_constraintBottom_toBottomOf="@+id/timeQ1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/timeRaceResults" />
+            app:layout_constraintTop_toTopOf="@+id/timeQ1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

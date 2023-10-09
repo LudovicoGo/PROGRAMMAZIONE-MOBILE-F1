@@ -97,6 +97,7 @@ class CalendarFragment : Fragment() {
 
 //                connectionOverlay.visibility = View.VISIBLE
                 rv.visibility = View.GONE
+                calendarSpinner.visibility = View.GONE
                 connectionOverlayButton.visibility = View.VISIBLE
                 connectionOverlayBackground.visibility = View.VISIBLE
                 connectionOverlayTextView.visibility = View.VISIBLE
@@ -107,6 +108,7 @@ class CalendarFragment : Fragment() {
 
 //                connectionOverlay.visibility = View.GONE
                 rv.visibility = View.VISIBLE
+                calendarSpinner.visibility = View.VISIBLE
                 connectionOverlayTextView.visibility = View.GONE
                 connectionOverlayBackground.visibility = View.GONE
                 connectionOverlayLogo.visibility = View.GONE

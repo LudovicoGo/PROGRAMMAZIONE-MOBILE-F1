@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
@@ -103,19 +104,6 @@ class DriverProfileFragment : Fragment() {
         })
         viewModel.getDriverStats(driverID, args.SelectedYearSpinner)
 
-
-
-        viewModel.isInternetConnected.observe(viewLifecycleOwner) { isInternetConnected ->
-            if (!isInternetConnected) {
-                val toastMessage = "Can't load stats. Check your internet connection!"
-                val duration = Toast.LENGTH_LONG
-                val toast = Toast.makeText(context, toastMessage, duration)
-                viewModel.setInternetConnectionStatus(true)
-                toast.show()
-            }
-        }
-
-
         viewModel.driverStandingsDataPoints.observe(viewLifecycleOwner, Observer { driverStandingsDataPoints ->
             var totalPoints = args.DriverPoints.toFloat() + driverStandingsDataPoints.get("careerPoints")!!.toFloat()
 
@@ -127,7 +115,27 @@ class DriverProfileFragment : Fragment() {
 
 
 
+        viewModel.isInternetConnected.observe(viewLifecycleOwner) { isInternetConnected ->
+                if (isInternetConnected == false) {
 
+                    val alertDialogBuilder = AlertDialog.Builder(requireContext())
+
+                    alertDialogBuilder.setTitle("Can't connect to database.")
+
+                    alertDialogBuilder.setMessage("Check your internet connection!")
+
+                    alertDialogBuilder.setPositiveButton("Try again") { dialog, which ->
+
+                        viewModel.getDriverStats(driverID, args.SelectedYearSpinner)
+                        viewModel.getDriverPointsTitles(driverID)
+
+                        dialog.dismiss()
+                    }
+
+                    val alertDialog = alertDialogBuilder.create()
+                    alertDialog.show()
+                }
+            }
 
     }
 }

@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.programmazionemobile.formula1app.adapter.ConstructorProfileDriversAdapter
@@ -135,11 +136,25 @@ class ConstructorProfileFragment : Fragment() {
 
         viewModel.isInternetConnected.observe(viewLifecycleOwner) { isInternetConnected ->
             if (!isInternetConnected) {
-                val toastMessage = "Can't load stats. Check your internet connection!"
-                val duration = Toast.LENGTH_LONG
-                val toast = Toast.makeText(context, toastMessage, duration)
-                viewModel.setInternetConnectionStatus(true)
-                toast.show()
+
+                val alertDialogBuilder = AlertDialog.Builder(requireContext())
+
+                alertDialogBuilder.setTitle("Can't connect to database.")
+
+                alertDialogBuilder.setMessage("Check your internet connection!")
+
+                alertDialogBuilder.setPositiveButton("Try again") { dialog, which ->
+
+//                    viewModel.setInternetConnectionStatus(true)
+                    viewModel.getConstructorDrivers(args.constructorID, args.selectedSpinnerYear)
+                    viewModel.getConstructorStats(constructorID, args.selectedSpinnerYear,  "0")
+                    viewModel.getConstructorTitles(constructorID)
+
+                    dialog.dismiss()
+                }
+
+                val alertDialog = alertDialogBuilder.create()
+                alertDialog.show()
             }
         }
 

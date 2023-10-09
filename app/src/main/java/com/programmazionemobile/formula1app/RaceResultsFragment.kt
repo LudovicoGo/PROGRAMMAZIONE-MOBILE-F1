@@ -2,13 +2,13 @@ package com.programmazionemobile.formula1app
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -76,14 +76,6 @@ class RaceResultsFragment : Fragment() {
 
         viewModel.raceResults.observe(viewLifecycleOwner, Observer { raceResults ->
 
-//            adapter.clear() // Pulisce l'adapter
-//            adapter.addAll(constructorDrivers) // Aggiunge i nuovi dati all'adapter
-//            adapter.notifyDataSetChanged() // Notifica all'adapter che i dati sono cambiati
-//            val layoutParams = listView.layoutParams
-//            layoutParams.height = (122*constructorDrivers.size * resources.displayMetrics.density).toInt() // Sostituisci "nuovaAltezza" con l'altezza desiderata in pixel
-//            listView.layoutParams = layoutParams
-//            listView.minimumHeight()
-
             if(raceResults.size == 0){
                 raceResultsNotAvailableOverlay.visibility = View.VISIBLE
                 raceResultsNotAvailableTextView.visibility = View.VISIBLE
@@ -117,23 +109,28 @@ class RaceResultsFragment : Fragment() {
         })
 
         viewModel.getRaceResults(raceYear, args.seasonRound)
-        /*
-                viewModel.constructorData.observe(viewLifecycleOwner, Observer { constructorData ->
-                    constructorHistoryPoles.text = constructorData.get("historyPoles") ?: "-"
-                    constructorHistoryWins.text = constructorData.get("historyWins") ?: "-"
-                    constructorSeasonWins.text = constructorData.get("seasonWins") ?: "-"
-                    constructorHistoryPodiums.text = constructorData.get("historyPodiums") ?: "-"
-                    constructorSeasonPodiums.text = constructorData.get("seasonPodiums") ?: "-"
-                    constructorHistorySeasons.text = constructorData.get("historySeasons") ?: "-"
-                    constructorHistoryRaces.text = constructorData.get("historyRaces") ?: "-"
 
-                })
-                viewModel.getConstructorStats(constructorID, args.selectedSpinnerYear,  "0")
+    viewModel.isInternetConnected.observe(viewLifecycleOwner) { isInternetConnected ->
+            if (isInternetConnected == false) {
 
-                viewModel.constructorTitles.observe(viewLifecycleOwner, Observer { constructorTitles ->
-                    constructorHistoryTitles.text = constructorTitles
-                })
-                viewModel.getConstructorTitles(constructorID)*/
+                val alertDialogBuilder = AlertDialog.Builder(requireContext())
+
+                alertDialogBuilder.setTitle("Can't connect to database.")
+
+                alertDialogBuilder.setMessage("Check your internet connection!")
+
+                alertDialogBuilder.setPositiveButton("Try again") { dialog, which ->
+
+//                    viewModel.setInternetConnectionStatus(true)
+                    viewModel.getRaceResults(raceYear, args.seasonRound)
+                    dialog.dismiss()
+                }
+
+                val alertDialog = alertDialogBuilder.create()
+                alertDialog.show()
+            }
+
+        }
     }
 
 

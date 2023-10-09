@@ -133,7 +133,7 @@
             app:layout_constraintVertical_bias="0.529" />
 
         <TextView
-            android:id="@+id/textView16"
+            android:id="@+id/q1QualifyingTimeHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="74dp"
@@ -146,7 +146,7 @@
             app:layout_constraintVertical_bias="0.529" />
 
         <TextView
-            android:id="@+id/textView17"
+            android:id="@+id/q2QualifyingTimeHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="80dp"
@@ -154,7 +154,7 @@
             android:text="PTS"
             android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="@+id/imageView28"
-            app:layout_constraintStart_toEndOf="@+id/textView16"
+            app:layout_constraintStart_toEndOf="@+id/q1QualifyingTimeHeader"
             app:layout_constraintTop_toTopOf="@+id/imageView28"
             app:layout_constraintVertical_bias="0.529" />
 

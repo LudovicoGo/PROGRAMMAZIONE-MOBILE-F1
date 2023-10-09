@@ -54,6 +54,9 @@ class RaceFragment: Fragment() {
         thisView.findViewById<ImageView>(R.id.raceCard).setOnClickListener{
                 view-> view.findNavController().navigate(R.id.action_raceFragment2_to_raceResultsFragment, raceResultsBundle)
         }
+        thisView.findViewById<ImageView>(R.id.qualiCard).setOnClickListener{
+                view-> view.findNavController().navigate(R.id.action_raceFragment2_to_qualifyingFragment, raceResultsBundle)
+        }
 
         return thisView
     }

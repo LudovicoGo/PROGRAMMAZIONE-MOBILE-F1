@@ -24,12 +24,20 @@ class RaceResultsViewModel : ViewModel() {
         .build()
         .create(ErgastApi::class.java)
 
-
-
-
     private val _raceResults = MutableLiveData<List<com.programmazionemobile.formula1app.data.raceResultsData.Result>>()
+
     val raceResults: LiveData<List<com.programmazionemobile.formula1app.data.raceResultsData.Result>>
         get() = _raceResults
+
+    private val _isInternetConnected = MutableLiveData<Boolean>()
+    val isInternetConnected: LiveData<Boolean>
+        get() = _isInternetConnected
+
+    init{
+        _isInternetConnected.value = true
+    }
+
+
 
 
 
@@ -41,8 +49,8 @@ class RaceResultsViewModel : ViewModel() {
             try {
 
                 val results: MutableList<com.programmazionemobile.formula1app.data.raceResultsData.Result> = mutableListOf()
-
                 val response = api.getRaceResults(year, round)
+                _isInternetConnected.value = true
                 println(response.body().toString() + year + round)
 
                 if (response.isSuccessful) {
@@ -60,22 +68,18 @@ class RaceResultsViewModel : ViewModel() {
 //                        Log.d(TAG, response.body().toString())
                     }
 
-/*
-                    if (constructorStandingsData != null) {
-                        for (standings in constructorStandingsData.mRData.standingsTable.standingsLists) {
-                            for (constructor in standings.constructorStandings) {
-                                if(constructor.constructor.constructorId == constructorID && constructor.position == "1")
-                                    titles++
-                            }
-                        }
-                    }*/
                     _raceResults.value = results
                 }
 
             } catch (e: Exception) {
                 Log.d(TAG, e.toString())
+                _isInternetConnected.value = false
             }
 
         }
+    }
+
+    fun setInternetConnectionStatus(isConnected: Boolean) {
+        _isInternetConnected.value = isConnected
     }
 }

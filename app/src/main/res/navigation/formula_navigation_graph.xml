@@ -100,6 +100,9 @@
         <action
             android:id="@+id/action_raceFragment2_to_liveChatFragment"
             app:destination="@id/liveChatFragment" />
+        <action
+            android:id="@+id/action_raceFragment2_to_qualifyingFragment"
+            app:destination="@id/qualifyingFragment" />
     </fragment>
     <fragment
         android:id="@+id/circuitInfoFragment"
@@ -236,4 +239,30 @@
         android:id="@+id/liveChatFragment"
         android:name="com.programmazionemobile.formula1app.LiveChatFragment"
         android:label="LiveChatFragment" />
+    <fragment
+        android:id="@+id/qualifyingFragment"
+        android:name="com.programmazionemobile.formula1app.QualifyingFragment"
+        android:label="fragment_qualifying"
+        tools:layout="@layout/fragment_qualifying" >
+        <argument
+            android:name="circuitID"
+            app:argType="string"
+            android:defaultValue="noCircuitID" />
+        <argument
+            android:name="circuitName"
+            app:argType="string"
+            android:defaultValue="noCircuitName" />
+        <argument
+            android:name="raceDate"
+            app:argType="string"
+            android:defaultValue="noRaceDate" />
+        <argument
+            android:name="raceName"
+            app:argType="string"
+            android:defaultValue="noRaceName" />
+        <argument
+            android:name="seasonRound"
+            app:argType="string"
+            android:defaultValue="noSeasonRound" />
+    </fragment>
 </navigation>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/connectionOverlayBackground"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="80dp"
+        android:src="@drawable/white_line"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.488" />
+
+    <ImageView
+        android:id="@+id/connectionOverlayLogo"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:src="@drawable/offline"
+        app:layout_constraintBottom_toBottomOf="@+id/connectionOverlayBackground"
+        app:layout_constraintEnd_toEndOf="@+id/connectionOverlayBackground"
+        app:layout_constraintStart_toStartOf="@+id/connectionOverlayBackground"
+        app:layout_constraintTop_toTopOf="@+id/connectionOverlayBackground" />
+
+    <TextView
+        android:id="@+id/connectionOverlayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="35dp"
+        android:fontFamily="@font/formula1_bold"
+        android:text="Connection Error!"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/connectionOverlayLogo"
+        app:layout_constraintEnd_toEndOf="@+id/connectionOverlayBackground"
+        app:layout_constraintStart_toStartOf="@+id/connectionOverlayBackground"
+        app:layout_constraintTop_toTopOf="@+id/connectionOverlayBackground"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/connectionOverlayButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/formula1_regular"
+        android:text="Try Again"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/connectionOverlayBackground"
+        app:layout_constraintEnd_toEndOf="@+id/connectionOverlayBackground"
+        app:layout_constraintStart_toStartOf="@+id/connectionOverlayBackground"
+        app:layout_constraintTop_toBottomOf="@+id/connectionOverlayLogo"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
