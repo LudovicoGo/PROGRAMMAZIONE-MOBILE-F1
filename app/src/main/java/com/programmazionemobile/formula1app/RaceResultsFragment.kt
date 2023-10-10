@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -37,6 +38,7 @@ class RaceResultsFragment : Fragment() {
     private lateinit var sprintButton: ImageView
     private lateinit var raceBlackLine: ImageView
     private lateinit var sprintBlackLine: ImageView
+    private lateinit var raceResultsBackArrow: ImageView
     private lateinit var sprintResultsText: TextView
     private lateinit var raceResultsText: TextView
 
@@ -53,6 +55,7 @@ class RaceResultsFragment : Fragment() {
         fLapTextViewRaceResults = view.findViewById(R.id.fLapTextViewRaceResults)
         raceResultsNotAvailableTextView = view.findViewById(R.id.raceResultsNotAvailableTextView)
         raceResultsNotAvailableOverlay = view.findViewById(R.id.raceResultsNotAvailableOverlay)
+        raceResultsBackArrow = view.findViewById(R.id.RaceResultsBackArrow)
 
         fLapTextViewRaceResults.visibility = View.GONE
         fLapOwnerRaceResults.visibility = View.GONE
@@ -84,7 +87,9 @@ class RaceResultsFragment : Fragment() {
         val raceYear = LocalDate.parse(args.raceDate).year.toString()
         raceName.text = raceYear + " " + args.raceName
 
-
+        raceResultsBackArrow.setOnClickListener{
+            findNavController().popBackStack()
+        }
 
         viewModel = ViewModelProvider(this).get(RaceResultsViewModel::class.java)
 

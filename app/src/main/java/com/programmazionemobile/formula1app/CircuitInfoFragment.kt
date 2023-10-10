@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
 import com.programmazionemobile.formula1app.model.CircuitInfoViewModel
@@ -43,6 +44,10 @@ class CircuitInfoFragment: Fragment() {
         val driverFatsLap = view.findViewById<TextView>(R.id.lapRecordDriver)
         val circuitoPng = view.findViewById<ImageView>(R.id.circuito)
 
+        val circuitInfoBackArrow = view.findViewById<ImageView>(R.id.circuitInfoBackArrow)
+        circuitInfoBackArrow.setOnClickListener {
+            findNavController().popBackStack()
+        }
         viewModel = ViewModelProvider(this).get(CircuitInfoViewModel::class.java)
 
         circuit.text = args.circuitName

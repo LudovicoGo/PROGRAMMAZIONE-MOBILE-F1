@@ -418,7 +418,9 @@
                 android:id="@+id/ConstructorProfileName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="28dp"
+                android:layout_marginEnd="30dp"
                 android:fontFamily="@font/formula1bold3"
                 android:text="ALPINE F1 TEAM"
                 android:textAlignment="center"
@@ -595,6 +597,15 @@
                 app:layout_constraintTop_toBottomOf="@+id/constructorProfileSelectedSeasonDrivers" />
 
 
+            <ImageView
+                android:id="@+id/constructorProfileBackArrow"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/back_arrow_white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

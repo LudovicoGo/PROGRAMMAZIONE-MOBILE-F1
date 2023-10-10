@@ -13,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.programmazionemobile.formula1app.adapter.ConstructorProfileDriversAdapter
 
@@ -68,6 +69,11 @@ class ConstructorProfileFragment : Fragment() {
         val constructorProfileSelectedSeason = view.findViewById<TextView>(R.id.ConstructorProfileSelectedSeason)
         val constructorProfileSelectedSeasonDrivers = view.findViewById<TextView>(R.id.constructorProfileSelectedSeasonDrivers)
 
+        val constructorProfileBackArrow = view.findViewById<ImageView>(R.id.constructorProfileBackArrow)
+
+        constructorProfileBackArrow.setOnClickListener{
+            findNavController().popBackStack()
+        }
         constructorName.text = args.constructorName
         constructorNationality.text = args.constructorNationality
         constructorSeasonPosition.text = args.constructorSeasonPosition

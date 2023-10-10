@@ -445,6 +445,17 @@
                 app:layout_constraintTop_toTopOf="@+id/raceCard"
                 app:srcCompat="@drawable/img_1" />
 
+
+            <ImageView
+                android:id="@+id/raceInfoBackArrow"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/back_arrow_white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

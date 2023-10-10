@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.programmazionemobile.formula1app.model.DriverProfileViewModel
 
@@ -59,6 +60,12 @@ class DriverProfileFragment : Fragment() {
         val driverCareerSeasons = view.findViewById<TextView>(R.id.careerSeasons)
         val driverCareerRaces = view.findViewById<TextView>(R.id.careerRaces)
 
+
+        val driverProfileBackArrow = view.findViewById<ImageView>(R.id.driverProfileBackArrow)
+
+        driverProfileBackArrow.setOnClickListener{
+            findNavController().popBackStack()
+        }
 
         Log.d("YEAR SELECTED DRIVER PROFILE", "${ args.SelectedYearSpinner }")
         selectedSeason.text = args.SelectedYearSpinner + " SEASON"

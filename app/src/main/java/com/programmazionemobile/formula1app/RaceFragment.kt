@@ -81,6 +81,11 @@ class RaceFragment: Fragment() {
         val qualiHourRaceCard = view.findViewById<TextView>(R.id.orarioQuali)
         val liveChatCard = view.findViewById<ImageView>(R.id.liveChatCard)
 
+        val raceInfoBackArrow = view.findViewById<ImageView>(R.id.raceInfoBackArrow)
+        raceInfoBackArrow.setOnClickListener{
+            findNavController().popBackStack()
+        }
+
         raceName.text = args.raceName
         raceDate.text = DateConverter.convertDateInfo(args.raceDate).uppercase()
         startWeekEnd.text = DateConverter.convertDateGiorno(args.firstDate)

@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +29,8 @@ class QualifyingFragment : Fragment() {
     private lateinit var raceResultsNotAvailableTextView: TextView
     private lateinit var raceResultsNotAvailableOverlay: ImageView
 
+    private lateinit var qualifyingResultsBackArrow: ImageView
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,6 +39,8 @@ class QualifyingFragment : Fragment() {
 
         raceResultsNotAvailableTextView = view.findViewById(R.id.qualifyingResultsNotAvailableTextView)
         raceResultsNotAvailableOverlay = view.findViewById(R.id.qualifyingResultsNotAvailableOverlay)
+
+        qualifyingResultsBackArrow = view.findViewById(R.id.qualifyingResultsBackArrow)
 
         return view
     }
@@ -49,7 +54,9 @@ class QualifyingFragment : Fragment() {
         val raceYear = LocalDate.parse(args.raceDate).year.toString()
         raceName.text = raceYear + " " + args.raceName
 
-
+        qualifyingResultsBackArrow.setOnClickListener{
+            findNavController().popBackStack()
+        }
 
         viewModel = ViewModelProvider(this).get(QualifyingViewModel::class.java)
 

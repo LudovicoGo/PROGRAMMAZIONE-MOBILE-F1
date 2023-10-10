@@ -8,7 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#000000">
 
         <ImageView
             android:id="@+id/raceResultsButton"
@@ -271,6 +272,17 @@
             app:layout_constraintEnd_toEndOf="@+id/raceResultsNotAvailableOverlay"
             app:layout_constraintStart_toStartOf="@+id/raceResultsNotAvailableOverlay"
             app:layout_constraintTop_toTopOf="@+id/raceResultsNotAvailableOverlay" />
+
+        <ImageView
+            android:id="@+id/RaceResultsBackArrow"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="12dp"
+            android:src="@drawable/back_arrow_black"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView25"
+            app:layout_constraintStart_toStartOf="@+id/imageView25"
+            app:layout_constraintTop_toTopOf="@+id/imageView25"
+            app:layout_constraintVertical_bias="0.52" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
