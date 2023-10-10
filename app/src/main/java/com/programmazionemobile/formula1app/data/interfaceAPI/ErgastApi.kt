@@ -9,6 +9,7 @@ import com.programmazionemobile.formula1app.data.driverSeasonsData.DriverSeasons
 import com.programmazionemobile.formula1app.data.driverStandingsData.DriverStandingsDataClass
 import com.programmazionemobile.formula1app.data.qualifyingData.QualifyingDataClass
 import com.programmazionemobile.formula1app.data.raceResultsData.RaceResultsDataClass
+import com.programmazionemobile.formula1app.data.sprintData.SprintResultsDataClass
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -45,6 +46,8 @@ interface ErgastApi {
 
     @GET("{year}/{round}/results.json")
     suspend fun getRaceResults(@Path("year") year: String, @Path("round") round: String): Response<RaceResultsDataClass>
+    @GET("{year}/{round}/sprint.json")
+    suspend fun getSprintRaceResults(@Path("year") year: String, @Path("round") round: String): Response<SprintResultsDataClass>
     @GET("{year}/{round}/qualifying.json")
     suspend fun getQualifyingResults(@Path("year") year: String, @Path("round") round: String): Response<QualifyingDataClass>
 }

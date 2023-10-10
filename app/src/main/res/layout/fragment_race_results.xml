@@ -8,7 +8,30 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#000000">
+
+        <ImageView
+            android:id="@+id/raceResultsButton"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="-18dp"
+            android:src="@drawable/race_results_header"
+            app:layout_constraintBottom_toTopOf="@+id/imageView28"
+            app:layout_constraintStart_toStartOf="@+id/imageView28"
+            app:layout_constraintTop_toBottomOf="@+id/fLapBackgroundRaceResults" />
+
+        <ImageView
+            android:id="@+id/sprintResultsButton"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="-18dp"
+            android:src="@drawable/race_results_header_grey"
+            app:layout_constraintBottom_toTopOf="@+id/imageView28"
+            app:layout_constraintEnd_toEndOf="@+id/imageView28"
+            app:layout_constraintTop_toBottomOf="@+id/fLapBackgroundRaceResults" />
 
         <ImageView
             android:id="@+id/imageView25"
@@ -100,7 +123,7 @@
             android:id="@+id/imageView28"
             android:layout_width="375dp"
             android:layout_height="35dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="50dp"
             android:src="@drawable/race_results_header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -173,6 +196,52 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView28">
 
         </androidx.recyclerview.widget.RecyclerView>
+
+        <ImageView
+            android:id="@+id/raceResultsBlackLine"
+            android:layout_width="90dp"
+            android:layout_height=".8dp"
+            android:layout_marginTop="35dp"
+            android:src="@drawable/black_line"
+            app:layout_constraintEnd_toEndOf="@+id/raceResultsButton"
+            app:layout_constraintStart_toStartOf="@+id/raceResultsButton"
+            app:layout_constraintTop_toTopOf="@+id/raceResultsButton" />
+
+        <ImageView
+            android:id="@+id/sprintResultsBlackLine"
+            android:layout_width="90dp"
+            android:layout_height=".8dp"
+            android:layout_marginTop="35dp"
+            android:src="@drawable/black_line"
+            app:layout_constraintEnd_toEndOf="@+id/sprintResultsButton"
+            app:layout_constraintStart_toStartOf="@+id/sprintResultsButton"
+            app:layout_constraintTop_toTopOf="@+id/sprintResultsButton" />
+
+        <TextView
+            android:id="@+id/raceResultsButtonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/formula1_bold"
+            android:text="RACE"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/raceResultsButton"
+            app:layout_constraintStart_toStartOf="@+id/raceResultsButton"
+            app:layout_constraintTop_toTopOf="@+id/raceResultsButton" />
+
+        <TextView
+            android:id="@+id/sprintResultsButtonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/formula1_bold"
+            android:text="SPRINT"
+            android:textColor="#070707"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/sprintResultsButton"
+            app:layout_constraintStart_toStartOf="@+id/sprintResultsButton"
+            app:layout_constraintTop_toTopOf="@+id/raceResultsButton" />
 
         <ImageView
             android:id="@+id/raceResultsNotAvailableOverlay"

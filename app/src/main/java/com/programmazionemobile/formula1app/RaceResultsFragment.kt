@@ -1,5 +1,6 @@
 package com.programmazionemobile.formula1app
 
+import android.graphics.Color
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,6 +15,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.programmazionemobile.formula1app.adapter.RaceResultsAdapter
+import com.programmazionemobile.formula1app.adapter.SprintResultsAdapter
 import com.programmazionemobile.formula1app.model.RaceResultsViewModel
 import java.time.LocalDate
 
@@ -29,6 +31,15 @@ class RaceResultsFragment : Fragment() {
     private lateinit var raceResultsNotAvailableTextView: TextView
     private lateinit var raceResultsNotAvailableOverlay: ImageView
     private var nullFLapCounter = 0
+
+
+    private lateinit var raceButton: ImageView
+    private lateinit var sprintButton: ImageView
+    private lateinit var raceBlackLine: ImageView
+    private lateinit var sprintBlackLine: ImageView
+    private lateinit var sprintResultsText: TextView
+    private lateinit var raceResultsText: TextView
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +59,18 @@ class RaceResultsFragment : Fragment() {
         fLapTextViewRaceResults.visibility = View.GONE
         fLapBackgroundRaceResults.visibility = View.GONE
 //        raceResultsNotAvailableOverlay.visibility = View.GONE
+
+
+        raceButton = view.findViewById(R.id.raceResultsButton)
+        sprintButton = view.findViewById(R.id.sprintResultsButton)
+        raceBlackLine = view.findViewById(R.id.raceResultsBlackLine)
+        sprintBlackLine = view.findViewById(R.id.sprintResultsBlackLine)
+        sprintBlackLine.visibility = View.GONE
+        sprintResultsText = view.findViewById(R.id.sprintResultsButtonText)
+        raceResultsText = view.findViewById(R.id.raceResultsButtonText)
+
+
+
 
         return view
     }
@@ -74,12 +97,37 @@ class RaceResultsFragment : Fragment() {
         val layoutManager = LinearLayoutManager(requireContext())
         rv.layoutManager = layoutManager
 
+
+
+
+        viewModel.sprintResults.observe(viewLifecycleOwner, Observer { sprintResults ->
+
+            if (sprintResults.size == 0) {
+                sprintButton.visibility = View.GONE
+                sprintBlackLine.visibility = View.GONE
+                sprintResultsText.visibility = View.GONE
+            } else {
+                sprintButton.visibility = View.VISIBLE
+//                sprintBlackLine.visibility = View.VISIBLE
+                sprintResultsText.visibility = View.VISIBLE
+            }
+//            Log.d("RACE RESULTS FRAGMENT", raceResults.toString())
+
+            val adapter = SprintResultsAdapter(requireContext(), sprintResults)
+            rv.adapter = adapter
+        })
+
+        viewModel.getsSprintResults(raceYear, args.seasonRound)
+
+
+
+
         viewModel.raceResults.observe(viewLifecycleOwner, Observer { raceResults ->
 
-            if(raceResults.size == 0){
+            if (raceResults.size == 0) {
                 raceResultsNotAvailableOverlay.visibility = View.VISIBLE
                 raceResultsNotAvailableTextView.visibility = View.VISIBLE
-            }else {
+            } else {
                 raceResultsNotAvailableOverlay.visibility = View.GONE
                 raceResultsNotAvailableTextView.visibility = View.GONE
                 for (result in raceResults) {
@@ -110,7 +158,34 @@ class RaceResultsFragment : Fragment() {
 
         viewModel.getRaceResults(raceYear, args.seasonRound)
 
-    viewModel.isInternetConnected.observe(viewLifecycleOwner) { isInternetConnected ->
+
+
+        sprintButton.setOnClickListener {
+            viewModel.getsSprintResults(raceYear, args.seasonRound)
+            sprintButton.setImageResource(R.drawable.race_results_header)
+            raceButton.setImageResource(R.drawable.race_results_header_grey)
+            sprintBlackLine.visibility = View.VISIBLE
+            raceBlackLine.visibility = View.GONE
+        }
+        raceButton.setOnClickListener {
+            viewModel.getRaceResults(raceYear, args.seasonRound)
+            raceButton.setImageResource(R.drawable.race_results_header)
+            sprintButton.setImageResource(R.drawable.race_results_header_grey)
+            sprintBlackLine.visibility = View.GONE
+            raceBlackLine.visibility = View.VISIBLE
+//            raceResultsText.setTextColor(Colors(Color.BLACK))
+
+        }
+
+
+
+
+
+
+
+
+
+        viewModel.isInternetConnected.observe(viewLifecycleOwner) { isInternetConnected ->
             if (isInternetConnected == false) {
 
                 val alertDialogBuilder = AlertDialog.Builder(requireContext())
