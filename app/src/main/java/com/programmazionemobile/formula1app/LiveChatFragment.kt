@@ -2,9 +2,11 @@ package com.programmazionemobile.formula1app
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -64,6 +66,27 @@ class LiveChatFragment: Fragment(){
 
         chatRecyclerView = view.findViewById(R.id.recyclerView)
         messageBox = view.findViewById(R.id.editText)
+
+        messageBox.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE ||
+                event?.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER) {
+
+                val message = messageBox.text.toString()
+                val messageObject = Message(message, senderUid, FirebaseAuth.getInstance().currentUser?.displayName,
+                    FirebaseAuth.getInstance().currentUser?.photoUrl)
+
+                mDbRef.child("chats").child(room!!).child("messages").push()
+                    .setValue(messageObject)
+
+                messageBox.setText("")
+                true
+            }
+            else
+            {
+                false
+            }
+        }
+
         sendButton = view.findViewById(R.id.send)
 
         room = args.circuitID
