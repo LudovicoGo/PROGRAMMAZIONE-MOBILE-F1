@@ -191,4 +191,9 @@ object DateConverter {
         return ChronoUnit.MINUTES.between(dataAttuale, dataDesiderata)
     }
 
+    fun convertDateMessages(date: Date): String {
+        val sdf = SimpleDateFormat("HH:mm - dd/MM/yyyy", Locale.getDefault())
+        return sdf.format(date)
+    }
+
 }

@@ -111,7 +111,7 @@ class RaceFragment: Fragment() {
             qualiHourRaceCard.text =
                 DateConverter.convertUTCtoLocalTime2(args.qualiHour, args.raceDate)
 
-        val controllo = auth.currentUser?.email
+        val controllo = auth.currentUser?.uid
 
         if (controllo == null) {
             liveChatCard.setOnClickListener {
@@ -139,6 +139,7 @@ class RaceFragment: Fragment() {
 
                     val infoCircuitBundle = Bundle()
                     infoCircuitBundle.putString("circuitID", args.circuitID)
+                    infoCircuitBundle.putString("circuitName", args.circuitName)
 
                     view.findNavController().navigate(R.id.action_raceFragment2_to_liveChatFragment, infoCircuitBundle)
                 }

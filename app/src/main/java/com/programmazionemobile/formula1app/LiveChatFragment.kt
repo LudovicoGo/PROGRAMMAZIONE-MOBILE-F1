@@ -1,27 +1,25 @@
 package com.programmazionemobile.formula1app
 
 import android.annotation.SuppressLint
-import android.database.DatabaseUtils
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
-import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.programmazionemobile.formula1app.adapter.MessageAdapter
 import com.programmazionemobile.formula1app.model.Message
 
@@ -38,7 +36,7 @@ class LiveChatFragment: Fragment(){
 
     private var isSpecificFragment = false
 
-    var room: String? = null
+    private var room: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,8 +50,11 @@ class LiveChatFragment: Fragment(){
     ): View? {
         val view = inflater.inflate(R.layout.fragment_livechat, container, false)
 
-        val senderUid = FirebaseAuth. getInstance() .currentUser?.uid
-        mDbRef = FirebaseDatabase.getInstance().getReference()
+
+        view.findViewById<TextView>(R.id.intestazioneText).text = "Chat di " + args.circuitName
+
+        val senderUid = FirebaseAuth.getInstance().currentUser?.uid
+        mDbRef = FirebaseDatabase.getInstance().reference
 
         chatRecyclerView = view.findViewById(R.id.recyclerView)
         messageBox = view.findViewById(R.id.editText)
@@ -62,12 +63,36 @@ class LiveChatFragment: Fragment(){
         room = args.circuitID
 
         messageList = ArrayList()
-        messageAdapter = MessageAdapter(requireContext(), messageList, room!!)
+        messageAdapter = MessageAdapter(requireContext(), messageList)
+
+        chatRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        chatRecyclerView.adapter = messageAdapter
+
+        //Logica per aggiungere i messsaggi alla recycler
+        mDbRef.child("chats").child(room!!).child("messages")
+            .addValueEventListener(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+
+                    messageList.clear()
+
+                    for (postSnapshoot in snapshot.children){
+                        val message = postSnapshoot.getValue(Message::class.java)
+                        messageList.add(message!!)
+                    }
+                    messageAdapter.notifyDataSetChanged()
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+
+            })
 
         sendButton.setOnClickListener {
 
             val message = messageBox.text.toString()
-            val messageObject = Message(message, senderUid)
+            val messageObject = Message(message, senderUid, FirebaseAuth.getInstance().currentUser?.displayName)
 
             mDbRef.child("chats").child(room!!).child("messages").push()
                 .setValue(messageObject)

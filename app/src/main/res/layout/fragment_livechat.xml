@@ -8,6 +8,31 @@
     android:layout_height="match_parent"
     android:background="#111F3C">
 
+    <ImageView
+        android:id="@+id/intestazione"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:src="@drawable/intestazione"
+        android:translationZ="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/intestazioneText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/formula1_bold"
+        android:text=""
+        android:textColor="@color/white"
+        android:translationZ="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/intestazione"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/intestazione" />
+
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="50dp"
@@ -29,6 +54,7 @@
     </FrameLayout>
 
     <com.google.android.material.textfield.TextInputEditText
+        android:imeOptions="actionSend"
         android:id="@+id/editText"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -56,7 +82,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/viewBackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/viewBackground" />
+        app:layout_constraintTop_toTopOf="@+id/viewBackground"
+        android:translationZ="10dp" />
 
     <View
         android:id="@+id/viewBackground"
@@ -67,7 +94,7 @@
         app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/intestazione"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
