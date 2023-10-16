@@ -136,7 +136,11 @@ class RaceFragment: Fragment() {
                 }
             } else
                 liveChatCard.setOnClickListener {
-                    view.findNavController().navigate(R.id.action_raceFragment2_to_liveChatFragment)
+
+                    val infoCircuitBundle = Bundle()
+                    infoCircuitBundle.putString("circuitID", args.circuitID)
+
+                    view.findNavController().navigate(R.id.action_raceFragment2_to_liveChatFragment, infoCircuitBundle)
                 }
         } else {
             liveChatCard.setOnClickListener {
