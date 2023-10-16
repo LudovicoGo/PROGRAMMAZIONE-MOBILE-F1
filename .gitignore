@@ -22,4 +22,3 @@ local.properties
 .gradle/buildOutputCleanup/outputFiles.bin
 .gradle/file-system.probe
 .gradle/8.0/checksums/checksums.lock
-app/google-services.json

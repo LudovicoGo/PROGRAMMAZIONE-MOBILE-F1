@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "253752480176",
+    "firebase_url": "https://formula1app-684c4-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "formula1app-684c4",
+    "storage_bucket": "formula1app-684c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253752480176:android:4811fdbb71f9e9cdbd8675",
+        "android_client_info": {
+          "package_name": "com.programmazionemobile.formula1app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "253752480176-bujb9bsuqditik96q28l8c1ljik7gpo0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.programmazionemobile.formula1app",
+            "certificate_hash": "8a4b07c97ecd34149db9d405cad8b73a74f03685"
+          }
+        },
+        {
+          "client_id": "253752480176-4ij5114or5hbc48glkh961l5au6bpj18.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1-kAe1kVsm8lYPXUIKvsmqluOi2ZFMbc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "253752480176-4ij5114or5hbc48glkh961l5au6bpj18.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -71,6 +71,8 @@ class LiveChatFragment: Fragment(){
 
             mDbRef.child("chats").child(room!!).child("messages").push()
                 .setValue(messageObject)
+
+            messageBox.setText("")
         }
 
         // Ottieni il FragmentContainerView
