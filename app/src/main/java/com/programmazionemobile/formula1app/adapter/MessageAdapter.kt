@@ -1,9 +1,11 @@
 package com.programmazionemobile.formula1app.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.graphics.createBitmap
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +16,8 @@ import com.programmazionemobile.formula1app.R
 import com.programmazionemobile.formula1app.databinding.RecivedMsgBinding
 import com.programmazionemobile.formula1app.databinding.SendMsgBinding
 import com.programmazionemobile.formula1app.model.Message
+import coil.load
+import coil.transform.RoundedCornersTransformation
 
 class MessageAdapter(val context: Context, val messageList: ArrayList<Message>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -37,6 +41,7 @@ class MessageAdapter(val context: Context, val messageList: ArrayList<Message>) 
         return messageList.size
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val currentMessage = messageList[position]
@@ -50,7 +55,13 @@ class MessageAdapter(val context: Context, val messageList: ArrayList<Message>) 
             val viewHolder = holder as ReceiveViewHolder
             viewHolder.receiveMessage.text = currentMessage.message
             viewHolder.time.text = DateConverter.convertDateMessages(currentMessage.timeStamp!!)
-            viewHolder.messageSender.text = currentMessage.nome
+            viewHolder.photoSender.load(currentMessage.photo){
+                transformations(RoundedCornersTransformation(100f))
+            }
+
+            val partiNomeCognome = currentMessage.nome!!.split(" ")?.toMutableList()
+
+            viewHolder.messageSender.text = (partiNomeCognome?.get(0) ?: "noName") + " " + (partiNomeCognome?.get(1) ?: "noSurname")
         }
     }
 
@@ -75,6 +86,7 @@ class MessageAdapter(val context: Context, val messageList: ArrayList<Message>) 
         val receiveMessage = itemView.findViewById<TextView>(R.id.recivedTextMessage)
         val time = itemView.findViewById<TextView>(R.id.messageData)
         val messageSender = itemView.findViewById<TextView>(R.id.messageSender)
+        val photoSender = itemView.findViewById<ImageView>(R.id.photoSender)
 
     }
 }

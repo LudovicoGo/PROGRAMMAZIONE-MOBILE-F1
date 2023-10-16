@@ -57,7 +57,6 @@ class AccountFragment: Fragment() {
             findNavController().navigate(action)
         }
 
-        println(auth.currentUser?.displayName)
 
         val partiNomeCognome = auth.currentUser?.displayName?.split(" ")?.toMutableList()
 

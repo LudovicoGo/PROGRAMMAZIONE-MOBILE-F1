@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -43,6 +44,7 @@ class LiveChatFragment: Fragment(){
         super.onCreate(savedInstanceState)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -50,6 +52,10 @@ class LiveChatFragment: Fragment(){
     ): View? {
         val view = inflater.inflate(R.layout.fragment_livechat, container, false)
 
+        val raceInfoBackArrow = view.findViewById<ImageView>(R.id.back)
+        raceInfoBackArrow.setOnClickListener{
+            findNavController().popBackStack()
+        }
 
         view.findViewById<TextView>(R.id.intestazioneText).text = "Chat di " + args.circuitName
 
@@ -92,7 +98,8 @@ class LiveChatFragment: Fragment(){
         sendButton.setOnClickListener {
 
             val message = messageBox.text.toString()
-            val messageObject = Message(message, senderUid, FirebaseAuth.getInstance().currentUser?.displayName)
+            val messageObject = Message(message, senderUid, FirebaseAuth.getInstance().currentUser?.displayName,
+                FirebaseAuth.getInstance().currentUser?.photoUrl)
 
             mDbRef.child("chats").child(room!!).child("messages").push()
                 .setValue(messageObject)

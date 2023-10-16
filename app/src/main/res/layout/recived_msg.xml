@@ -19,14 +19,15 @@
         android:id="@+id/recivedTextMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/background_recived_message"
         android:fontFamily="@font/formula1_regular"
         android:maxWidth="200dp"
         android:padding="15dp"
         android:textColor="@color/white"
         android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/photoSender"
         app:layout_constraintTop_toBottomOf="@+id/messageSender"
         app:layout_constraintWidth_percent="0.7" />
 
@@ -39,6 +40,16 @@
         android:textColor="#070B19"
         android:textSize="11sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recivedTextMessage" />
+        app:layout_constraintTop_toBottomOf="@+id/recivedTextMessage"/>
+
+    <ImageView
+        android:id="@+id/photoSender"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
