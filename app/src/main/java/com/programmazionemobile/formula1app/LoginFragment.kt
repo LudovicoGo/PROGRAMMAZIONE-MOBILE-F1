@@ -39,6 +39,11 @@ class LoginFragment : Fragment() {
     }
 
     private fun singInGoogle(){
+
+        // Esegui il logout da Google Sign-In
+        googleSignInClient.signOut().addOnCompleteListener {
+        }
+
         val signIntent = googleSignInClient.signInIntent
         launcher.launch(signIntent)
     }

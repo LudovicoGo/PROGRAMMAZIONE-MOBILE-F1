@@ -3,14 +3,11 @@ package com.programmazionemobile.formula1app
 import android.annotation.SuppressLint
 import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -22,6 +19,7 @@ import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.programmazionemobile.formula1app.notification.NotificationApp
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 
 class AccountFragment: Fragment() {
 
@@ -121,10 +119,6 @@ class AccountFragment: Fragment() {
             if(isChecked)
                 (requireActivity().application as NotificationApp).generateNotifications()
         }
-
-
-
-
 
         return view
     }

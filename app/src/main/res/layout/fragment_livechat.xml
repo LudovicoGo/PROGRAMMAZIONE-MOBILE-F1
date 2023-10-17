@@ -64,7 +64,6 @@
     </FrameLayout>
 
     <com.google.android.material.textfield.TextInputEditText
-        android:imeOptions="actionSend"
         android:id="@+id/editText"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -80,7 +79,9 @@
         app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
         app:layout_constraintEnd_toStartOf="@+id/frameLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/frameLayout" />
+        app:layout_constraintTop_toTopOf="@+id/frameLayout"
+        android:inputType="text|textMultiLine"
+        android:imeOptions="actionSend"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
