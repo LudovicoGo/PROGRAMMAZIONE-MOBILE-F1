@@ -93,7 +93,7 @@ class RaceFragment: Fragment() {
         qualiDateRaceCard.text = DateConverter.convertDate(args.qualiDate).uppercase()
         endWeekEnd.text = DateConverter.convertDateGiorno(args.raceDate)
         meseWeekEnd.text = DateConverter.convertDateMese(args.raceDate).uppercase()
-        giorniMancanti.text = DateConverter.giorniRimanenti(args.raceDate)
+        giorniMancanti.text = DateConverter.calcolaTempoMancanteGiorni(args.raceDate, args.raceHour)
 
         if (args.raceHour == "Dati non disponibili") {
             oreMancanti.text = "00"
@@ -125,12 +125,12 @@ class RaceFragment: Fragment() {
             if (DateConverter.calcolaMinutiMancanti(
                     dataDesiderata = args.raceDate,
                     orarioString = args.raceHour
-                ) > 1440
+                ) > 2880
             ) {
                 liveChatCard.setOnClickListener {
                     Toast.makeText(
                         requireContext(),
-                        "La Chat si aprirà 24 ore prima dell'inizio del Gran Premio",
+                        "La Chat si aprirà 48 ore prima dell'inizio del Gran Premio",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -154,7 +154,7 @@ class RaceFragment: Fragment() {
 }
 
 
-// Questa è la versione che chiude la chat 48 ore dopo la fine del GP
+// Questa è la versione che apre la chat 48 ore prima del GP e la chiude 48 ore dopo
 /*
 package com.programmazionemobile.formula1app
 

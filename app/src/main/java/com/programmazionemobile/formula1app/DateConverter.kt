@@ -10,6 +10,7 @@ import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import java.util.Date
+import java.time.ZoneOffset
 import java.util.Locale
 
 object DateConverter {
@@ -75,34 +76,6 @@ object DateConverter {
         } catch (e: Exception) {
             e.printStackTrace()
             return originalDate // In caso di errore, restituisci la data originale
-        }
-    }
-    @SuppressLint("SimpleDateFormat")
-    fun giorniRimanenti(dataString: String): String {
-        // Formato della data desiderato
-        val formatoData = SimpleDateFormat("yyyy-MM-dd")
-
-        try {
-            // Ottieni la data corrente
-            val dataCorrente = Date()
-
-            // Converti la stringa in una data
-            val dataSpecificata = formatoData.parse(dataString)
-
-            // Calcola la differenza tra le due date in millisecondi
-            val differenzaInMillisecondi = dataSpecificata.time - dataCorrente.time
-
-            // Calcola il numero di giorni rimanenti (dividendo per 86,400,000 millisecondi al giorno)
-            val giorniRimanenti = (differenzaInMillisecondi / 86_400_000)
-
-            return if (giorniRimanenti > 0)
-                giorniRimanenti.toString()
-            else
-                "00"
-        } catch (e: Exception) {
-            // Gestione dell'eccezione nel caso in cui la stringa della data non sia valida
-            println("Errore: Data non valida.")
-            return "DN"
         }
     }
 
@@ -190,6 +163,22 @@ object DateConverter {
 
         return ChronoUnit.MINUTES.between(dataAttuale, dataDesiderata)
     }
+
+    fun calcolaTempoMancanteGiorni(dataDaConfrontare: String, orarioDaConfrontare: String): String {
+
+        val formatoData = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ssX")
+        val now = LocalDateTime.now()
+        val dataConfronto = LocalDateTime.parse("$dataDaConfrontare $orarioDaConfrontare", formatoData)
+
+        val differenza = dataConfronto.toEpochSecond(ZoneOffset.UTC) - now.toEpochSecond(ZoneOffset.UTC)
+        val giorniMancanti = differenza / (24 * 3600)
+
+        return if (giorniMancanti > 0)
+            giorniMancanti.toString()
+        else
+            "00"
+    }
+
 
     fun convertDateMessages(date: Date): String {
         val sdf = SimpleDateFormat("HH:mm - dd/MM/yyyy", Locale.getDefault())

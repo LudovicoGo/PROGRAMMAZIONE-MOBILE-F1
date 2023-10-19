@@ -129,6 +129,38 @@ class LiveChatFragment: Fragment(){
             }
         }
 
+    // Scroll verso l'ultimo elemento quando la vista viene caricata
+        chatRecyclerView.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
+            val lastItemPosition = messageAdapter.itemCount - 1
+            if (lastItemPosition >= 0) {
+                chatRecyclerView.scrollToPosition(lastItemPosition)
+            }
+        }
+
+    // Scrolla verso l'ultimo messaggio quando vengono aggiunti nuovi messaggi
+        mDbRef.child("chats").child(room!!).child("messages")
+            .addValueEventListener(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    messageList.clear()
+                    for (postSnapshot in snapshot.children) {
+                        val message = postSnapshot.getValue(Message::class.java)
+                        messageList.add(message!!)
+                    }
+                    messageAdapter.notifyDataSetChanged()
+
+                    // Scroll verso l'ultimo elemento quando vengono aggiunti nuovi messaggi
+                    val lastItemPosition = messageAdapter.itemCount - 1
+                    if (lastItemPosition >= 0) {
+                        chatRecyclerView.scrollToPosition(lastItemPosition)
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Gestione degli errori
+                }
+            })
+
+
 
         // Ottieni il FragmentContainerView
         val fragmentContainer = activity?.findViewById<FragmentContainerView>(R.id.fragContainer)
