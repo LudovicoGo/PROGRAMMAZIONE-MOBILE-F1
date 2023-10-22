@@ -11,6 +11,7 @@ import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import java.util.Date
 import java.time.ZoneOffset
+import java.time.format.DateTimeParseException
 import java.util.Locale
 
 object DateConverter {
@@ -82,32 +83,32 @@ object DateConverter {
     @SuppressLint("SimpleDateFormat")
     fun oreRimanenti(dataString: String, orarioGaraString: String): String {
         // Formato della data e dell'orario desiderato
-        val formatoData = SimpleDateFormat("yyyy-MM-dd HH:mm:ssX")
+        val formatoData = SimpleDateFormat("yyyy-MM-dd HH:mm:ssX", Locale.getDefault())
         formatoData.timeZone = TimeZone.getTimeZone("UTC")
 
         try {
+            // Converti la stringa della data e dell'orario in una data
+            val dataSpecificata = formatoData.parse("$dataString $orarioGaraString")
+
             // Ottieni la data e l'orario correnti
             val dataCorrente = Date()
-
-            // Converti la stringa della data in una data
-            val dataSpecificata = formatoData.parse("$dataString $orarioGaraString")
 
             // Calcola la differenza tra le due date in millisecondi
             val differenzaInMillisecondi = dataSpecificata.time - dataCorrente.time
 
-
-            // Calcola il numero di ore rimanenti (dividendo per 3,600,000 millisecondi all'ora)
-            val oreRimanenti = (differenzaInMillisecondi % 86_400_000) / 3_600_000
-
-            return if (oreRimanenti > 0)
-                oreRimanenti.toString()
-            else
-                "00"
+            if (differenzaInMillisecondi >= 0) {
+                // Calcola il numero di ore rimanenti (dividendo per 3,600,000 millisecondi all'ora)
+                val oreRimanenti = (differenzaInMillisecondi % 86_400_000) / 3_600_000
+                return if (oreRimanenti > 0) oreRimanenti.toString() else "00"
+            } else {
+                return "00" // La data e l'orario specificati sono nel passato
+            }
         } catch (e: Exception) {
-            // Gestione dell'eccezione nel caso in cui la stringa della data non sia valida
-            return "DN"
+            e.printStackTrace()
+            return "00" // Gestisci qualsiasi eccezione restituendo un valore predefinito
         }
     }
+
 
     fun minutiRimanenti(dataString: String, orarioGaraString: String): String {
         // Formato della data e dell'orario desiderato
@@ -165,18 +166,21 @@ object DateConverter {
     }
 
     fun calcolaTempoMancanteGiorni(dataDaConfrontare: String, orarioDaConfrontare: String): String {
+        if (dataDaConfrontare == "Dati non disponibili") {
+            return "Data non disponibile"
+        }
 
         val formatoData = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ssX")
         val now = LocalDateTime.now()
-        val dataConfronto = LocalDateTime.parse("$dataDaConfrontare $orarioDaConfrontare", formatoData)
 
-        val differenza = dataConfronto.toEpochSecond(ZoneOffset.UTC) - now.toEpochSecond(ZoneOffset.UTC)
-        val giorniMancanti = differenza / (24 * 3600)
-
-        return if (giorniMancanti > 0)
-            giorniMancanti.toString()
-        else
-            "00"
+        try {
+            val dataConfronto = LocalDateTime.parse("$dataDaConfrontare $orarioDaConfrontare", formatoData)
+            val differenza = ChronoUnit.DAYS.between(now, dataConfronto)
+            return if (differenza >= 0) differenza.toString() else "00"
+        } catch (e: DateTimeParseException) {
+            e.printStackTrace()
+            return "Data non valida"
+        }
     }
 
 

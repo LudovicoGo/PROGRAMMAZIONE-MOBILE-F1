@@ -1,8 +1,6 @@
 package com.programmazionemobile.formula1app.model
 
-import android.net.ConnectivityManager
 import android.util.Log
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,10 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.programmazionemobile.formula1app.data.calendarData.Race
 import com.programmazionemobile.formula1app.data.interfaceAPI.Service
 import kotlinx.coroutines.launch
-import okhttp3.internal.notifyAll
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.time.Year
 
 
 class CalendarViewModel: ViewModel() {
@@ -38,23 +34,6 @@ class CalendarViewModel: ViewModel() {
         _isInternetConnected.value = true
     }
 
-    /*
-
-        fun checkInternetConnection() {
-            _isInternetConnected.value = isInternetConnected()
-        }
-
-        private fun isInternetConnected(): Boolean {
-            val connectivityManager =
-                ContextCompat.getSystemService(context, ConnectivityManager::class.java)
-
-            val activeNetworkInfo = connectivityManager?.activeNetworkInfo
-            return activeNetworkInfo != null && activeNetworkInfo.isConnected
-            // Implementa la logica per verificare la connessione Internet, come descritto in precedenza.
-            // Restituisce true se la connessione è disponibile, altrimenti false.
-        }
-    */
-
     fun getCalendar(year: String) {
         viewModelScope.launch {
 
@@ -77,17 +56,12 @@ class CalendarViewModel: ViewModel() {
 
                     } else {
                         // Handle unsuccessful response
-//                    _driverStandings.value = "API call failed with response code: ${response.code()}"
                         Log.d("FAIL", "API call failed with response code: ${response.code()}")
                     }
                 }
             } catch (e: Exception) {
                 Log.d("FAIL, EXCEPTION:", e.toString())
-
-//                if(calendar.value.isNullOrEmpty() || _isInternetConnected.value == false)
-                    _isInternetConnected.value = false
-//                notifyAll()
-
+                _isInternetConnected.value = false
             }
         }
     }
