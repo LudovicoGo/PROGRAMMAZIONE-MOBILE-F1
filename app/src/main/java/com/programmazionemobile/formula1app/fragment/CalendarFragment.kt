@@ -1,4 +1,4 @@
-package com.programmazionemobile.formula1app
+package com.programmazionemobile.formula1app.fragment
 
 import android.icu.util.Calendar
 import android.os.Bundle
@@ -6,19 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageView
-import android.widget.ProgressBar
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.programmazionemobile.formula1app.R
 import com.programmazionemobile.formula1app.adapter.CalendarAdapter
 import com.programmazionemobile.formula1app.data.calendarData.Race
-import com.programmazionemobile.formula1app.model.CalendarViewModel
+import com.programmazionemobile.formula1app.viewModel.CalendarViewModel
 
 class CalendarFragment : Fragment() {
 
@@ -49,7 +48,8 @@ class CalendarFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(CalendarViewModel::class.java)
 
-        val spinnerAdapter = ArrayAdapter(requireContext(), R.layout.standings_spinner_closed_item_layout, yearsArray)
+        val spinnerAdapter = ArrayAdapter(requireContext(),
+            R.layout.standings_spinner_closed_item_layout, yearsArray)
         spinnerAdapter.setDropDownViewResource(R.layout.years_spinner_dropdown_layout)
         val calendarSpinner = view.findViewById<Spinner>(R.id.spinner)
 

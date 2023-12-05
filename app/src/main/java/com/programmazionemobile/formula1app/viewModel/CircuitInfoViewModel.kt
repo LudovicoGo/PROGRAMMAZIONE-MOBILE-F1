@@ -1,16 +1,13 @@
-package com.programmazionemobile.formula1app.model
+package com.programmazionemobile.formula1app.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.programmazionemobile.formula1app.data.driverResultsData.FastestLap
 import com.programmazionemobile.formula1app.data.interfaceAPI.Service
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.Date
 
 class CircuitInfoViewModel: ViewModel() {
     private val BASE_URL = "https://ergast.com/api/f1/"

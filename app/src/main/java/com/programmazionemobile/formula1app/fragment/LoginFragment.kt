@@ -1,8 +1,7 @@
-package com.programmazionemobile.formula1app
+package com.programmazionemobile.formula1app.fragment
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +18,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.programmazionemobile.formula1app.R
 
 class LoginFragment : Fragment() {
 

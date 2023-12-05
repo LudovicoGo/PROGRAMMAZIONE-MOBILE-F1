@@ -1,8 +1,7 @@
-package com.programmazionemobile.formula1app
+package com.programmazionemobile.formula1app.fragment
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,11 +9,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.programmazionemobile.formula1app.viewModel.ConstructorProfileViewModel
+import com.programmazionemobile.formula1app.R
 import com.programmazionemobile.formula1app.adapter.ConstructorProfileDriversAdapter
 
 class ConstructorProfileFragment : Fragment() {

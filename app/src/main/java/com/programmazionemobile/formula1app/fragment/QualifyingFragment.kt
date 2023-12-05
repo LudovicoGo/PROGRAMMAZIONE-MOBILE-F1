@@ -1,4 +1,4 @@
-package com.programmazionemobile.formula1app
+package com.programmazionemobile.formula1app.fragment
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -14,10 +14,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.programmazionemobile.formula1app.R
 import com.programmazionemobile.formula1app.adapter.QualifyingAdapter
-import com.programmazionemobile.formula1app.adapter.RaceResultsAdapter
-import com.programmazionemobile.formula1app.model.QualifyingViewModel
-import com.programmazionemobile.formula1app.model.RaceResultsViewModel
+import com.programmazionemobile.formula1app.viewModel.QualifyingViewModel
 import java.time.LocalDate
 
 class QualifyingFragment : Fragment() {

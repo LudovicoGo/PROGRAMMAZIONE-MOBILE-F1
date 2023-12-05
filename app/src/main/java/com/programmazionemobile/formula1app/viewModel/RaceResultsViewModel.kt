@@ -1,24 +1,15 @@
-package com.programmazionemobile.formula1app.model
+package com.programmazionemobile.formula1app.viewModel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.programmazionemobile.formula1app.data.constructorDriversData.Driver
-import com.programmazionemobile.formula1app.data.constructorResultsData.Race
-import com.programmazionemobile.formula1app.data.driverResultsData.Result
 import com.programmazionemobile.formula1app.data.interfaceAPI.ErgastApi
-import com.programmazionemobile.formula1app.data.raceResultsData.AverageSpeed
-import com.programmazionemobile.formula1app.data.raceResultsData.Constructor
-import com.programmazionemobile.formula1app.data.raceResultsData.FastestLap
-import com.programmazionemobile.formula1app.data.raceResultsData.Time
-import com.programmazionemobile.formula1app.data.raceResultsData.TimeX
 import com.programmazionemobile.formula1app.data.sprintData.SprintResult
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.math.round
 
 class RaceResultsViewModel : ViewModel() {
     private val BASE_URL = "https://ergast.com/api/f1/"

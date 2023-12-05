@@ -1,4 +1,4 @@
-package com.programmazionemobile.formula1app
+package com.programmazionemobile.formula1app.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -13,7 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
-import com.programmazionemobile.formula1app.model.CircuitInfoViewModel
+import com.programmazionemobile.formula1app.R
+import com.programmazionemobile.formula1app.viewModel.CircuitInfoViewModel
 import org.json.JSONObject
 
 

@@ -1,21 +1,15 @@
-package com.programmazionemobile.formula1app
+package com.programmazionemobile.formula1app.viewModel
 
-import android.icu.util.Calendar
 import android.util.Log
-import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.programmazionemobile.formula1app.data.constructorStandingsData.ConstructorStanding
-import com.programmazionemobile.formula1app.data.driverStandingsData.DriverStanding
-import com.programmazionemobile.formula1app.data.driverStandingsData.DriverStandingsDataClass
-import com.programmazionemobile.formula1app.data.driverStandingsData.StandingsLists
 import com.programmazionemobile.formula1app.data.interfaceAPI.ErgastApi
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.time.Year
 
 class ConstructorStandingsViewModel : ViewModel() {
     private val BASE_URL = "https://ergast.com/api/f1/"

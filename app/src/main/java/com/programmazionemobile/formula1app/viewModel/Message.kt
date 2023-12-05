@@ -1,4 +1,4 @@
-package com.programmazionemobile.formula1app.model
+package com.programmazionemobile.formula1app.viewModel
 
 import android.net.Uri
 import java.util.Date

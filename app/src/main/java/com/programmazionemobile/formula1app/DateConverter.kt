@@ -173,13 +173,17 @@ object DateConverter {
         val formatoData = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ssX")
         val now = LocalDateTime.now()
 
-        try {
+        return try {
             val dataConfronto = LocalDateTime.parse("$dataDaConfrontare $orarioDaConfrontare", formatoData)
             val differenza = ChronoUnit.DAYS.between(now, dataConfronto)
-            return if (differenza >= 0) differenza.toString() else "00"
+            if (differenza > 0)
+                differenza.toString()
+            else if (differenza.toInt() == 0)
+                "00"
+            else "00"
         } catch (e: DateTimeParseException) {
             e.printStackTrace()
-            return "Data non valida"
+            "Data non valida"
         }
     }
 
@@ -189,4 +193,17 @@ object DateConverter {
         return sdf.format(date)
     }
 
+    fun isRaceDateAfterToday(raceDate: String): Boolean {
+        val outputFormat = SimpleDateFormat("dd MMMM", Locale.ITALIAN)
+        val currentDate = Date()
+
+        try {
+            val formattedRaceDate = outputFormat.parse(raceDate)
+            return currentDate.before(formattedRaceDate)
+        } catch (e: Exception) {
+            // Gestisci eventuali eccezioni durante il parsing della data
+            e.printStackTrace()
+            return false
+        }
+    }
 }

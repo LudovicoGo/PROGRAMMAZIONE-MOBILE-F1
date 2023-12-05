@@ -2,8 +2,6 @@ package com.programmazionemobile.formula1app.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.icu.util.Calendar
-import android.icu.util.TimeUnit
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,31 +11,17 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView.*
-import androidx.work.Constraints
-import androidx.work.Data
-import androidx.work.ExistingWorkPolicy
-import androidx.work.NetworkType
-import androidx.work.OneTimeWorkRequest
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.programmazionemobile.formula1app.DateConverter
 import com.programmazionemobile.formula1app.R
 import com.programmazionemobile.formula1app.data.calendarData.Race
-import com.programmazionemobile.formula1app.notification.NotificationWorker
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import java.util.Date
-import kotlin.time.DurationUnit
-
-
-
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
 import androidx.work.*
-import com.google.gson.Gson
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class CalendarAdapter (val data: MutableList<Race>, val context: Context): Adapter<ViewHolder>(){
 
@@ -85,10 +69,11 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context): Adapt
     }
 
     override fun onBindViewHolder(holder: ViewHolder, round: Int) {
-
+        val currentDate = LocalDate.now()
         when(holder) {
             is HeaderViewHolder -> {
-                if (DateConverter.convertDateYear(data.get(round).date) == "2023"){
+                if (round == 0 && DateConverter.convertDateYear(data[round].date) == currentDate.year.toString() && DateConverter.isRaceDateAfterToday(DateConverter.convertDate(data[round].date))) {
+
                     holder.dataProssimaGara.text = DateConverter.convertDate(nextRace(data)?.date!!)
                     holder.nomeProssimaGara.text = nextRace(data)?.raceName
                     holder.descProssimaGara.text = nextRace(data)?.circuit?.circuitName
@@ -107,17 +92,14 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context): Adapt
                     bundle.putString("qualiHour", nextRace(data)?.qualifying?.time!!)
                     bundle.putString("calendarRound", nextRace(data)?.round)
 
-
-                    holder.flagProssimaGara.load("https://flagpedia.net/data/flags/w1160/$countryCode.webp")
-                    {
-                        transformations(RoundedCornersTransformation
-                            (75f, 30f, 0f, 30f))
+                    holder.flagProssimaGara.load("https://flagpedia.net/data/flags/w1160/$countryCode.webp") {
+                        transformations(RoundedCornersTransformation(75f, 30f, 0f, 30f))
                     }
 
                     holder.row.findViewById<View>(R.id.prossimoEvento).setOnClickListener {
                         it.findNavController().navigate(R.id.action_calendarFragment_to_raceFragment2, bundle)
                     }
-                } else{
+                } else {
                     holder.dataProssimaGara.visibility = GONE
                     holder.nomeProssimaGara.visibility = GONE
                     holder.descProssimaGara.visibility = GONE
@@ -126,37 +108,38 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context): Adapt
                     holder.prossimoEventoCard.visibility = GONE
 
                     holder.calendarHeader.layoutParams.height = 240
-
                 }
             }
 
+
             is RaceListViewHolder -> {
-                holder.dataGara.text = DateConverter.convertDate(data.get(round - 1).date)
-                holder.nomeGara.text = data.get(round - 1).raceName
-                holder.descGara.text = data.get(round - 1).circuit.circuitName
-                val countryName = data.get(round - 1).circuit.location.country
+
+                holder.dataGara.text = DateConverter.convertDate(data.get(round - HEADER_NUMBER).date)
+                holder.nomeGara.text = data.get(round - HEADER_NUMBER).raceName
+                holder.descGara.text = data.get(round - HEADER_NUMBER).circuit.circuitName
+                val countryName = data.get(round - HEADER_NUMBER).circuit.location.country
 
                 val countryCode = getCountryCode(countryName)
 
                 val bundle = Bundle()
-                bundle.putString("raceName", data.get(round - 1).raceName)
-                bundle.putString("circuitName", data.get(round - 1).circuit.circuitName)
-                bundle.putString("circuitID", data.get(round - 1).circuit.circuitId)
-                bundle.putString("raceDate", data.get(round - 1).date)
-                bundle.putString("calendarRound", data.get(round-1).round)
+                bundle.putString("raceName", data.get(round - HEADER_NUMBER).raceName)
+                bundle.putString("circuitName", data.get(round - HEADER_NUMBER).circuit.circuitName)
+                bundle.putString("circuitID", data.get(round - HEADER_NUMBER).circuit.circuitId)
+                bundle.putString("raceDate", data.get(round - HEADER_NUMBER).date)
+                bundle.putString("calendarRound", data.get(round - HEADER_NUMBER).round)
 
 
-                if (DateConverter.convertDateYear(data.get(round - 1).date).toInt() > 2021){
-                    bundle.putString("qualiDate", data.get(round -1).qualifying.date)
-                    bundle.putString("qualiHour", data.get(round - 1).qualifying.time)
-                    bundle.putString("firstDate", data.get(round - 1).firstPractice.date)
+                if (DateConverter.convertDateYear(data.get(round - HEADER_NUMBER).date).toInt() > 2021){
+                    bundle.putString("qualiDate", data.get(round - HEADER_NUMBER).qualifying.date)
+                    bundle.putString("qualiHour", data.get(round - HEADER_NUMBER).qualifying.time)
+                    bundle.putString("firstDate", data.get(round - HEADER_NUMBER).firstPractice.date)
                 } else{
                     bundle.putString("qualiHour", "Dati non disponibili")
                     bundle.putString("qualiDate", "Dati non disponibili")
                 }
 
-                if (DateConverter.convertDateYear(data.get(round - 1).date).toInt() > 2004)
-                    bundle.putString("raceHour", data.get(round - 1).time)
+                if (DateConverter.convertDateYear(data.get(round - HEADER_NUMBER).date).toInt() > 2004)
+                    bundle.putString("raceHour", data.get(round - HEADER_NUMBER).time)
                 else
                     bundle.putString("raceHour", "Dati non disponibili")
 
@@ -181,6 +164,21 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context): Adapt
         }
         return TYPE_ITEM
     }
+
+    /*override fun getItemCount(): Int {
+
+        val locale = Locale("it", "IT")
+        val dateFormat = SimpleDateFormat("dd MMMM", locale)
+        val dataDaVerificare = DateConverter.convertDate(data.get(5).date)
+        val dataOdierna = Date()
+        val dataUltimaGara = dateFormat.parse(dataDaVerificare)
+
+        // conta gli elementi per la recyclerview
+        return if (dataUltimaGara != null && dataUltimaGara.after(dataOdierna)) {
+            data.size + HEADER_NUMBER
+        } else
+            data.size
+    }*/
 
     override fun getItemCount(): Int {
         // conta gli elementi per la recyclerview
@@ -224,7 +222,7 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context): Adapt
             "USA" to "us",
             "Qatar" to "qa",
             "Korea" to "kr",
-            "Argentina" to "ar"
+            "Argentina" to "ar",
         )
         return countryNameToCodeMap[countryName]
     }

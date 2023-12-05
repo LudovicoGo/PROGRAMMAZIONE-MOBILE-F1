@@ -1,4 +1,4 @@
-package com.programmazionemobile.formula1app
+package com.programmazionemobile.formula1app.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -23,8 +23,9 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.programmazionemobile.formula1app.R
 import com.programmazionemobile.formula1app.adapter.MessageAdapter
-import com.programmazionemobile.formula1app.model.Message
+import com.programmazionemobile.formula1app.viewModel.Message
 
 class LiveChatFragment: Fragment(){
 

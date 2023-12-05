@@ -1,4 +1,4 @@
-package com.programmazionemobile.formula1app.model
+package com.programmazionemobile.formula1app.viewModel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -56,7 +56,7 @@ class CalendarViewModel: ViewModel() {
 
                     } else {
                         // Handle unsuccessful response
-                        Log.d("FAIL", "API call failed with response code: ${response.code()}")
+                        Log.d("2FAIL", "API call failed with response code: ${response.code()}")
                     }
                 }
             } catch (e: Exception) {

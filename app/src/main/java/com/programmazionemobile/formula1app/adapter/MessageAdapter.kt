@@ -7,15 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.graphics.createBitmap
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.google.firebase.auth.FirebaseAuth
 import com.programmazionemobile.formula1app.DateConverter
 import com.programmazionemobile.formula1app.R
-import com.programmazionemobile.formula1app.databinding.RecivedMsgBinding
-import com.programmazionemobile.formula1app.databinding.SendMsgBinding
-import com.programmazionemobile.formula1app.model.Message
+import com.programmazionemobile.formula1app.viewModel.Message
 import coil.load
 import coil.transform.RoundedCornersTransformation
 

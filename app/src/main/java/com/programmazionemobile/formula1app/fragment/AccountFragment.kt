@@ -1,4 +1,4 @@
-package com.programmazionemobile.formula1app
+package com.programmazionemobile.formula1app.fragment
 
 import android.annotation.SuppressLint
 import android.content.Context.MODE_PRIVATE
@@ -19,7 +19,7 @@ import com.google.android.material.switchmaterial.SwitchMaterial
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.programmazionemobile.formula1app.notification.NotificationApp
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.programmazionemobile.formula1app.R
 
 class AccountFragment: Fragment() {
 

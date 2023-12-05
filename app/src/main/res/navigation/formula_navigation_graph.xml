@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/calendarFragment"
-        android:name="com.programmazionemobile.formula1app.CalendarFragment"
+        android:name="com.programmazionemobile.formula1app.fragment.CalendarFragment"
         android:label="fragment_calendar"
         tools:layout="@layout/fragment_calendar" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/championshipFragment"
-        android:name="com.programmazionemobile.formula1app.ChampionshipFragment"
+        android:name="com.programmazionemobile.formula1app.fragment.ChampionshipFragment"
         android:label="fragment_championship"
         tools:layout="@layout/fragment_championship" >
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/driversStandingsFragment"
-        android:name="com.programmazionemobile.formula1app.DriversStandingsFragment"
+        android:name="com.programmazionemobile.formula1app.fragment.DriversStandingsFragment"
         android:label="fragment_drivers_standings"
         tools:layout="@layout/fragment_drivers_standings" >
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/driverProfileFragment"
-        android:name="com.programmazionemobile.formula1app.DriverProfileFragment"
+        android:name="com.programmazionemobile.formula1app.fragment.DriverProfileFragment"
         android:label="fragment_driver_profile"
         tools:layout="@layout/fragment_driver_profile" >
         <argument android:name="DriverTeam"
@@ -88,7 +88,7 @@
     </fragment>
     <fragment
         android:id="@+id/raceFragment2"
-        android:name="com.programmazionemobile.formula1app.RaceFragment"
+        android:name="com.programmazionemobile.formula1app.fragment.RaceFragment"
         android:label="fragment_race_info"
         tools:layout="@layout/fragment_race_info" >
         <action
@@ -106,7 +106,7 @@
     </fragment>
     <fragment
         android:id="@+id/circuitInfoFragment"
-        android:name="com.programmazionemobile.formula1app.CircuitInfoFragment"
+        android:name="com.programmazionemobile.formula1app.fragment.CircuitInfoFragment"
         android:label="fragment_circuit_info"
         tools:layout="@layout/fragment_circuit_info" >
         <argument android:name="raceName"
@@ -147,7 +147,7 @@
     </fragment>
     <fragment
         android:id="@+id/constructorProfileFragment"
-        android:name="com.programmazionemobile.formula1app.ConstructorProfileFragment"
+        android:name="com.programmazionemobile.formula1app.fragment.ConstructorProfileFragment"
         android:label="fragment_constructor_profile"
         tools:layout="@layout/fragment_constructor_profile" >
         <argument
@@ -181,7 +181,7 @@
     </fragment>
     <fragment
         android:id="@+id/raceResultsFragment"
-        android:name="com.programmazionemobile.formula1app.RaceResultsFragment"
+        android:name="com.programmazionemobile.formula1app.fragment.RaceResultsFragment"
         android:label="fragment_race_results"
         tools:layout="@layout/fragment_race_results" >
         <argument
@@ -207,7 +207,7 @@
     </fragment>
     <fragment
         android:id="@+id/accountFragment"
-        android:name="com.programmazionemobile.formula1app.LoginFragment"
+        android:name="com.programmazionemobile.formula1app.fragment.LoginFragment"
         android:label="Account"
         tools:layout="@layout/fragment_login" >
         <action
@@ -216,7 +216,7 @@
     </fragment>
     <fragment
         android:id="@+id/accountFragment4"
-        android:name="com.programmazionemobile.formula1app.AccountFragment"
+        android:name="com.programmazionemobile.formula1app.fragment.AccountFragment"
         android:label="AccountFragment"
         tools:layout="@layout/fragment_account_logged">
         <action
@@ -237,11 +237,11 @@
     </fragment>
     <fragment
         android:id="@+id/liveChatFragment"
-        android:name="com.programmazionemobile.formula1app.LiveChatFragment"
+        android:name="com.programmazionemobile.formula1app.fragment.LiveChatFragment"
         android:label="LiveChatFragment" />
     <fragment
         android:id="@+id/qualifyingFragment"
-        android:name="com.programmazionemobile.formula1app.QualifyingFragment"
+        android:name="com.programmazionemobile.formula1app.fragment.QualifyingFragment"
         android:label="fragment_qualifying"
         tools:layout="@layout/fragment_qualifying" >
         <argument
