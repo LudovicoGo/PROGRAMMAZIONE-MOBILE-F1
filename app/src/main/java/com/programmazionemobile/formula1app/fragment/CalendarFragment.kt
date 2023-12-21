@@ -26,7 +26,7 @@ class CalendarFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
-    private lateinit var viewModel: CalendarViewModel
+    lateinit var viewModel: CalendarViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -41,9 +41,9 @@ class CalendarFragment : Fragment() {
         val layoutManager = LinearLayoutManager(requireContext())
         rv.layoutManager = layoutManager
 
-        val currentYear = Calendar.getInstance().get(Calendar.YEAR)
+        val currentYear = 2024
 
-        val years = (1950..Calendar.getInstance().get(Calendar.YEAR)).toList().reversed()
+        val years = (1950..2024).toList().reversed()
         val yearsArray = years.toTypedArray()
 
         viewModel = ViewModelProvider(this).get(CalendarViewModel::class.java)
@@ -115,10 +115,7 @@ class CalendarFragment : Fragment() {
                 connectionOverlayButton.visibility = View.GONE
             }
         }
-
-
-
-
+        
 
         viewModel.getCalendar(currentYear.toString())
 

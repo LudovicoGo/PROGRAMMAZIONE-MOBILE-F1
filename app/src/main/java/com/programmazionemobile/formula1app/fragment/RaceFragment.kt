@@ -141,7 +141,7 @@ class RaceFragment: Fragment() {
         } else {
             liveChatCard.setOnClickListener {
                 Toast.makeText(requireContext(),
-                    "La Chat relativa a questo Gran Premio è stata chiusa",
+                    "La Chat relativa a questo Gran Premio è chiusa",
                     Toast.LENGTH_LONG).show()
             }
         }

@@ -2,6 +2,7 @@ package com.programmazionemobile.formula1app.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.icu.util.Calendar
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -72,7 +73,7 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context): Adapt
         val currentDate = LocalDate.now()
         when(holder) {
             is HeaderViewHolder -> {
-                if (round == 0 && DateConverter.convertDateYear(data[round].date) == currentDate.year.toString() && DateConverter.isRaceDateAfterToday(DateConverter.convertDate(data[round].date))) {
+                if (DateConverter.convertDateYear(data.get(round).date) == "2024"){
 
                     holder.dataProssimaGara.text = DateConverter.convertDate(nextRace(data)?.date!!)
                     holder.nomeProssimaGara.text = nextRace(data)?.raceName
@@ -86,11 +87,19 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context): Adapt
                     bundle.putString("circuitName", nextRace(data)?.circuit?.circuitName)
                     bundle.putString("circuitID", nextRace(data)?.circuit?.circuitId)
                     bundle.putString("raceDate", nextRace(data)?.date!!)
-                    bundle.putString("firstDate", nextRace(data)?.firstPractice?.date!!)
-                    bundle.putString("qualiDate", nextRace(data)?.qualifying?.date!!)
-                    bundle.putString("raceHour", nextRace(data)?.time)
-                    bundle.putString("qualiHour", nextRace(data)?.qualifying?.time!!)
                     bundle.putString("calendarRound", nextRace(data)?.round)
+
+                    if (DateConverter.convertDateYear(data.get(round).date).toInt() in 2022..Calendar.getInstance().get(Calendar.YEAR)){
+                        bundle.putString("qualiDate", nextRace(data)?.qualifying?.date)
+                        bundle.putString("qualiHour", nextRace(data)?.qualifying?.time)
+                        bundle.putString("firstDate", nextRace(data)?.firstPractice?.date)
+                        bundle.putString("raceHour", nextRace(data)?.time)
+                    } else{
+                        bundle.putString("qualiDate", "Dati non disponibili")
+                        bundle.putString("qualiHour", "Dati non disponibili")
+                        bundle.putString("firstDate", "Dati non disponibili")
+                        bundle.putString("raceHour", "Dati non disponibili")
+                    }
 
                     holder.flagProssimaGara.load("https://flagpedia.net/data/flags/w1160/$countryCode.webp") {
                         transformations(RoundedCornersTransformation(75f, 30f, 0f, 30f))
@@ -107,7 +116,7 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context): Adapt
                     holder.prossimoEventoText.visibility = GONE
                     holder.prossimoEventoCard.visibility = GONE
 
-                    holder.calendarHeader.layoutParams.height = 240
+                    holder.calendarHeader.layoutParams.height = 235
                 }
             }
 
@@ -129,16 +138,17 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context): Adapt
                 bundle.putString("calendarRound", data.get(round - HEADER_NUMBER).round)
 
 
-                if (DateConverter.convertDateYear(data.get(round - HEADER_NUMBER).date).toInt() > 2021){
+                if (DateConverter.convertDateYear(data.get(round - HEADER_NUMBER).date).toInt() in 2022..Calendar.getInstance().get(Calendar.YEAR)){
                     bundle.putString("qualiDate", data.get(round - HEADER_NUMBER).qualifying.date)
                     bundle.putString("qualiHour", data.get(round - HEADER_NUMBER).qualifying.time)
                     bundle.putString("firstDate", data.get(round - HEADER_NUMBER).firstPractice.date)
                 } else{
+                    bundle.putString("firstDate", "Dati non disponibili")
                     bundle.putString("qualiHour", "Dati non disponibili")
                     bundle.putString("qualiDate", "Dati non disponibili")
                 }
 
-                if (DateConverter.convertDateYear(data.get(round - HEADER_NUMBER).date).toInt() > 2004)
+                if (DateConverter.convertDateYear(data.get(round - HEADER_NUMBER).date).toInt() > 2004 && DateConverter.convertDateYear(data.get(round - HEADER_NUMBER).date).toInt() < Calendar.getInstance().get(Calendar.YEAR))
                     bundle.putString("raceHour", data.get(round - HEADER_NUMBER).time)
                 else
                     bundle.putString("raceHour", "Dati non disponibili")
@@ -165,20 +175,6 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context): Adapt
         return TYPE_ITEM
     }
 
-    /*override fun getItemCount(): Int {
-
-        val locale = Locale("it", "IT")
-        val dateFormat = SimpleDateFormat("dd MMMM", locale)
-        val dataDaVerificare = DateConverter.convertDate(data.get(5).date)
-        val dataOdierna = Date()
-        val dataUltimaGara = dateFormat.parse(dataDaVerificare)
-
-        // conta gli elementi per la recyclerview
-        return if (dataUltimaGara != null && dataUltimaGara.after(dataOdierna)) {
-            data.size + HEADER_NUMBER
-        } else
-            data.size
-    }*/
 
     override fun getItemCount(): Int {
         // conta gli elementi per la recyclerview

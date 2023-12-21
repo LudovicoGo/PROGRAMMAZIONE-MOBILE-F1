@@ -6,9 +6,9 @@
     android:layout_height="118dp"
     android:layout_gravity="center_horizontal"
     android:layout_marginStart="10dp"
-    android:layout_marginTop="4dp"
+    android:layout_marginTop="35dp"
     android:layout_marginEnd="10dp"
-    android:layout_marginBottom="4dp"
+    android:layout_marginBottom="35dp"
     android:background="@drawable/standings_shape"
     android:elevation="5dp">
 
@@ -20,7 +20,7 @@
         android:elevation="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/norris" />
+        app:srcCompat="@drawable/max_verstappen" />
 
     <TextView
         android:id="@+id/DriverName"
@@ -53,6 +53,7 @@
         android:id="@+id/DriverNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minWidth="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="3dp"
         android:fontFamily="@font/formula1italic"

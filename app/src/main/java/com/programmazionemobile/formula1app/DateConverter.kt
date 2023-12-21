@@ -166,9 +166,6 @@ object DateConverter {
     }
 
     fun calcolaTempoMancanteGiorni(dataDaConfrontare: String, orarioDaConfrontare: String): String {
-        if (dataDaConfrontare == "Dati non disponibili") {
-            return "Data non disponibile"
-        }
 
         val formatoData = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ssX")
         val now = LocalDateTime.now()
@@ -183,7 +180,7 @@ object DateConverter {
             else "00"
         } catch (e: DateTimeParseException) {
             e.printStackTrace()
-            "Data non valida"
+            "00"
         }
     }
 

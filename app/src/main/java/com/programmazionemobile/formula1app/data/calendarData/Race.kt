@@ -21,7 +21,7 @@ data class Race(
     @SerializedName("SecondPractice")
     val secondPractice: SecondPractice,
     @SerializedName("Sprint")
-    val sprint: Sprint,
+    val sprint: Sprint?,
     @SerializedName("ThirdPractice")
     val thirdPractice: ThirdPractice,
     @SerializedName("time")
