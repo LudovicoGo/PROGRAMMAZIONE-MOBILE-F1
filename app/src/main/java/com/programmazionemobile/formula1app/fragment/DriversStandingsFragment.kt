@@ -65,6 +65,7 @@ class DriversStandingsFragment : Fragment() {
 
         //spinner
         val years = (1950..Calendar.getInstance().get(Calendar.YEAR)).toList().reversed()
+//        val years = (1950..2024).toList().reversed()////////////////////////////////////////////////////////////////////
         val yearsArray = years.toTypedArray()
 
         val spinnerAdapter = ArrayAdapter(requireContext(),
@@ -93,12 +94,32 @@ class DriversStandingsFragment : Fragment() {
             }
         }
 
+
+
+        val connectionOverlayBackground = view.findViewById<ImageView>(R.id.connectionOverlayBackground)
+        val connectionOverlayTextView = view.findViewById<TextView>(R.id.connectionOverlayTextView)
+        val connectionOverlayLogo = view.findViewById<ImageView>(R.id.connectionOverlayLogo)
+        val dataNotAvailableOverlayDrivers = view.findViewById<TextView>(R.id.dataNotAvailableOverlayDrivers)
+
+
         viewModel.driverStandings.observe(viewLifecycleOwner, Observer { driverStandings ->
             val lista = mutableListOf<DriverStanding>()
-            lista.addAll(driverStandings)
+            connectionOverlayBackground.visibility = View.GONE
+            dataNotAvailableOverlayDrivers.visibility = View.GONE
 
-            val adapter = DriversStandingsAdapter(lista, requireContext(), DriversStandingsSpinner.selectedItem.toString())
-            rv.adapter = adapter
+            if(driverStandings.isEmpty()){
+                connectionOverlayBackground.visibility = View.VISIBLE
+                dataNotAvailableOverlayDrivers.visibility = View.VISIBLE
+            }
+                lista.addAll(driverStandings)
+
+                val adapter = DriversStandingsAdapter(
+                    lista,
+                    requireContext(),
+                    DriversStandingsSpinner.selectedItem.toString()
+                )
+
+                rv.adapter = adapter
         })
 
         val progressBar = view.findViewById<ProgressBar>(R.id.DriverStandingsProgressBar)
@@ -108,7 +129,12 @@ class DriversStandingsFragment : Fragment() {
 
 
         viewModel.loadingState.observe(viewLifecycleOwner, Observer { isLoading ->
+
             if (isLoading) {
+
+                connectionOverlayBackground.visibility = View.GONE
+                dataNotAvailableOverlayDrivers.visibility = View.GONE
+
 
                 //tolgo la possibilità di interagire con le viste durante il caricamento
                 getActivity()?.getWindow()?.setFlags(
@@ -124,6 +150,8 @@ class DriversStandingsFragment : Fragment() {
 
             } else {
 
+
+
                 //rimetto  la possibilità di interagire con le viste durante il caricamento
                 getActivity()?.getWindow()?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 //nascondo la progressbar e il testo
@@ -135,9 +163,6 @@ class DriversStandingsFragment : Fragment() {
         })
 
 
-        val connectionOverlayBackground = view.findViewById<ImageView>(R.id.connectionOverlayBackground)
-        val connectionOverlayTextView = view.findViewById<TextView>(R.id.connectionOverlayTextView)
-        val connectionOverlayLogo = view.findViewById<ImageView>(R.id.connectionOverlayLogo)
 
 
         viewModel.isInternetConnected.observe(viewLifecycleOwner) { isInternetConnected ->
@@ -165,6 +190,7 @@ class DriversStandingsFragment : Fragment() {
         }
         //chiamata per ottenere i dati sulla classifica dei piloti
         val currentYear = Calendar.getInstance().get(Calendar.YEAR).toString()
+//        val currentYear = "2024"
         viewModel.getAllDriverStandings(currentYear)
 
         return view

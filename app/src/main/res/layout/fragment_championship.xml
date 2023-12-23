@@ -91,6 +91,21 @@
             app:layout_constraintStart_toStartOf="@+id/connectionOverlayBackground"
             app:layout_constraintTop_toBottomOf="@+id/connectionOverlayLogo"
             app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/dataNotAvailableOverlayConstructors"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/formula1_regular"
+            android:text="@string/data_not_yet_available"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toBottomOf="@+id/connectionOverlayBackground"
+            app:layout_constraintEnd_toEndOf="@+id/connectionOverlayBackground"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="@+id/connectionOverlayBackground"
+            app:layout_constraintTop_toTopOf="@+id/connectionOverlayBackground" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

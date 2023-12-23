@@ -45,7 +45,8 @@ class ChampionshipFragment : Fragment() {
 
 
         //spinner
-        val years = (1958..Calendar.getInstance().get(Calendar.YEAR)).toList().reversed()
+        val years = (1950..Calendar.getInstance().get(Calendar.YEAR)).toList().reversed()
+//        val years = (1958..2024).toList().reversed()
         val yearsArray = years.toTypedArray()
         val spinnerAdapter = ArrayAdapter(requireContext(),
             R.layout.standings_spinner_closed_item_layout, yearsArray)
@@ -77,6 +78,7 @@ class ChampionshipFragment : Fragment() {
         val connectionOverlayBackground = view.findViewById<ImageView>(R.id.connectionOverlayBackground)
         val connectionOverlayTextView = view.findViewById<TextView>(R.id.connectionOverlayTextView)
         val connectionOverlayLogo = view.findViewById<ImageView>(R.id.connectionOverlayLogo)
+        val dataNotAvailableOverlayConstructors = view.findViewById<TextView>(R.id.dataNotAvailableOverlayConstructors)
 
 
         viewModel.isInternetConnected.observe(viewLifecycleOwner) { isInternetConnected ->
@@ -106,11 +108,18 @@ class ChampionshipFragment : Fragment() {
 
         viewModel.constructorStandings.observe(viewLifecycleOwner, Observer { constructorStandings ->
                 val adapter = ConstructorStandingsListAdapter(requireContext(), ConstructorStandingsSpinner.selectedItem.toString())
+            connectionOverlayBackground.visibility = View.GONE
+            dataNotAvailableOverlayConstructors.visibility = View.GONE
+                if(constructorStandings.isEmpty()){
+                    connectionOverlayBackground.visibility = View.VISIBLE
+                    dataNotAvailableOverlayConstructors.visibility = View.VISIBLE
+                }
                 rv.adapter = adapter
 
                 adapter.submitList(constructorStandings)
             })
         viewModel.getAllConstructorStandings(ConstructorStandingsSpinner.selectedItem.toString())
+//        viewModel.getAllConstructorStandings("2024")
         return view
 
 

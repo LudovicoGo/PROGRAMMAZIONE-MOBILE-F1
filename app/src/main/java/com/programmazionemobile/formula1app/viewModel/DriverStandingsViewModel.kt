@@ -51,6 +51,7 @@ class DriverStandingsViewModel : ViewModel() {
                 _loadingState.value = true
 
                 val response = api.getDriverStandings(year)
+//                val response = api.getDriverStandings("2024")
 
                 _isInternetConnected.value = true
 
@@ -66,8 +67,6 @@ class DriverStandingsViewModel : ViewModel() {
 
                             for (driverStanding in standingsList.driverStandings) {
                                 driverStandingsList.add(driverStanding)
-
-
                             }
                         }
                         _driverStandings.value = driverStandingsList
