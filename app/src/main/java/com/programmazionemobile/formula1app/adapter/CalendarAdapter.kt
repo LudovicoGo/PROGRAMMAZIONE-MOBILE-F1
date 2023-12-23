@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.icu.util.Calendar
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
@@ -21,8 +20,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import androidx.work.*
 import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+
 
 class CalendarAdapter (val data: MutableList<Race>, val context: Context): Adapter<ViewHolder>(){
 
@@ -70,7 +68,6 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context): Adapt
     }
 
     override fun onBindViewHolder(holder: ViewHolder, round: Int) {
-        val currentDate = LocalDate.now()
         when(holder) {
             is HeaderViewHolder -> {
                 if (DateConverter.convertDateYear(data.get(round).date) == "2024"){
@@ -137,18 +134,23 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context): Adapt
                 bundle.putString("raceDate", data.get(round - HEADER_NUMBER).date)
                 bundle.putString("calendarRound", data.get(round - HEADER_NUMBER).round)
 
+                val primaGara = SimpleDateFormat("yyyy-MM-dd").parse(data[0].date)
 
-                if (DateConverter.convertDateYear(data.get(round - HEADER_NUMBER).date).toInt() in 2022..Calendar.getInstance().get(Calendar.YEAR)){
-                    bundle.putString("qualiDate", data.get(round - HEADER_NUMBER).qualifying.date)
-                    bundle.putString("qualiHour", data.get(round - HEADER_NUMBER).qualifying.time)
-                    bundle.putString("firstDate", data.get(round - HEADER_NUMBER).firstPractice.date)
-                } else{
+                val dataCorrente = Calendar.getInstance().time.time
+
+                if (dataCorrente >= primaGara.time
+                    && DateConverter.convertDateYear(data.get(round - HEADER_NUMBER).date).toInt() > 2021) {
+                    bundle.putString("qualiDate", data[round - HEADER_NUMBER].qualifying.date)
+                    bundle.putString("qualiHour", data[round - HEADER_NUMBER].qualifying.time)
+                    bundle.putString("firstDate", data[round - HEADER_NUMBER].firstPractice.date)
+                } else {
                     bundle.putString("firstDate", "Dati non disponibili")
                     bundle.putString("qualiHour", "Dati non disponibili")
                     bundle.putString("qualiDate", "Dati non disponibili")
                 }
 
-                if (DateConverter.convertDateYear(data.get(round - HEADER_NUMBER).date).toInt() > 2004 && DateConverter.convertDateYear(data.get(round - HEADER_NUMBER).date).toInt() < Calendar.getInstance().get(Calendar.YEAR))
+
+                if (DateConverter.convertDateYear(data.get(round - HEADER_NUMBER).date).toInt() in 2004..Calendar.getInstance().get(Calendar.YEAR))
                     bundle.putString("raceHour", data.get(round - HEADER_NUMBER).time)
                 else
                     bundle.putString("raceHour", "Dati non disponibili")
