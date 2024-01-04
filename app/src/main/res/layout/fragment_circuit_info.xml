@@ -161,7 +161,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="6dp"
                 android:fontFamily="@font/formula1_regular"
-                android:text="RACE DISTANCE"
+                android:text="@string/race_distance"
                 android:textColor="#000000"
                 app:layout_constraintStart_toStartOf="@+id/imageView22"
                 app:layout_constraintTop_toTopOf="@+id/imageView22" />
@@ -180,7 +180,8 @@
 
             <TextView
                 android:id="@+id/nomeGara2"
-                android:layout_width="350dp"
+                android:maxWidth="325dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/formula1_bold"

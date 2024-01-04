@@ -30,7 +30,7 @@ import com.programmazionemobile.formula1app.viewModel.Message
 class LiveChatFragment: Fragment(){
 
     private lateinit var chatRecyclerView: RecyclerView
-    private lateinit var messageBox: EditText
+    private lateinit var editText: EditText
     private lateinit var sendButton: ImageView
     private lateinit var messageAdapter: MessageAdapter
     private lateinit var messageList: ArrayList<Message>
@@ -66,20 +66,20 @@ class LiveChatFragment: Fragment(){
         mDbRef = FirebaseDatabase.getInstance().reference
 
         chatRecyclerView = view.findViewById(R.id.recyclerView)
-        messageBox = view.findViewById(R.id.editText)
+        editText = view.findViewById(R.id.editText)
 
-        messageBox.setOnEditorActionListener {v, actionId, event ->
+        editText.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_DONE ||
                 event?.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER) {
-                if (messageBox.text.toString() != ""){
-                    val message = messageBox.text.toString()
+                if (editText.text.toString() != ""){
+                    val message = editText.text.toString()
                     val messageObject = Message(message, senderUid, FirebaseAuth.getInstance().currentUser?.displayName,
                         FirebaseAuth.getInstance().currentUser?.photoUrl)
 
                     mDbRef.child("chats").child(room!!).child("messages").push()
                         .setValue(messageObject)
 
-                    messageBox.setText("")
+                    editText.setText("")
                 }
                 true
             }
@@ -118,15 +118,15 @@ class LiveChatFragment: Fragment(){
             })
 
         sendButton.setOnClickListener {
-            if (messageBox.text.toString() != ""){
-                val message = messageBox.text.toString().replace("\n", " ")
+            if (editText.text.toString() != ""){
+                val message = editText.text.toString().replace("\n", " ")
                 val messageObject = Message(message, senderUid, FirebaseAuth.getInstance().currentUser?.displayName,
                     FirebaseAuth.getInstance().currentUser?.photoUrl)
 
                 mDbRef.child("chats").child(room!!).child("messages").push()
                     .setValue(messageObject)
 
-                messageBox.setText("")
+                editText.setText("")
             }
         }
 

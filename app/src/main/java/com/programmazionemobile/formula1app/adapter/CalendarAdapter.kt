@@ -86,7 +86,7 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context): Adapt
                     bundle.putString("raceDate", nextRace(data)?.date!!)
                     bundle.putString("calendarRound", nextRace(data)?.round)
 
-                    if (DateConverter.convertDateYear(data.get(round).date).toInt() in 2022..Calendar.getInstance().get(Calendar.YEAR)){
+                    if (DateConverter.convertDateYear(data.get(round).date).toInt() in 2022..2023){
                         bundle.putString("qualiDate", nextRace(data)?.qualifying?.date)
                         bundle.putString("qualiHour", nextRace(data)?.qualifying?.time)
                         bundle.putString("firstDate", nextRace(data)?.firstPractice?.date)
@@ -150,7 +150,7 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context): Adapt
                 }
 
 
-                if (DateConverter.convertDateYear(data.get(round - HEADER_NUMBER).date).toInt() in 2004..Calendar.getInstance().get(Calendar.YEAR))
+                if (DateConverter.convertDateYear(data.get(round - HEADER_NUMBER).date).toInt() in 2004..2023)
                     bundle.putString("raceHour", data.get(round - HEADER_NUMBER).time)
                 else
                     bundle.putString("raceHour", "Dati non disponibili")

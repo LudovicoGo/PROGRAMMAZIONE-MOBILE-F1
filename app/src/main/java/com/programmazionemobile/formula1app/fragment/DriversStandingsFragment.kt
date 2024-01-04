@@ -65,7 +65,7 @@ class DriversStandingsFragment : Fragment() {
 
         //spinner
         val years = (1950..Calendar.getInstance().get(Calendar.YEAR)).toList().reversed()
-//        val years = (1950..2024).toList().reversed()////////////////////////////////////////////////////////////////////
+        //val years = (1950..2024).toList().reversed()////////////////////////////////////////////////////////////////////
         val yearsArray = years.toTypedArray()
 
         val spinnerAdapter = ArrayAdapter(requireContext(),

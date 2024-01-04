@@ -29,4 +29,5 @@
     <string name="race_results">RACE RESULTS</string>
     <string name="pts">PTS</string>
     <string name="time">TIME</string>
+    <string name="race_distance">RACE DISTANCE</string>
 </resources>

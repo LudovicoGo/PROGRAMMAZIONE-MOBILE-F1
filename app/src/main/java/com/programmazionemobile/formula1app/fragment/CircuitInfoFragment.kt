@@ -140,7 +140,8 @@ class CircuitInfoFragment: Fragment() {
             "interlagos" to "Brazil",
             "vegas" to "Las_Vegas",
             "yas_marina" to "Abu_Dhabi",
-            "ricard" to "France"
+            "ricard" to "France",
+            "imola" to "Emilia_Romagna"
         )
         return countryNameToCodeMap[circuitID]
     }
