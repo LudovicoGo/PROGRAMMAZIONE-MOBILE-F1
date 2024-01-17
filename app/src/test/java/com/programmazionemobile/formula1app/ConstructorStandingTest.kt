@@ -13,33 +13,28 @@ import org.junit.runners.JUnit4
 class ConstructorStandingTest {
 
     lateinit var classificaCostruttori: ArrayList<ConstructorStanding>
-
+    private lateinit var datiCostruttore: Constructor
+    private lateinit var costruttore: ConstructorStanding
     @Before
     fun beforeTest(){
         classificaCostruttori = ArrayList<ConstructorStanding>()
-    }
-
-
-    @Test
-    fun addConstructor(){
-
-        val datiCostruttore = Constructor(
+        datiCostruttore = Constructor(
             constructorId = "red_bull",
             url = "http://en.wikipedia.org/wiki/Red_Bull_Racing",
             name = "Red Bull",
-            nationality = "Austrian")
-
-        val costruttore = ConstructorStanding(
+            nationality = "Austrian"
+        )
+        costruttore = ConstructorStanding(
             position = "1",
-            positionText = "1", points = "860",
+            positionText = "1",
+            points = "860",
             wins = "21",
-            constructor = datiCostruttore)
-
+            constructor = datiCostruttore
+        )
+    }
+    @Test
+    fun addConstructor(){
         classificaCostruttori.add(costruttore)
-
-
-        // Prendo il primo(ed unico) elemento dalla lista e vedo se l'oggetto è stato correttamente creato,
-        // verificando il valore dei singoli attributi
         assertEquals(classificaCostruttori.first().position, "1")
         assertEquals(classificaCostruttori.first().positionText, "1")
         assertEquals(classificaCostruttori.first().points, "860")

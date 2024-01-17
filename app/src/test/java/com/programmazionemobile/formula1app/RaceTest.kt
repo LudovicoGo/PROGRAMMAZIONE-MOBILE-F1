@@ -18,42 +18,54 @@ import org.junit.runners.JUnit4
 class RaceTest {
 
     lateinit var calendarioGare: ArrayList<Race>
+    lateinit var location: Location
+    lateinit var circuito: Circuit
+
+    lateinit var firstPractice: FirstPractice
+    lateinit var secondPractice: SecondPractice
+    lateinit var thirdPractice: ThirdPractice
+    lateinit var qualifying: Qualifying
+    lateinit var nuovaGara: Race
+
+
 
     @Before
     fun beforeTest(){
         calendarioGare = ArrayList<Race>()
+
+        location = Location( lat = "26.0325",
+            long = "50.5106",
+            locality = "Sakhir", country = "Bahrain")
+
+        circuito = Circuit( circuitId = "bahrain",
+            url = "http://en.wikipedia.org/wiki/Bahrain_International_Circuit",
+            circuitName = "Bahrain International Circuit", location = location)
+
+        firstPractice = FirstPractice(date = "2023-03-03", time = "11:30:00Z")
+        secondPractice = SecondPractice(date = "2023-03-03", time = "15:00:00Z")
+        thirdPractice = ThirdPractice(date = "2023-03-04", time = "11:30:00Z")
+
+        qualifying = Qualifying(date = "2023-03-04", time = "15:00:00Z")
+
+        nuovaGara = Race(season = "2023", round = "1",
+            url = "https://en.wikipedia.org/wiki/2023_Bahrain_Grand_Prix",
+            raceName = "Bahrain Grand Prix", circuit = circuito,
+            date = "2023-03-05", time = "15:00:00Z", firstPractice = firstPractice,
+            secondPractice = secondPractice , thirdPractice = thirdPractice,
+            qualifying = qualifying, sprint = null)
+
     }
 
 
     @Test
     fun addRaceCalendar(){
 
-        val location = Location( lat = "26.0325",
-            long = "50.5106",
-            locality = "Sakhir", country = "Bahrain")
-
-        val circuito = Circuit( circuitId = "bahrain",
-            url = "http://en.wikipedia.org/wiki/Bahrain_International_Circuit",
-            circuitName = "Bahrain International Circuit", location = location)
-
-        val firstPractice = FirstPractice(date = "2023-03-03", time = "11:30:00Z")
-        val secondPractice = SecondPractice(date = "2023-03-03", time = "15:00:00Z")
-        val thirdPractice = ThirdPractice(date = "2023-03-04", time = "11:30:00Z")
-
-        val qualifying = Qualifying(date = "2023-03-04", time = "15:00:00Z")
-
-        val nuovaGara = Race(season = "2023", round = "1", url = "https://en.wikipedia.org/wiki/2023_Bahrain_Grand_Prix",
-            raceName = "Bahrain Grand Prix", circuit = circuito, date = "2023-03-05", time = "15:00:00Z", firstPractice = firstPractice,
-            secondPractice = secondPractice , thirdPractice = thirdPractice, qualifying = qualifying, sprint = null)
-
         calendarioGare.add(nuovaGara)
 
-
-        // Prendo il primo(ed unico) elemento dalla lista e vedo se l'oggetto è stato correttamente creato,
-        // verificando il valore dei singoli attributi
         assertEquals(calendarioGare.first().season , "2023")
         assertEquals(calendarioGare.first().round , "1")
-        assertEquals(calendarioGare.first().url , "https://en.wikipedia.org/wiki/2023_Bahrain_Grand_Prix")
+        assertEquals(calendarioGare.first().url ,
+            "https://en.wikipedia.org/wiki/2023_Bahrain_Grand_Prix")
         assertEquals(calendarioGare.first().raceName , "Bahrain Grand Prix")
         assertEquals(calendarioGare.first().circuit , circuito)
         assertEquals(calendarioGare.first().date , "2023-03-05")

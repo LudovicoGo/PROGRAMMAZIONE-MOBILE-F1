@@ -3,12 +3,12 @@
     <item
         android:id="@+id/calendarFragment"
         android:icon="@drawable/flag_icon"
-        android:title="Calendario" />
+        android:title="Calendar" />
 
     <item
         android:id="@+id/driversStandingsFragment"
         android:icon="@drawable/helmet_icon"
-        android:title="Piloti" />
+        android:title="Drivers" />
 
     <item
         android:id="@+id/championshipFragment"

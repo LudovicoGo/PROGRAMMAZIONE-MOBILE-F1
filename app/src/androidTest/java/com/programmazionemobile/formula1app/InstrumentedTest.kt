@@ -31,7 +31,7 @@ class InstrumentedTest {
     }
 
     @Test
-    fun testSendMessage() {
+    fun  testSendMessage() {
         Espresso.onView(withId(R.id.calendarFragment)).perform(click())
         Espresso.onView(withId(R.id.prossimoEvento)).perform(click())
 
