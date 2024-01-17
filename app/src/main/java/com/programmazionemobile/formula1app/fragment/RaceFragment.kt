@@ -177,6 +177,7 @@ class RaceFragment: Fragment() {
                     val infoCircuitBundle = Bundle()
                     infoCircuitBundle.putString("circuitID", args.circuitID)
                     infoCircuitBundle.putString("circuitName", args.circuitName)
+                    infoCircuitBundle.putString("raceDate", args.raceDate)
 
                     view.findNavController().navigate(R.id.action_raceFragment2_to_liveChatFragment, infoCircuitBundle)
                 }
@@ -187,5 +188,16 @@ class RaceFragment: Fragment() {
                     Toast.LENGTH_LONG).show()
             }
         }
+
+    /* Utilizzare questa parte per aprire tutte le chat
+        liveChatCard.setOnClickListener {
+
+            val infoCircuitBundle = Bundle()
+            infoCircuitBundle.putString("circuitID", args.circuitID)
+            infoCircuitBundle.putString("circuitName", args.circuitName)
+            infoCircuitBundle.putString("raceDate", args.raceDate)
+
+            view.findNavController().navigate(R.id.action_raceFragment2_to_liveChatFragment, infoCircuitBundle)
+        }*/
     }
 }

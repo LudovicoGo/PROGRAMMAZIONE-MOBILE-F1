@@ -23,9 +23,12 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.programmazionemobile.formula1app.DateConverter
 import com.programmazionemobile.formula1app.R
 import com.programmazionemobile.formula1app.adapter.MessageAdapter
 import com.programmazionemobile.formula1app.viewModel.Message
+import java.util.Calendar
+import java.util.Date
 
 class LiveChatFragment: Fragment(){
 
@@ -88,7 +91,7 @@ class LiveChatFragment: Fragment(){
 
         sendButton = view.findViewById(R.id.send)
 
-        room = args.circuitID
+        room = args.circuitID + args.raceDate
 
         messageList = ArrayList()
         messageAdapter = MessageAdapter(requireContext(), messageList)
