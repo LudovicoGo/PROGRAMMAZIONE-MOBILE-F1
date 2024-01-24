@@ -21,8 +21,6 @@ class NotificationWorker(context: Context, params: WorkerParameters) : Worker(co
         val sharedPreferences = applicationContext.getSharedPreferences("preferenze_utente", Context.MODE_PRIVATE)
         val isNotificationEnabled = sharedPreferences.getBoolean("notification_enabled", false)
 
-        Log.d("SENDOTIVICATION 1111", raceSeason + ' ' + raceName)
-
         if (isNotificationEnabled && raceName != null && raceSeason != null) {
             sendNotification(raceName, raceSeason)
         }
@@ -43,11 +41,7 @@ class NotificationWorker(context: Context, params: WorkerParameters) : Worker(co
         Log.d("SENDOTIVICATION 1111", "in sendnotification")
 
         val notificationManager = NotificationManagerCompat.from(applicationContext)
-        if (ActivityCompat.checkSelfPermission(
-                applicationContext,
-                Manifest.permission.POST_NOTIFICATIONS
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
+        if (ActivityCompat.checkSelfPermission(applicationContext, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
             return
         }
         notificationManager.notify(NOTIFICATION_ID, notification)

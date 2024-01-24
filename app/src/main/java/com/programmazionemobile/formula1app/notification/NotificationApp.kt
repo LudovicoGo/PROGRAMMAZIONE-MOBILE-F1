@@ -61,9 +61,6 @@ class NotificationApp : Application() {
                 loadData()
             }
         }
-        else {
-//            clearSharedPreferences()
-        }
 //        Log.d("TERMINATO", "NOTIFICATION APP ON CREATE TERMINATO")
     }
 

@@ -85,19 +85,16 @@ class AccountFragment: Fragment() {
 
             // Verifica che il nuovo nome utente sia valido (unico, lunghezza, caratteri consentiti, ecc.)
 
-            // Aggiorna il nome utente nell'oggetto Firebase User
+            //aggiorna il nome utente nell'oggetto Firebase User
             val user = auth.currentUser
             user?.updateProfile(UserProfileChangeRequest.Builder().setDisplayName((partiNomeCognome?.get(0)) + " " + (partiNomeCognome?.get(1)) + " " + newUsername).build())
                 ?.addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        // Nome utente aggiornato con successo
-                        // Puoi anche aggiornare il valore in tempo reale nel tuo database Firebase se necessario
+                        //nome utente aggiornato con successo
                         val updatedUsername = user.displayName
-                        // Aggiorna il nome utente visualizzato nell'EditText
+                        //aggiorno il nome utente visualizzato nell'EditText
                         editTextNewUsername.setText(updatedUsername)
                         nomeUtenteText.text = newUsername
-                    } else {
-                        // Gestisci l'errore
                     }
                 }
         }

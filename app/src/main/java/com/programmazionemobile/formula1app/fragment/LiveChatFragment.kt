@@ -103,7 +103,6 @@ class LiveChatFragment: Fragment(){
         mDbRef.child("chats").child(room!!).child("messages")
             .addValueEventListener(object: ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-
                     messageList.clear()
 
                     for (postSnapshoot in snapshot.children){

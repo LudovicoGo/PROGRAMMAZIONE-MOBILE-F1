@@ -69,11 +69,12 @@ class ConstructorProfileFragment : Fragment() {
         val constructorProfileSelectedSeason = view.findViewById<TextView>(R.id.ConstructorProfileSelectedSeason)
         val constructorProfileSelectedSeasonDrivers = view.findViewById<TextView>(R.id.constructorProfileSelectedSeasonDrivers)
 
-        val constructorProfileBackArrow = view.findViewById<ImageView>(R.id.constructorProfileBackArrow)
+        val constructorProfileBackArrow = view.findViewById<ImageView>(R.id.constructorProfileBackArrow)    //imposto funzionalità del tasto back
 
         constructorProfileBackArrow.setOnClickListener{
             findNavController().popBackStack()
         }
+
         constructorName.text = args.constructorName
         constructorNationality.text = args.constructorNationality
         constructorSeasonPosition.text = args.constructorSeasonPosition
@@ -114,14 +115,14 @@ class ConstructorProfileFragment : Fragment() {
         viewModel.constructorDrivers.observe(viewLifecycleOwner, Observer { constructorDrivers ->
 
             val layoutParams = listView.layoutParams
-            layoutParams.height = (122*constructorDrivers.size * resources.displayMetrics.density).toInt() // Sostituisci "nuovaAltezza" con l'altezza desiderata in pixel
+            layoutParams.height = (122*constructorDrivers.size * resources.displayMetrics.density).toInt() //imposto altezza della list view in base al numero di piloti
             listView.layoutParams = layoutParams
 
             val adapter = ConstructorProfileDriversAdapter(requireContext(), constructorDrivers)
             listView.adapter = adapter
         })
 
-        viewModel.getConstructorDrivers(args.constructorID, args.selectedSpinnerYear)
+        viewModel.getConstructorDrivers(args.constructorID, args.selectedSpinnerYear)   //chiamo metodo che prende i piloti del costruttore
 
         viewModel.constructorData.observe(viewLifecycleOwner, Observer { constructorData ->
             constructorHistoryPoles.text = constructorData.get("historyPoles") ?: "-"
@@ -133,12 +134,12 @@ class ConstructorProfileFragment : Fragment() {
             constructorHistoryRaces.text = constructorData.get("historyRaces") ?: "-"
 
         })
-        viewModel.getConstructorStats(constructorID, args.selectedSpinnerYear,  "0")
+        viewModel.getConstructorStats(constructorID, args.selectedSpinnerYear,  "0")   //chiamo metodo che prende i dati del costruttore
 
         viewModel.constructorTitles.observe(viewLifecycleOwner, Observer { constructorTitles ->
             constructorHistoryTitles.text = constructorTitles
         })
-        viewModel.getConstructorTitles(constructorID)
+        viewModel.getConstructorTitles(constructorID)   //chiamo metodo che prende i titoli vinti dal costruttore
 
         viewModel.isInternetConnected.observe(viewLifecycleOwner) { isInternetConnected ->
             if (!isInternetConnected) {

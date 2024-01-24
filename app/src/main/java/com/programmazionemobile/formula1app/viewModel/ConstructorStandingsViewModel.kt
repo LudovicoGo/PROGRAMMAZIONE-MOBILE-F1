@@ -12,14 +12,14 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ConstructorStandingsViewModel : ViewModel() {
-    private val BASE_URL = "https://ergast.com/api/f1/"
+    private val BASE_URL = "https://ergast.com/api/f1/"     //url a cui fare le richieste dei dati
     private val TAG: String = "CHECK_RESPONSE"
 
-    private val api = Retrofit.Builder()
+    private val api = Retrofit.Builder()    //creo oggetto retrofit
         .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create())     //uso Gson per parsare il risultato xml in oggetti
         .build()
-        .create(ErgastApi::class.java)
+        .create(ErgastApi::class.java)      //collego l'oggetto retrofit alla classe service ErgastApi che contiene tutte le chiamate che posso fare per prendere i dati
 
     //per progressbar
 //    private val _loadingState = MutableLiveData<Boolean>()
@@ -37,11 +37,11 @@ class ConstructorStandingsViewModel : ViewModel() {
         get() = _isInternetConnected
 
     init{
-        _isInternetConnected.value = true
+        _isInternetConnected.value = true   //imposto internet presente prima di fare le chiamate al db cosi nascondo l'overlay all'apertura del fragment
     }
 
 
-    fun getAllConstructorStandings(year: String) {
+    fun getAllConstructorStandings(year: String) {  //metodo che prende la classifica del campionato
         viewModelScope.launch {
             try {
 //                _loadingState.value = true
@@ -52,7 +52,7 @@ class ConstructorStandingsViewModel : ViewModel() {
                 val constructorStandingsList = mutableListOf<ConstructorStanding>()
 
 
-                if (response.isSuccessful) {
+                if (response.isSuccessful) {        //se la chiamata alle api va a buon fine e il risultato non è vuoto ne salvo il risultato
                     val constructorStandingsData = response.body()
 //                    Log.d("COSTRUTTORI", "${constructorStandingsData.toString()}")
 
@@ -64,8 +64,6 @@ class ConstructorStandingsViewModel : ViewModel() {
 
                             for (driverStanding in standingsList.constructorStandings) {
                                 constructorStandingsList.add(driverStanding)
-
-
                             }
                         }
                         _constructorStandings.value = constructorStandingsList

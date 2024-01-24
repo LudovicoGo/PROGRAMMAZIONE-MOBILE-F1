@@ -39,18 +39,15 @@ class LoginFragment : Fragment() {
     }
 
     private fun singInGoogle(){
-
-        // Esegui il logout da Google Sign-In
+        //esegue il logout perché non posso loggarmi se qualcuno è già loggato
         googleSignInClient.signOut().addOnCompleteListener {
         }
 
-        val signIntent = googleSignInClient.signInIntent
+        val signIntent = googleSignInClient.signInIntent    //mi loggo
         launcher.launch(signIntent)
     }
 
-    private val launcher = registerForActivityResult(ActivityResultContracts
-        .StartActivityForResult())
-    { result ->
+    private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
         if (result.resultCode == Activity.RESULT_OK) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
             handleResults(task)
@@ -69,7 +66,9 @@ class LoginFragment : Fragment() {
     }
 
     private fun updateUI (account: GoogleSignInAccount) {
+        //prende le credenziali dell'utente loggato
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+        //logga l'utente e se riesce allora porta l'utente sul fragment del suo account passandogli i vari dati
         auth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
                 val action = LoginFragmentDirections.actionAccountFragmentToAccountFragment4(
