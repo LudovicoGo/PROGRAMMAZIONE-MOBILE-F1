@@ -31,7 +31,6 @@ class CalendarFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_calendar, container, false)
-        val headerView = inflater.inflate(R.layout.header_race_recycler_view, container, false)
 
         // Trova il RecyclerView nel layout del fragment
         val rv: RecyclerView = view.findViewById(R.id.calendar_rv)
@@ -80,7 +79,6 @@ class CalendarFragment : Fragment() {
             list.addAll(calendar)
 
             val adapter = CalendarAdapter(list, requireContext())
-            //rv.adapter = HeaderRaceAdapter(headerView, adapter)
             rv.adapter = adapter
         }
 

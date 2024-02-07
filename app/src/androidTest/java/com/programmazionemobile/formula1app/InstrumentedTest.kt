@@ -32,7 +32,11 @@ class InstrumentedTest {
 
     @Test
     fun  testSendMessage() {
+
+        Espresso.onView(withId(R.id.raceInfoBackArrow)).perform(click())
+
         Espresso.onView(withId(R.id.calendarFragment)).perform(click())
+
         Espresso.onView(withId(R.id.prossimoEvento)).perform(click())
 
         Espresso.onView(withId(R.id.liveChatCard)).perform(click())
@@ -41,5 +45,6 @@ class InstrumentedTest {
         Espresso.closeSoftKeyboard()
 
         Espresso.onView(withId(R.id.send)).perform(click())
+
     }
 }

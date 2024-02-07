@@ -13,8 +13,7 @@ import com.programmazionemobile.formula1app.data.constructorDriversData.Driver
 
 class ConstructorProfileDriversAdapter(
     private val context: Context,
-    private val driverList: List<Driver>
-) : BaseAdapter() {
+    private val driverList: List<Driver>) : BaseAdapter() {
 
     override fun getCount(): Int {
         return driverList.size

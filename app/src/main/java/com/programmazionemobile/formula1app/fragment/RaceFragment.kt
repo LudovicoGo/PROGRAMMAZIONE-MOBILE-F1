@@ -150,7 +150,7 @@ class RaceFragment: Fragment() {
 
         val controllo = auth.currentUser?.uid
 
-        if (controllo == null) {
+        /*if (controllo == null) {
             liveChatCard.setOnClickListener {
                 Toast.makeText(
                     requireContext(),
@@ -187,10 +187,18 @@ class RaceFragment: Fragment() {
                     "La Chat relativa a questo Gran Premio è chiusa",
                     Toast.LENGTH_LONG).show()
             }
-        }
+        }*/
 
-    /* Utilizzare questa parte per aprire tutte le chat
-        liveChatCard.setOnClickListener {
+    // Utilizzare questa parte per aprire tutte le chat
+        if (controllo == null) {
+            liveChatCard.setOnClickListener {
+                Toast.makeText(
+                    requireContext(),
+                    "Per entrare nella Chat effettuare il login",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        } else liveChatCard.setOnClickListener {
 
             val infoCircuitBundle = Bundle()
             infoCircuitBundle.putString("circuitID", args.circuitID)
@@ -198,6 +206,6 @@ class RaceFragment: Fragment() {
             infoCircuitBundle.putString("raceDate", args.raceDate)
 
             view.findNavController().navigate(R.id.action_raceFragment2_to_liveChatFragment, infoCircuitBundle)
-        }*/
+        }
     }
 }

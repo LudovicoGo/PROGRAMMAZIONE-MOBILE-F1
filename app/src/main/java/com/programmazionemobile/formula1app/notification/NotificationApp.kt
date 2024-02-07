@@ -27,6 +27,7 @@ import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
+import kotlin.time.Duration.Companion.seconds
 
 class NotificationApp : Application() {
     private val BASE_URL = "https://ergast.com/api/f1/"
@@ -96,7 +97,7 @@ class NotificationApp : Application() {
             .putString("raceSeason", race.season)
             .build()
 
-        val raceDateTimeString = race.date + 'T' + race.time //creo una stringa nel formato "yyyy-MM-ddTHH:mm:ssZ"
+        /*val raceDateTimeString = race.date + 'T' + race.time //creo una stringa nel formato "yyyy-MM-ddTHH:mm:ssZ"
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssX")
         //trasformo la stringa in un oggetto ZonedDateTime che tiene conto anche del fuso
         val raceDateTime = ZonedDateTime.parse(raceDateTimeString, formatter)
@@ -105,14 +106,15 @@ class NotificationApp : Application() {
         //differenza di tempo tra la data e l'ora corrente e la data della notifica programmata
         val currentTime = ZonedDateTime.now(ZoneId.of("UTC"))
         val delayInSeconds = Duration.between(currentTime, notificationDateTime).seconds
-
+*/
 
 //        Log.d("scheduleNotificationForDate",  "SCHEDULO " + race.raceName + race.season + " " +  race.time + "per $delayInSeconds secondi cioè per il $notificationDateTime")
 
         //crea una richiesta di lavoro e gli assegno il tempo da far passare prima di eseguirlo
         val workRequest = OneTimeWorkRequestBuilder<NotificationWorker>()
             .setConstraints(constraints)
-            .setInitialDelay(delayInSeconds, java.util.concurrent.TimeUnit.SECONDS)
+            // .setInitialDelay(delayInSeconds, java.util.concurrent.TimeUnit.SECONDS)
+            .setInitialDelay(5, java.util.concurrent.TimeUnit.SECONDS)
 //            .setInitialDelay(25, java.util.concurrent.TimeUnit.SECONDS)
             .setInputData(inputRaceData)
             .build()
