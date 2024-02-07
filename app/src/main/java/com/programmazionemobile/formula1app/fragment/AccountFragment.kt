@@ -98,6 +98,7 @@ class AccountFragment: Fragment() {
                     }
                 }
         }
+
         emailText.text = auth.currentUser?.email
 
 

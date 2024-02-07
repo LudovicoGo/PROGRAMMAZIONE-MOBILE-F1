@@ -30,6 +30,7 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context): Adapt
         private const val TYPE_ITEM = 1
     }
 
+    // ViewHolder per gli elementi della lista delle gare
     class RaceListViewHolder(val row: View) : ViewHolder(row) {
         val dataGara = row.findViewById<TextView>(R.id.dataGara)
         val nomeGara = row.findViewById<TextView>(R.id.nomeGara)
@@ -37,6 +38,7 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context): Adapt
         val flagGara = row.findViewById<ImageView>(R.id.flagGara)
     }
 
+    // ViewHolder per l'header della prossima gara
     class HeaderViewHolder(val row: View): ViewHolder(row) {
         val dataProssimaGara = row.findViewById<TextView>(R.id.dataProssimaGara)
         val nomeProssimaGara = row.findViewById<TextView>(R.id.nomeProssimaGara)
@@ -51,14 +53,14 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context): Adapt
 
         return when(viewType){
             TYPE_ITEM_HEADER -> {
-                //HEADER
+                // HEADER
                 HeaderViewHolder(
                     LayoutInflater.from(parent.context)
                         .inflate(R.layout.header_race_recycler_view, parent, false)
                 )
             }
             else -> {
-                //ITEM
+                // ITEM
                 RaceListViewHolder(
                     LayoutInflater.from(parent.context)
                         .inflate(R.layout.race_recycler_view, parent, false)
@@ -67,6 +69,7 @@ class CalendarAdapter (val data: MutableList<Race>, val context: Context): Adapt
         }
     }
 
+    @SuppressLint("SimpleDateFormat")
     override fun onBindViewHolder(holder: ViewHolder, round: Int) {
         when(holder) {
             is HeaderViewHolder -> {

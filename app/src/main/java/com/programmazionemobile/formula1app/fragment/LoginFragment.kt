@@ -72,9 +72,10 @@ class LoginFragment : Fragment() {
         auth.signInWithCredential(credential).addOnCompleteListener {
             if (it.isSuccessful) {
                 val action = LoginFragmentDirections.actionAccountFragmentToAccountFragment4(
-                    displayName = account.givenName!!,
-                    familyName = account.familyName!!,
-                    email = account.email!!)
+                    displayName = account.givenName ?: "No givenName",
+                    familyName = account.familyName ?: "No familyName",
+                    email = account.email ?: "No email"
+                )
                 findNavController().navigate(action)
             } else {
                 Toast.makeText(requireContext(), it.exception.toString(), Toast.LENGTH_SHORT).show()

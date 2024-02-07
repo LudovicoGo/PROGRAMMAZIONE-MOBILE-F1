@@ -5,13 +5,10 @@
       <entry key="InstrumentedTest">
         <State />
       </entry>
-      <entry key="NavigationTest">
-        <State />
-      </entry>
       <entry key="app">
         <State />
       </entry>
-      <entry key="testNavigationToSomeFragment()">
+      <entry key="testSendMessage()">
         <State />
       </entry>
     </value>
