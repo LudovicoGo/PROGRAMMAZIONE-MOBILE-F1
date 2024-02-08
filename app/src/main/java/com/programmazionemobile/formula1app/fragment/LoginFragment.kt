@@ -39,11 +39,11 @@ class LoginFragment : Fragment() {
     }
 
     private fun singInGoogle(){
-        //esegue il logout perché non posso loggarmi se qualcuno è già loggato
+        // Per far scegliere all'utente l'account con cui loggare
         googleSignInClient.signOut().addOnCompleteListener {
         }
 
-        val signIntent = googleSignInClient.signInIntent    //mi loggo
+        val signIntent = googleSignInClient.signInIntent    // Mostra la finestra di autenticazione di google
         launcher.launch(signIntent)
     }
 

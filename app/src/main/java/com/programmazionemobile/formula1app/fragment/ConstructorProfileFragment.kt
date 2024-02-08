@@ -84,11 +84,7 @@ class ConstructorProfileFragment : Fragment() {
         constructorProfileSelectedSeason.text = args.selectedSpinnerYear + " SEASON"
         constructorProfileSelectedSeasonDrivers.text = args.selectedSpinnerYear + " DRIVERS"
 
-        val drawableResId = requireContext().resources.getIdentifier(
-            constructorID+"_logo",
-            "drawable",
-            requireContext().packageName
-        )
+        val drawableResId = requireContext().resources.getIdentifier(constructorID+"_logo","drawable",requireContext().packageName)
         if (drawableResId != 0) {
             //se l'ID è diverso da 0, il drawable è stato trovato
             constructorImage.visibility = View.VISIBLE
